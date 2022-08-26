@@ -1,0 +1,28 @@
+.profilePage{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 50px 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    min-height: 300px;
+
+    border: 1px solid black;
+}
+
+.editProfile{
+    width: 20%;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+
+}

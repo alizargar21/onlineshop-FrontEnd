@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;  
+}
+
+body {
+  background-color: #f6f6f6;
+  height: auto;
+}
+
+.btn{
+  padding: 0.4rem 0.7rem;
+  background-color: #111827;
+  color: #f6f6f6;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+}
+.btn:active {
+  background-color: #727272;
+}
+/* -------------- */

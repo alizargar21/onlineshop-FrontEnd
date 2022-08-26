@@ -1,0 +1,135 @@
+.cartContainer {
+  width: 90%;
+  height: auto;
+  background-color: #f1f1f1;
+  display: flex;
+  border: 1px solid #c3c3c3;
+
+  justify-content: space-around;
+  align-items: flex-start;
+  margin: 0 auto;
+}
+.w100 {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.w100 h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+.cartSummeryContainer {
+  max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  color: #1e293b;
+  align-items: center;
+  margin: 10px 0;
+}
+.cartSummery {
+  min-height: 200px;
+  background-color: #fff;
+  border: 1px solid #c3c3c3;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  color: #1e293b;
+  justify-content: space-around;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+}
+.cartSummeryContainer h2 {
+  margin: 10px 0;
+}
+
+.cartInventory {
+  width: 100%;
+  min-height: 170px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.cartItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.imageItem img {
+  max-width: 150px;
+  max-height: 120px;
+  /* border-right: 1px solid #c3c3c3; */
+  padding-right: 20px;
+}
+.descItem {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.controlsItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+  border-radius: 5px;
+  font-size: 1.4rem;
+  padding: 2px 10px;
+}
+.qtySpan {
+  margin: 0 10px;
+}
+.trash {
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  color: red;
+}
+.increment {
+  font-size: 2.5rem;
+  color: #047857;
+  border: none;
+  background-color: transparent;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.cartInfoContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border-bottom: #1e293b 1px solid;
+
+}
+
+.cartItems {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0px;
+}
+
+.sumTotalCart {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.checkOutBtn {
+  margin: 10px;
+  width: 100%;
+}
