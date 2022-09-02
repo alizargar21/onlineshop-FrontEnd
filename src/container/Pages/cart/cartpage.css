@@ -114,7 +114,14 @@
   border-bottom: #1e293b 1px solid;
 
 }
-
+.controlOption{
+  height: auto;
+  width: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .cartItems {
   display: flex;
   width: 200px;
@@ -132,4 +139,11 @@
 .checkOutBtn {
   margin: 10px;
   width: 100%;
+}
+
+.selectedColor{
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  border-radius: 50%;
 }

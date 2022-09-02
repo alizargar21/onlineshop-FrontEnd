@@ -1,32 +1,31 @@
 import { BsStarFill, BsHeartFill, BsTagFill } from "react-icons/bs";
 import "../../container/Pages/products/ProductList/productList.css";
 import data from "../../data/db.json";
-import { useCartActions } from "../../Provider/CartProvider";
-import { useLocation } from "react-router-dom";
+
+import { Link, useLocation, useParams, useNavigate } from "react-router-dom";
 let {
   products: { laptop, mobile, cases },
 } = data;
 
 const LaptopsProd = () => {
-  const dispatch = useCartActions();
+  const navigate = useNavigate();
+
   const location = useLocation();
-  console.log(location.pathname)
-  let dataForMap ;
+  console.log(location.pathname);
+  let dataForMap;
   const getProduct = () => {
     switch (location.pathname) {
-      case "/laptops" : return dataForMap = laptop;
-      case "/mobiles" : return dataForMap = mobile;
-      case "/cases" : return dataForMap = cases;
-      default : return dataForMap = laptop
+      case "/laptops":
+        return (dataForMap = laptop);
+      case "/mobiles":
+        return (dataForMap = mobile);
+      case "/cases":
+        return (dataForMap = cases);
+      default:
+        return (dataForMap = laptop);
     }
-    return dataForMap
-  }
-  getProduct()
-
-  const addToCartHandler = (item) => {
-    console.log("clicked");
-    dispatch({ type: "ADD_TO_CART", payload: item });
   };
+  getProduct();
 
   return (
     <>
@@ -36,31 +35,47 @@ const LaptopsProd = () => {
             <div className="topBar"></div>
             <div className="colorsAndLike">
               <div className="colors">
-                <a href="">
-                  <span className={`color`}></span>
-                </a>
+                <Link to={`/product/${item.id}`}>
+                  {item.colors.map((c, index) => (
+                    <span
+                      key={index}
+                      style={{ backgroundColor: c }}
+                      className={`color`}
+                    ></span>
+                  ))}
+                </Link>
               </div>
 
               <button className="like">
                 <BsHeartFill />
               </button>
             </div>
-            <img src={item.image} className="image"></img>
+            <Link className="goToProd" to={`/product/${item.id}`}>
+              <img src={item.image} className="image"></img>
+            </Link>
             <div className="description">
               <h4>{item.name}</h4>
-              <p className="price">{item.price}</p>
-              <div className="discountDiv">
-                <BsTagFill />
-                <p className="offPrice">{item.offPrice}</p>
-              </div>
+              <p className={item.discount !== 0 ? "offPrice":"price"}>{`$${item.price}`}</p>
+              {item.discount ? (
+                <div className="discountDiv">
+                  <BsTagFill />
+                  <p className="discount">
+                    {`$ ${item.price - (item.price * item.discount) / 100}`}
+                  </p>
+                </div>
+              ) : null}
             </div>
             <div className="ecart">
               <div className="rate">
                 <BsStarFill />
                 {item.rate}
               </div>
-              <button className="btn" onClick={() => addToCartHandler(item)}>
-                Add To Cart
+
+              <button
+                className="btn"
+                onClick={() => navigate(`/product/${item.id}`)}
+              >
+                Check Product
               </button>
             </div>
           </div>

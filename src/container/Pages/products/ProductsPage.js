@@ -1,12 +1,11 @@
 import styles from "./productspage.module.css";
-import { Link , useNavigate} from "react-router-dom";
-import Layout from "../../Layout/Layout";
+import { Link } from "react-router-dom";
 import LayoutTwo from "../../Layout/LayoutTwo";
 const ProductsPage = () => {
   return (
     <LayoutTwo>
-      
-      <section className={styles.productsCategories}>
+      <section className={styles.productsCategories} >
+
         <article className={styles.category}>
           <Link to="/laptops">
             <h4>Laptops</h4>

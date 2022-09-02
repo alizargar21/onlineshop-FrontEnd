@@ -32,6 +32,7 @@ const Login = () => {
 
   useEffect(()=>{
     if(auth){navigate(redirect)}
+    console.log(redirect)
   },[auth,redirect])
   const onSubmit = async (values) => {
     const { email, password } = values;
@@ -45,7 +46,7 @@ const Login = () => {
       console.log(data);
       toast.success("You Now Logged In" , {theme:'dark'});
       setAuth(data);
-      navigate(redirect ? redirect : "/")
+      navigate(redirect ==="/" ? "/":`/${redirect}`)
     } catch (error) {
       toast.error(error.response.data.message , {theme:"dark"})
       setError(error.response.data.message);

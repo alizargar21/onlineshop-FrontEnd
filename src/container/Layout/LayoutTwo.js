@@ -1,9 +1,11 @@
 
+import ModalMenu from "../../components/UI/ModalMenu";
 import Header from "./Header/Header";
+import styles from "./layout.module.css"
 const LayoutTwo = ({children}) => {
-    return ( <div>
+    return ( <div className={styles.containerLayout} >
         <Header />
-   
+   <ModalMenu />
         {children}
 
         

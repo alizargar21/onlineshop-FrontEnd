@@ -5,9 +5,11 @@
   "dependencies": {
     "axios": "^0.27.2",
     "formik": "^2.2.9",
+    "hamburgers": "^1.2.1",
     "json-server": "^0.17.0",
     "react": "^18.2.0",
     "react-alice-carousel": "^2.6.4",
+    "react-burger-menu": "^3.0.8",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
     "react-redux": "^8.0.2",

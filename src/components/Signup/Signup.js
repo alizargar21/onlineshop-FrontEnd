@@ -45,6 +45,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   useEffect(()=>{
     if(auth){navigate(redirect)}
+    console.log(redirect)
   } , [auth,redirect])
   const onSubmit = async (values) => {
     const { name, email, terms, password, phoneNumber, passwordConfirm } =
@@ -62,7 +63,7 @@ const SignUp = () => {
       console.log(data);
       toast.success("Sign Up Successful");
       setAuth(data);
-      navigate(`/checkout?redirect=${redirect}`)
+      navigate(redirect ==="/" ? "/":`/${redirect}`)
       toast.info("You now login");
     } catch (error) {
       console.log(error.response.data.message);

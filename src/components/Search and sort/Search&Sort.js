@@ -1,10 +1,10 @@
 import '../../container/Pages/products/ProductList/productList.css'
 const SearchSort = () => {
     return ( 
-        <section className="sortContainer">
+        <section className="sortContainer" >
         <div className="searchDiv">
             <label htmlFor='search'>Search</label>
-            <input type="text" name="" value="s" id='search'  className="searchInput"/>
+            <input type="text" name="" value="s" id='search' readOnly  className="searchInput"/>
         </div>
         <div>
             <select className="selectCategory">

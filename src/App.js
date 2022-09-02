@@ -15,34 +15,39 @@ import CartProvider from "./Provider/CartProvider";
 import AuthProvider from "./Provider/AuthProvider";
 import CheckOut from "./container/Pages/CheckOutPage/CheckOut";
 import ProfilePage from "./container/Pages/Profile/Profile";
+import SingleProduct from "./container/Pages/products/SingleProduct/SingleProduct";
+import ModalProvider from "./Provider/ModalNavProvider";
 
 function App() {
   return (
     <>
-      <AuthProvider>
-        <CartProvider>
-          <ToastContainer
-            closeOnClick
-            position="top-left"
-            hideProgressBar={true}
-            transition={Flip}
-          />
-          <Routes>
-            <Route path="/productspage" element={<ProductsPage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="/checkout" element={<CheckOut />} />
-            <Route path="*" element={<NotFoundPage />} />
-            <Route path="/blogs" element={<Blogs />} />
-            <Route path="/laptops" element={<ProductList />} />
-            <Route path="/mobiles" element={<ProductList />} />
-            <Route path="/cases" element={<ProductList />} />
-          </Routes>
-        </CartProvider>
-      </AuthProvider>
+      <ModalProvider>
+        <AuthProvider>
+          <CartProvider>
+            <ToastContainer
+              closeOnClick
+              position="top-left"
+              hideProgressBar={true}
+              transition={Flip}
+            />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="/checkout" element={<CheckOut />} />
+              <Route path="*" element={<NotFoundPage />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/productspage" element={<ProductsPage />} />
+              <Route path="/laptops" element={<ProductList />} />
+              <Route path="/mobiles" element={<ProductList />} />
+              <Route path="/cases" element={<ProductList />} />
+              <Route path="/product/:id" element={<SingleProduct />} />
+            </Routes>
+          </CartProvider>
+        </AuthProvider>
+      </ModalProvider>
     </>
   );
 }

@@ -6,6 +6,7 @@ const CartContextDispatcher = createContext();
 
 const initialState = {
   cart: [],
+ 
   total: 0
 };
 

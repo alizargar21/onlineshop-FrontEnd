@@ -14,16 +14,16 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": 86990000,
-        "discount": "4%",
-        "offPrice": 84880000,
+        "colors": ["#4b5563", "#6ee7b7", "#f4f4f5", "#171717"],
+        "price": 1500,
+        "discount": 7,
         "rate": 4.8,
         "image": "https://s6.uupload.ir/files/8b992591cd7606de5eb5affe9ec8b9725c349fe3_1654514995_kch5.jpg"
       },
       {
         "id": 2,
         "name": "MacBook Pro MK1984 2019",
+        "colors": ["#111563", "#f4f4f5", "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -34,15 +34,17 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "price": "92,190,000",
-        "discount": "4%",
-        "offPrice": "89,380,000",
+        "price": 1750,
+        "discount": 8,
+        
+
         "rate": "4.9",
         "image": "https://s6.uupload.ir/files/79f4b1e3c31fb22fa193ea1393e2cb8e8a5863cc_1605085571_rfeq.jpg"
       },
       {
         "id": 3,
         "name": "MacBook Pro MK195 2022",
+        "colors": ["#fca5a5", "#f4f4f5", "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -53,15 +55,16 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "price": "72,690,000",
-        "discount": "3%",
-        "offPrice": "70,450,000",
+        "price": 1600,
+        "discount": 5,
+       
         "rate": "5",
         "image": "https://s6.uupload.ir/files/afe981b36622b3b55d95ad26f55290d8ff407b62_1653469937_g5kw.jpg"
       },
       {
         "id": 4,
         "name": "ASUS VIVO BOOK",
+        "colors": ["#bbf7d0", "#f4f4f5", "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -72,15 +75,16 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "price": "17,950,000",
-        "discount": "4%",
-        "offPrice": "16,880,000",
+        "price": 1200,
+        "discount": 0,
+
         "rate": "3.2",
         "image": "https://s6.uupload.ir/files/b7e7f5c40eb33dcefe01cf78a4c02ce21e8cdf34_1651074845_84bx.jpg"
       },
       {
         "id": 5,
         "name": "ASUS TUF GAMING",
+        "colors": [ "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -91,8 +95,8 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "price": "86,990,000",
-        "discount": "4%",
+        "price": 1350,
+        "discount": 10,
         "offPrice": "84,880,000",
         "rate": "3.8",
         "image": "https://s6.uupload.ir/files/6969c6df7ef275fbfce054beecb546a970b6341f_1637680475_k24i.jpg"
@@ -100,6 +104,7 @@
       {
         "id": 6,
         "name": "ASUS RUG Strix",
+        "colors": [ "#f4f4f5", "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -110,8 +115,8 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "price": "52,990,000",
-        "discount": "7%",
+        "price": 1530,
+        "discount": 0,
         "offPrice": "51,880,000",
         "rate": "4.1",
         "image": "https://s6.uupload.ir/files/522caeefa14460199ddd4e3df6796f419d5b6b08_1645858426_hbs4.jpg"
@@ -132,9 +137,9 @@
           { "Screen resolution": "3456x2234" }
         ],
         "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "price": 500,
+        "discount": 4,
+        
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(1)_vnam.jpg"
       },
@@ -152,15 +157,16 @@
           { "Screen resolution": "3456x2234" }
         ],
         "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "price": 350,
+        "discount": 3,
+    
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(12)_okgc.jpg"
       },
       {
         "id": 22,
         "name": "MacBook Pro MK193 2021",
+        "colors": ["#4b5563", "#fb7185", "#fff1f2"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -172,15 +178,16 @@
           { "Screen resolution": "3456x2234" }
         ],
         "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "price": 600,
+        "discount": 9,
+  
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(11)_ri3p.jpg"
       },
       {
         "id": 23,
         "name": "MacBook Pro MK193 2021",
+        
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
@@ -191,10 +198,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#16a34a", "#f4f4f5", "#171717"],
+        "price": 750,
+        "discount": 12,
+       
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(9)_0830.jpg"
       },
@@ -211,10 +218,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#065f46", "#f4f4f5", "#171717"],
+        "price": 440,
+        "discount": 3,
+        
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(6)_srhh.jpg"
       },
@@ -231,10 +238,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#4b5563", "#f4f4f5", "#171717"],
+        "price": 300,
+        "discount": 0,
+      
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(13)_rxc1.jpg"
       },
@@ -251,10 +258,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#4b5563", "#f4f4f5", "#164e63"],
+        "price": 430,
+        "discount": 18,
+        
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(8)_o908.jpg"
       },
@@ -271,10 +278,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#99f6e4", "#f4f4f5", "#171717"],
+        "price": 500,
+        "discount": 0,
+      
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(7)_afgz.jpg"
       },
@@ -291,10 +298,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#fde047", "#f4f4f5", "#171717"],
+        "price": 890,
+        "discount": 11,
+      
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(2)_293b.jpg"
       },
@@ -311,10 +318,10 @@
           { "Screen size": "inches 16.2" },
           { "Screen resolution": "3456x2234" }
         ],
-        "colors": ["gray", "black", "silver"],
-        "price": "86,990,000",
-        "discount": "4%",
-        "offPrice": "84,880,000",
+        "colors": ["#4b5563", "#f4f4f5", "#171717"],
+        "price": 350,
+        "discount": 0,
+    
         "rate": "4.8",
         "image": "https://s6.uupload.ir/files/2_(1)_vnam.jpg"
       }
