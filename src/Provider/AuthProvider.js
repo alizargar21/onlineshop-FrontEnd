@@ -13,12 +13,14 @@ const AuthProvider = ({ children }) => {
     const userData =
       JSON.parse(localStorage.getItem(LOCAL_STORAGE_AUTH_KEY)) || null;
     setAuth(userData);
+   
   }, []);
   // component did update ?
   // if changed user update again authentication
   useEffect(() => {
     const userData = JSON.stringify(auth);
     localStorage.setItem(LOCAL_STORAGE_AUTH_KEY, userData);
+
   }, [auth]);
   return (
     <AuthContext.Provider value={auth}>

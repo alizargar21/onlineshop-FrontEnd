@@ -1,15 +1,12 @@
-
-import ModalMenu from "../../components/UI/ModalMenu";
 import Header from "./Header/Header";
-import styles from "./layout.module.css"
-const LayoutTwo = ({children}) => {
-    return ( <div className={styles.containerLayout} >
-        <Header />
-   <ModalMenu />
-        {children}
 
-        
-    </div> );
-}
- 
+const LayoutTwo = ({ children }) => {
+  return (
+    <div className="bg-gray-200 dark:bg-gray-800 min-h-screen">
+      <Header />
+      {children}
+    </div>
+  );
+};
+
 export default LayoutTwo;

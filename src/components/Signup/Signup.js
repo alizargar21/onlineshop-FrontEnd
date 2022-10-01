@@ -9,7 +9,7 @@ import styles from "./form.module.css";
 import LayoutTwo from "../../container/Layout/LayoutTwo";
 import signupUser from "../../services/signUpService.js";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
-import {useQuery} from "../../hooks/useQuery.js";
+import { useQuery } from "../../hooks/useQuery.js";
 const initialValues = {
   name: "",
   email: "",
@@ -36,17 +36,19 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
- const auth = useAuth()
-  const query = useQuery()
-  const redirect = query.get("redirect") || "/"
-  console.log(query.get("redirect"))
+  const auth = useAuth();
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+
   const [error, setError] = useState(null);
   const setAuth = useAuthActions();
   const navigate = useNavigate();
-  useEffect(()=>{
-    if(auth){navigate(redirect)}
-    console.log(redirect)
-  } , [auth,redirect])
+  useEffect(() => {
+    if (auth) {
+      navigate(redirect);
+    }
+    console.log(redirect);
+  }, [auth, redirect]);
   const onSubmit = async (values) => {
     const { name, email, terms, password, phoneNumber, passwordConfirm } =
       values;
@@ -63,12 +65,12 @@ const SignUp = () => {
       console.log(data);
       toast.success("Sign Up Successful");
       setAuth(data);
-      navigate(redirect ==="/" ? "/":`/${redirect}`)
+      navigate(redirect === "/" ? "/" : `/${redirect}`);
       toast.info("You now login");
     } catch (error) {
       console.log(error.response.data.message);
       setError(error.response.data.message);
-      toast.error(error.response.data.message , {theme:"dark"})
+      toast.error(error.response.data.message);
     }
   };
 
@@ -82,10 +84,15 @@ const SignUp = () => {
   });
   return (
     <LayoutTwo>
-      <section className={styles.containerSignup}>
-        <form className={styles.form} onSubmit={formik.handleSubmit}>
-          <div className={styles.headerForm}>Sign Up</div>
-          <div className={styles.justify}>
+      <section className=" center flex-col ">
+        <form
+          className="w-[30%] md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  my-3"
+          onSubmit={formik.handleSubmit}
+        >
+        <div className="bg-green-500 center  w-full h-10 text-gray-200 rounded-tl-lg rounded-tr-lg ">
+          Sign Up
+        </div>
+          <div className="w-[80%] flex flex-col items-start justify-center">
             <Input formik={formik} name="name" label="Name" />
             <Input formik={formik} name="email" label="Email" type="email" />
             <Input
@@ -94,21 +101,26 @@ const SignUp = () => {
               label="Phone Number"
               type="tel"
             />
-            <Input formik={formik} name="password" label="Password" />
+            <Input formik={formik} name="password" label="Password" type="password" />
             <Input
               formik={formik}
               name="passwordConfirm"
               label="Password Confirm"
+              type="password"
             />
- 
+
             <button
-              className={!formik.isValid ? styles.btnDisabled: styles.btn}
+              className={
+                !formik.isValid
+                  ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-2"
+                  : "w-full bg-green-500 text-white rounded-md  text-sm py-1 my-2    "
+              }
               disabled={!formik.isValid}
               type="submit"
             >
               SIGN UP
             </button>
-            <div className={styles.signIn}>
+            <div className="w-full center text-[14px] my-2">
               <Link to="/login">
                 <p>Already have an account?</p>
               </Link>

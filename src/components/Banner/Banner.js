@@ -1,6 +1,6 @@
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import "./banner.css";
+
 import React from "react";
 const responsive = {
   0: { items: 1 },
@@ -8,11 +8,10 @@ const responsive = {
   1024: { items: 3 },
 };
 const items = [
-  <img src={require("../../images/1 (1).jpg")} className="image2" />,
-  <img src={require("../../images/1 (2).jpg")} className="image2" />,
-  <img src={require("../../images/1 (3).jpg")} className="image2" />,
-  <img src={require("../../images/1 (4).jpg")} className="image2" />,
-  <img src={require("../../images/1 (5).jpg")} className="image2" />,
+  <div >
+    <img src={require("../../images/banners tiny/main-banner-org.jpg")} className='z-10' />
+  </div>
+  
 ];
 
 const BannerComponent = () => {
@@ -25,12 +24,12 @@ const BannerComponent = () => {
         autoPlay
         autoPlayStrategy="none"
         autoPlayInterval={3000}
-        animationDuration={1000}
+        animationDuration={1500}
         animationType="fadeout"
         infinite
-        touchTracking={false}
+        touchTracking={true}
     
-        disableButtonsControls
+        
       />
     </div>
   );

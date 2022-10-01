@@ -1,14 +1,10 @@
 import Navigation from "../../../components/Navigation/Navigation";
-import ModalMenu from "../../../components/UI/ModalMenu";
-import './header.css'
 const Header = () => {
-    return ( <header className="headerContainer">
-    <div>
-        <a href="/"><img src={require('../../../images/logo.png')} alt="logo" className="logo"/></a>
-    </div>
-        <Navigation />
-       
-    </header> );
-}
- 
+  return (
+    <header className="sticky shadow-xl dark:shadow-2xl z-50 top-0 w-full h-18 sm:h-12 bg-gray-100/90 dark:bg-black/50 backdrop-blur-sm flex justify-between items-center px-[70px] ">
+      <Navigation />
+    </header>
+  );
+};
+
 export default Header;

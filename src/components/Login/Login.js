@@ -63,15 +63,15 @@ const Login = () => {
   });
   return (
     <LayoutTwo>
-      <section className={styles.containerSignup}>
-        <form onSubmit={formik.handleSubmit} className={styles.form}>
-          <div className={styles.headerForm}>Login</div>
+      <section  className="center w-full">
+        <form onSubmit={formik.handleSubmit} className="w-[30%] shadow-2xl md:min-w-[50%] sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col mt-10 dark:bg-gray-700 dark:text-gray-200 bg-gray-100 text-gray-800 rounded-lg  my-3">
+          <div className="bg-blue-600 w-full center rounded-tr-lg rounded-tl-lg h-[40px] text-gray-300 ">Login</div>
           <div className={styles.justify}>
             <Input formik={formik} name="email" label="Email" type="email" />
 
             <Input formik={formik} name="password" label="Password" />
 
-            <button className={styles.btn} type="submit">
+            <button className="btn-primary w-full hover:bg-blue-500 mt-4 bg-blue-600" type="submit"    disabled={!formik.isValid}>
               Login
             </button>
           </div>

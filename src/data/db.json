@@ -4,7 +4,7 @@
       {
         "id": 1,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -12,17 +12,21 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#4b5563", "#6ee7b7", "#f4f4f5", "#171717"],
         "price": 1500,
         "discount": 7,
         "rate": 4.8,
-        "image": "https://s6.uupload.ir/files/8b992591cd7606de5eb5affe9ec8b9725c349fe3_1654514995_kch5.jpg"
+        "image": "/images/laptop tiny/1.png"
       },
       {
         "id": 2,
         "name": "MacBook Pro MK1984 2019",
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "colors": ["#111563", "#f4f4f5", "#171717"],
 
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
@@ -32,20 +36,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "price": 1750,
         "discount": 8,
-        
 
         "rate": "4.9",
-        "image": "https://s6.uupload.ir/files/79f4b1e3c31fb22fa193ea1393e2cb8e8a5863cc_1605085571_rfeq.jpg"
+        "image": "/images/laptop tiny/2.png"
       },
       {
         "id": 3,
         "name": "MacBook Pro MK195 2022",
         "colors": ["#fca5a5", "#f4f4f5", "#171717"],
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -53,13 +59,16 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "price": 1600,
         "discount": 5,
-       
+
         "rate": "5",
-        "image": "https://s6.uupload.ir/files/afe981b36622b3b55d95ad26f55290d8ff407b62_1653469937_g5kw.jpg"
+        "image": "/images/laptop tiny/3.png"
       },
       {
         "id": 4,
@@ -73,19 +82,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "price": 1200,
         "discount": 0,
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "rate": "3.2",
-        "image": "https://s6.uupload.ir/files/b7e7f5c40eb33dcefe01cf78a4c02ce21e8cdf34_1651074845_84bx.jpg"
+        "image": "/images/laptop tiny/4.png"
       },
       {
         "id": 5,
         "name": "ASUS TUF GAMING",
-        "colors": [ "#171717"],
-
+        "colors": ["#171717"],
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -93,19 +105,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "price": 1350,
         "discount": 10,
         "offPrice": "84,880,000",
         "rate": "3.8",
-        "image": "https://s6.uupload.ir/files/6969c6df7ef275fbfce054beecb546a970b6341f_1637680475_k24i.jpg"
+        "image": "/images/laptop tiny/5.png"
       },
       {
         "id": 6,
         "name": "ASUS RUG Strix",
-        "colors": [ "#f4f4f5", "#171717"],
-
+        "colors": ["#f4f4f5", "#171717"],
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -113,20 +128,23 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "price": 1530,
         "discount": 0,
         "offPrice": "51,880,000",
         "rate": "4.1",
-        "image": "https://s6.uupload.ir/files/522caeefa14460199ddd4e3df6796f419d5b6b08_1645858426_hbs4.jpg"
+        "image": "/images/laptop tiny/6.png"
       }
     ],
     "mobile": [
       {
         "id": 20,
-        "name": "MacBook Pro MK193 2021",
-
+        "name": "samsung",
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -134,19 +152,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["gray", "black", "silver"],
         "price": 500,
         "discount": 4,
-        
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(1)_vnam.jpg"
+        "image": "/images/mobile tiny/9.png"
       },
       {
         "id": 21,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -154,20 +175,23 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["gray", "black", "silver"],
         "price": 350,
         "discount": 3,
-    
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(12)_okgc.jpg"
+        "image": "/images/mobile tiny/2.png"
       },
       {
         "id": 22,
         "name": "MacBook Pro MK193 2021",
         "colors": ["#4b5563", "#fb7185", "#fff1f2"],
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -175,20 +199,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
-        "colors": ["gray", "black", "silver"],
+
         "price": 600,
         "discount": 9,
-  
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(11)_ri3p.jpg"
+        "image": "/images/mobile tiny/3.png"
       },
       {
         "id": 23,
         "name": "MacBook Pro MK193 2021",
-        
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -196,19 +222,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#16a34a", "#f4f4f5", "#171717"],
         "price": 750,
         "discount": 12,
-       
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(9)_0830.jpg"
+        "image": "/images/mobile tiny/4.png"
       },
       {
         "id": 24,
-        "name": "MacBook Pro MK193 2021",
-
+        "name": "samsung",
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -216,19 +245,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#065f46", "#f4f4f5", "#171717"],
         "price": 440,
         "discount": 3,
-        
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(6)_srhh.jpg"
+        "image": "/images/mobile tiny/5.png"
       },
       {
         "id": 25,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -236,19 +268,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#4b5563", "#f4f4f5", "#171717"],
         "price": 300,
         "discount": 0,
-      
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(13)_rxc1.jpg"
+        "image": "/images/mobile tiny/6.png"
       },
       {
         "id": 26,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -256,19 +291,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#4b5563", "#f4f4f5", "#164e63"],
         "price": 430,
         "discount": 18,
-        
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(8)_o908.jpg"
+        "image": "/images/mobile tiny/7.png"
       },
       {
         "id": 27,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -276,19 +314,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#99f6e4", "#f4f4f5", "#171717"],
         "price": 500,
         "discount": 0,
-      
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(7)_afgz.jpg"
+        "image": "/images/mobile tiny/8.png"
       },
       {
         "id": 28,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -296,19 +337,22 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#fde047", "#f4f4f5", "#171717"],
         "price": 890,
         "discount": 11,
-      
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(2)_293b.jpg"
+        "image": "/images/mobile tiny/1.png"
       },
       {
         "id": 29,
         "name": "MacBook Pro MK193 2021",
-
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
         "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
         "attributes": [
           { "Processor": "M1" },
@@ -316,19 +360,74 @@
           { "Type of RAM": "Unified" },
           { "GPU manufacturer": "Apple" },
           { "Screen size": "inches 16.2" },
-          { "Screen resolution": "3456x2234" }
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
         ],
         "colors": ["#4b5563", "#f4f4f5", "#171717"],
         "price": 350,
         "discount": 0,
-    
+
         "rate": "4.8",
-        "image": "https://s6.uupload.ir/files/2_(1)_vnam.jpg"
+        "image": "/images/mobile tiny/10.png"
+      },
+      {
+        "id": 32,
+        "name": "MacBook Pro MK193 2021",
+        "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
+        "attributes": [
+          { "Processor": "M1" },
+          { "RAM memory capacity": "16GB" },
+          { "Type of RAM": "Unified" },
+          { "GPU manufacturer": "Apple" },
+          { "Screen size": "inches 16.2" },
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
+        ],
+        "colors": ["#4b5563", "#f4f4f5", "#171717"],
+        "price": 350,
+        "discount": 0,
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
+        "rate": "4.8",
+        "image": "/images/mobile tiny/11.png"
+      },
+      {
+        "id": 35,
+        "name": "MacBook Pro MK193 2021",
+        "supports": ["One Year Warranty", "Free Delivery", "Originality"],
+        "introduction": "Apple's Macbook series of laptops have been able to provide very good and acceptable performance by taking advantage of powerful technical specifications, without any additional definition. One of the powerful laptops of this series is the MacBook MK193 2021 model. This laptop is equipped with a 16.2-inch screen with a resolution of 2234 x 3456 pixels of the Liquid Retina XDR type, which has the ability to display 254 pixels per inch. We must say that according to the considered specifications, it has a powerful and very high-quality screen...",
+        "attributes": [
+          { "Processor": "M1" },
+          { "RAM memory capacity": "16GB" },
+          { "Type of RAM": "Unified" },
+          { "GPU manufacturer": "Apple" },
+          { "Screen size": "inches 16.2" },
+          { "Screen resolution": "3456x2234" },
+          {
+            "Storage": "128GB"
+          }
+        ],
+        "colors": ["#4b5563", "#f4f4f5", "#171717"],
+        "price": 350,
+        "discount": 0,
+
+        "rate": "4.8",
+        "image": "/images/mobile tiny/12.png"
       }
     ],
     "cases": []
   },
   "users": [
-    
+    {
+      "name": "Ali Zargar",
+      "email": "mrzargar1995@gmail.com",
+      "password": "11111111",
+      "passwordConfirm": "11111111",
+      "phoneNumber": "09353643914",
+      "isAdmin": true
+    }
   ]
 }

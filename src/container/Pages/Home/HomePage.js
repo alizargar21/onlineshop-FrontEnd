@@ -2,15 +2,14 @@ import Layout from "../../Layout/Layout";
 import BannerComponent from "../../../components/Banner/Banner";
 
 import './homepage.css'
+import Landing from "../../../components/Landing/Landing";
 const HomePage = () => {
   return (
     <Layout>
-      
-      <h1>this Home Page</h1>
-        <BannerComponent />
-        
-      
-      
+   
+     <Landing/>
+      <BannerComponent/>
+      <BannerComponent/>
     </Layout>
   );
 };

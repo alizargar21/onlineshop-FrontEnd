@@ -1,7 +1,7 @@
-import './footer.css'
+
 const Footer = () => {
   return (
-    <div className="footerContainer">
+    <footer className="w-full h-[300px] bg-slate-300 dark:bg-gray-800 text-gray-800 dark:text-gray-300 flex justify-around items-center shadow-2xl ">
       <div>
       <ul>
         <li>lqqqqqqqqq</li>
@@ -18,7 +18,7 @@ const Footer = () => {
           <li>eeeeeeee</li>
         </ul>
       </div>
-    </div>
+    </footer>
   );
 };
 
