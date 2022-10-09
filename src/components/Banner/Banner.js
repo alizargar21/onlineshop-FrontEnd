@@ -9,7 +9,7 @@ const responsive = {
 };
 const items = [
   <div >
-    <img src={require("../../images/banners tiny/main-banner-org.jpg")} className='z-10' />
+    <img src="/images/banners tiny/main-banner-org.jpg" className='z-10' />
   </div>
   
 ];

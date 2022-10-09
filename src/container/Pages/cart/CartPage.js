@@ -72,21 +72,9 @@ const CartPage = () => {
                         Color :
                         <span className="w-5 h-5 border border-black mx-2 center rounded-full" style={{backgroundColor:item.selectedColor}}></span>
                         </p>
-                        {/* {item.selectedColor.map((c , index )=>(
-                          <span style={{backgroundColor:c}} key={index} className="w-5 h-5 border border-black center rounded-full
-                          ">{c}</span>
-
-                        ))
-
-                        } */}
+           
                       </div>
-                      {/* {item.selectedColor.map((c , index) => (
-                        <span
-                          className="selectedColor"
-                          style={{ backgroundColor:item.selectedColor}}
-                          key={index}
-                        ></span>
-                      ))} */}
+                      
                     </div>
                   </div>
                   <div className="h-auto  center flex-col text-gray-800 dark:text-gray-300">
