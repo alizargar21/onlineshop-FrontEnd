@@ -10,7 +10,7 @@
     } 
     .btn-primary{
             padding: 0.4rem 0.7rem;
-            background-color: #111827;
+            background-color: #be123c;
             color: #f6f6f6;
             font-size: 12px;
             border-radius: 5px;
@@ -19,7 +19,7 @@
             transition-duration: 300ms;
     }
     .btn-primary:hover{
-        background-color: #334155;
+        background-color: #e11d48;
         transition: all;
         transition-duration: 300ms;
     }
@@ -52,11 +52,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(var(--color-bg));
+  background-color: #f6f6f6;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: rgb(230, 34, 34);
+  background-color: rgb(136, 0, 0);
   opacity: 0;
   border-radius: 100vw;
 }
+

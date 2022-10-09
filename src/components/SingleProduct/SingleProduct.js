@@ -1,15 +1,15 @@
-
 import { useParams } from "react-router-dom";
 import data from "../../data/db.json";
 import { useEffect, useRef, useState } from "react";
 import LayoutTwo from "../../container/Layout/LayoutTwo";
 import { useCart, useCartActions } from "../../Provider/CartProvider";
-import { BsHeartFill, BsStarFill , BsHeart} from "react-icons/bs";
+import { BsHeartFill, BsStarFill, BsHeart, BsShare } from "react-icons/bs";
 import { toast } from "react-toastify";
+import { useFavorite , useFavoriteActions } from "../../Provider/FavoriteProvider";
 
 const { products } = data;
 const SingleProduct = () => {
-const [chooseColor , setChooseColor] = useState(false)
+  const [chooseColor, setChooseColor] = useState(false);
   const params = useParams();
 
   const dispatch = useCartActions();
@@ -19,36 +19,36 @@ const [chooseColor , setChooseColor] = useState(false)
     ...products.mobile,
     ...products.cases,
   ];
-  const selectedColors = ""
+  const favoriteItems = useFavorite()
+  const { addToFavorite} = useFavoriteActions()
 
   const selectedProduct = allProducts.find(
     (item) => item.id.toString() === params.id
   );
- 
-  useEffect(() => {
 
+  useEffect(() => {
     console.log(cart);
   }, []);
   const handleAddToCart = () => {
-    toast.success("Added To Cart" )
+    toast.success("Added To Cart");
     dispatch({ type: "ADD_TO_CART", payload: selectedProduct });
   };
   const handleSelectColor = (value) => {
-    setChooseColor(true)
-    console.log(value)
-    
+    setChooseColor(true);
+    console.log(value);
+
     selectedProduct.selectedColor = value;
-    console.log(selectedProduct.selectedColor)
+    console.log(selectedProduct.selectedColor);
   };
   return (
     <LayoutTwo>
       <section className="w-[90%] h-auto mx-auto flex justify-between  my-12  md:flex-col">
-        <aside className="flex flex-col w-[40%] text-gray-800 dark:text-gray-200  bg-white dark:bg-slate-600 items-center h-[80%]  rounded-md my-2 p-4 md:w-[90%] md:h-[70%] sm:min-h-[500px] mx-auto">
+        <aside className="flex flex-col w-[40%] text-gray-800 dark:text-gray-200  bg-white/60 dark:bg-black/30 items-center h-[80%]  rounded-md my-2 p-4 md:w-[90%] md:h-[70%] sm:min-h-[500px] mx-auto">
           <h2 className="text-xl mt-2 sm:text-lg ">{selectedProduct.name}</h2>
           <div className="w-full h-full center">
             <img
               src={selectedProduct.image}
-              className="w-[70%] mx-auto h-[90%] md:h-[80%] md:w-[80%] sm:w-[100%] sm:h-full hover:scale-105 duration-300"
+              className="w-[70%] mx-auto h-[90%] md:h-[80%] md:w-[80%] sm:w-[80%] sm:h-full hover:scale-105 duration-300"
             />
           </div>
           <div
@@ -63,17 +63,20 @@ const [chooseColor , setChooseColor] = useState(false)
                 <p>$ {selectedProduct.price}</p>
               ) : (
                 <>
-                <p className="line-through opacity-80 ">
-                  $ {selectedProduct.price}
-                </p>
-                <span className="text-xs center w-5 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">%{selectedProduct.discount}</span>
+                  <p className="line-through opacity-80 ">
+                    $ {selectedProduct.price}
+                  </p>
+                  <span className="text-xs center w-5 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
+                    %{selectedProduct.discount}
+                  </span>
                 </>
               )}
             </div>
             <div>
               {selectedProduct.discount !== 0 && (
                 <p className="text-green-500 ">
-                  $ {selectedProduct.price -
+                  ${" "}
+                  {selectedProduct.price -
                     (selectedProduct.price * selectedProduct.discount) / 100}
                 </p>
               )}
@@ -100,8 +103,16 @@ const [chooseColor , setChooseColor] = useState(false)
               <div className="center">
                 <BsStarFill className="mx-1 text-yellow-400" />
                 {selectedProduct.rate}
-                <button type="">
-                  <BsHeart className="text-red-500  ml-4 text-xl " />
+                <button type="button" className="text-red-500  ml-4 text-xl ">
+    
+                  {favoriteItems.findIndex(favItem => favItem.id === selectedProduct.id) > -1 || null? (
+                      <BsHeartFill  onClick={() => addToFavorite(selectedProduct)} />
+                      ) : (
+                        <BsHeart onClick={() => addToFavorite(selectedProduct)} />
+                        )}
+                </button>
+                <button>
+                  <BsShare className="mx-3" />
                 </button>
               </div>
             </div>
@@ -111,6 +122,7 @@ const [chooseColor , setChooseColor] = useState(false)
                 disabled={selectedProduct.selectedColor === undefined}
                 onClick={() => handleAddToCart(data)}
               >
+                
                 {chooseColor ? "Add To Cart" : "Select Color"}
               </button>
             </div>

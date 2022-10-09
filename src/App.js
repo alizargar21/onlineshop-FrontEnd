@@ -20,6 +20,7 @@ import ProductListContainer from "./container/Pages/products/ProductList/Product
 
 import ThemeProvider from "./Provider/ThemeProvider";
 import FavoriteProvider from "./Provider/FavoriteProvider";
+import Favorite from "./container/Pages/FavoritePage/Favorite";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
               <Route path="/laptops" element={<ProductListContainer />} />
               <Route path="/mobiles" element={<ProductListContainer />} />
               <Route path="/cases" element={<ProductListContainer />} />
+              <Route path="/myFavorite" element={<Favorite />} />
               <Route path="/product/:id" element={<SingleProduct />} />
             </Routes>
             

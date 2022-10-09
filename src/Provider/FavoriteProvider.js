@@ -1,27 +1,33 @@
-import { useContext, createContext, useState, useEffect, useReducer } from "react";
-import FavoriteReducer from "../reducer/FavoriteReducer";
+import {
+  useContext,
+  createContext,
+  useState,
+  useEffect,
+  useReducer,
+} from "react";
+
 
 const FavoriteContext = createContext();
 const FavoriteContextDispatcher = createContext();
 
-export const LOCAL_STORAGE_FAVORITE_KEY = "Theme";
-const initialState = {
-    favoriteItems : []
-}
+export const LOCAL_STORAGE_FAVORITE_KEY = "Favorite_List";
 const FavoriteProvider = ({ children }) => {
-  const [favorite, dispatch] = useReducer(FavoriteReducer ,initialState);
+  const [favoriteItems, setFavoriteItems] = useState([]);
   //component did mount ///
 
   useEffect(() => {
-    
+    const favData =
+      JSON.parse(localStorage.getItem(LOCAL_STORAGE_FAVORITE_KEY)) || null;
+    setFavoriteItems(favData);
   }, []);
   useEffect(() => {
-  }, []);
-
+    const favData = JSON.stringify(favoriteItems);
+    localStorage.setItem(LOCAL_STORAGE_FAVORITE_KEY, favData);
+  }, [favoriteItems]);
 
   return (
-    <FavoriteContext.Provider value={favorite}>
-      <FavoriteContextDispatcher.Provider value={dispatch}>
+    <FavoriteContext.Provider value={favoriteItems}>
+      <FavoriteContextDispatcher.Provider value={setFavoriteItems}>
         {children}
       </FavoriteContextDispatcher.Provider>
     </FavoriteContext.Provider>
@@ -31,4 +37,19 @@ const FavoriteProvider = ({ children }) => {
 export default FavoriteProvider;
 
 export const useFavorite = () => useContext(FavoriteContext);
-export const useFavoriteActions = () => useContext(FavoriteContextDispatcher);
+export const useFavoriteActions = () => {
+  const favoriteItems = useContext(FavoriteContext);
+  const setFavoriteItems = useContext(FavoriteContextDispatcher);
+  const addToFavorite = (item) => {
+    const cloneFavoriteItems = [...favoriteItems];
+    const index = favoriteItems.findIndex((favItem) => favItem.id === item.id);
+    if (index < 0) {
+      setFavoriteItems([...cloneFavoriteItems, item]);
+    }
+    if (index >= 0) {
+      cloneFavoriteItems.splice(index, 1);
+      setFavoriteItems([...cloneFavoriteItems]);
+    }
+  };
+  return { addToFavorite, setFavoriteItems };
+};

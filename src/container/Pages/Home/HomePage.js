@@ -1,15 +1,15 @@
 import Layout from "../../Layout/Layout";
 import BannerComponent from "../../../components/Banner/Banner";
-
-import './homepage.css'
 import Landing from "../../../components/Landing/Landing";
+import OfferBox from "../../../components/OfferBox/OfferBox";
 const HomePage = () => {
   return (
     <Layout>
-   
+      
      <Landing/>
-      <BannerComponent/>
-      <BannerComponent/>
+     <OfferBox />
+      {/* <BannerComponent/> */}
+      {/* <BannerComponent/> */}
     </Layout>
   );
 };

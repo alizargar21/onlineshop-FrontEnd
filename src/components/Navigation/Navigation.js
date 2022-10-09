@@ -2,7 +2,7 @@ import { useCart } from "../../Provider/CartProvider";
 import { GrClose } from "react-icons/gr";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { BsPersonCircle } from "react-icons/bs";
+import { BsPersonCircle , BsCart3} from "react-icons/bs";
 import { useAuth } from "../../Provider/AuthProvider";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {FiSun , FiMoon} from "react-icons/fi"
@@ -12,6 +12,7 @@ export const navItems = [
   { to: "/", name: "Home" },
   { to: "/categories", name: "Categories" },
   { to: "/cart", name: "Cart" },
+  { to: "/myFavorite", name: "Favorite List" },
   { to: "/blogs", name: "Blogs" },
   { to: "", name: "" },
 ];
@@ -20,11 +21,9 @@ const Navigation = () => {
   const [nav, setNav] = useState(false);
   const theme = useTheme()
   const setTheme = useThemeActions()
-
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
     localStorage.setItem("Theme" , theme)
-    
   };
   const { cart } = useCart();
   const auth = useAuth();
@@ -62,7 +61,7 @@ const Navigation = () => {
                 <span className="w-[20px] h-[20px]  text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1 -right-5">
                   {cart.length}
                 </span>
-              ) }
+              )}
             </NavLink>
           </li>
         ))}
@@ -92,9 +91,7 @@ const Navigation = () => {
                 {theme === "dark" ? <FiSun />  : <FiMoon />}
               </button>
             </div>
-
             {/* <h2 className="text-lg font-bold text-gray-800 dark:text-gray-300 p-3">Online Shop</h2> */}
-            
             <ul className="w-40 mx-auto flex flex-col items-start text-gray-800 dark:text-gray-200 mt-3">
               {navItems.map((item, index) => (
                 <li
@@ -125,7 +122,6 @@ const Navigation = () => {
                 </li>
               </NavLink>
               <li >
-        
             </li>
             </ul>
           </div>
@@ -139,7 +135,6 @@ const Navigation = () => {
           ></div>
         </div>
       </ul>
-      
       <div className="w-[10%]">
         <ul className=" w-[100px] h-full flex justify-around items-center">
           <NavLink to={auth ? "/profile" : "/signup"}>

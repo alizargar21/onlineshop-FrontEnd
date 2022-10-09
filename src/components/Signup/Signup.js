@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import styles from "./form.module.css";
 import LayoutTwo from "../../container/Layout/LayoutTwo";
 import signupUser from "../../services/signUpService.js";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
@@ -86,7 +85,7 @@ const SignUp = () => {
     <LayoutTwo>
       <section className=" center flex-col ">
         <form
-          className="w-[30%] md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  my-3"
+          className="w-[30%] my-10 md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  "
           onSubmit={formik.handleSubmit}
         >
         <div className="bg-green-500 center  w-full h-10 text-gray-200 rounded-tl-lg rounded-tr-lg ">

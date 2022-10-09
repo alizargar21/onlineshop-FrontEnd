@@ -17,8 +17,8 @@ const CartPage = () => {
   const auth = useAuth();
 
   useEffect(() => {
-   cart.length === 0 && toast.info("Cart Is Empty")
-   console.log(cart)
+    cart.length === 0 && toast.info("Cart Is Empty");
+    console.log(cart);
   }, [cart]);
   const incrementHandler = (item) => {
     dispatch({ type: "ADD_TO_CART", payload: item });
@@ -30,7 +30,10 @@ const CartPage = () => {
     <LayoutTwo>
       <div className="w-[90%] min-h-screen bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 flex justify-around mx-auto  md:flex-col">
         {cart.length === 0 ? (
-          <Link to={`/categories`} className="flex justify-start items-center flex-col my-5">
+          <Link
+            to={`/categories`}
+            className="flex justify-start items-center flex-col my-5"
+          >
             <h2 className="text-2xl">Cart Is Empty</h2>
             <p>Go To Shopping</p>
           </Link>
@@ -39,7 +42,7 @@ const CartPage = () => {
             <h2 className="text-2xl font-semibold text-center my-4">
               Cart Items
             </h2>
-            {cart.map((item , index) => (
+            {cart.map((item, index) => (
               <div
                 className="w-full min-h-[170px] md:min-w-[400px] md:mx-auto sm:min-w-[250px] sm:min-h-[] bg-gray-100 dark:bg-slate-600 rounded-lg flex justify-around items-center my-3 p-2"
                 key={index}
@@ -62,19 +65,19 @@ const CartPage = () => {
                             key={index}
                           >
                             <span>
-                              <AiFillCheckCircle className="text-green-500" />
+                              <AiFillCheckCircle className="text-green-500 " />
                             </span>
-                            {s}
+                            <p className="ml-1">{s}</p>
                           </p>
                         ))}
-                        <p className="flex justify-start items-center ">
-
-                        Color :
-                        <span className="w-5 h-5 border border-black mx-2 center rounded-full" style={{backgroundColor:item.selectedColor}}></span>
+                        <p className="flex justify-start items-center ml-3 md:ml-1">
+                          Color :
+                          <span
+                            className="w-5 h-5 border border-black mx-2 center rounded-full"
+                            style={{ backgroundColor: item.selectedColor }}
+                          ></span>
                         </p>
-           
                       </div>
-                      
                     </div>
                   </div>
                   <div className="h-auto  center flex-col text-gray-800 dark:text-gray-300">
@@ -105,7 +108,9 @@ const CartPage = () => {
           </section>
         )}
 
-      {cart.length !== 0 &&   <CartSummery total={total} cart={cart} auth={auth} />}
+        {cart.length !== 0 && (
+          <CartSummery total={total} cart={cart} auth={auth} />
+        )}
       </div>
     </LayoutTwo>
   );

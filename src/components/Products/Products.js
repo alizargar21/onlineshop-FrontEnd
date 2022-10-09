@@ -1,51 +1,22 @@
-import { BsStarFill, BsHeartFill, BsTagFill, BsHeart } from "react-icons/bs";
-import data from "../../data/db.json";
+import { BsStarFill, BsHeartFill, BsHeart, BsShare } from "react-icons/bs";
 import { useWindowDimensions } from "../../hooks/useWinowDimensions";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import {
   useFavorite,
   useFavoriteActions,
 } from "../../Provider/FavoriteProvider";
-let {
-  products: { laptop, mobile, cases },
-} = data;
-
-const ProductList = ({ data }) => {
-  const [favoriteState, setFavoriteState] = useState(false);
-  const screen = useWindowDimensions();
-  const favorite = useFavorite();
-  const dispatch = useFavoriteActions();
-
+const Products = ({ data }) => {
   const navigate = useNavigate();
-
-  const location = useLocation();
-  const handleAddToFavorite = (item) => {
-    console.log(item);
-    setFavoriteState(!favoriteState);
-  };
-
-  // let dataForMap;
-  // const getProduct = () => {
-  //   switch (location.pathname) {
-  //     case "/laptops":
-  //       return (dataForMap = laptop);
-  //     case "/mobiles":
-  //       return (dataForMap = mobile);
-  //     case "/cases":
-  //       return (dataForMap = cases);
-  //     default:
-  //       return (dataForMap = laptop);
-  //   }
-  // };
-  // getProduct();
+  const favoriteItems = useFavorite();
+  const { addToFavorite } = useFavoriteActions();
+  const screen = useWindowDimensions();
 
   if (screen.width >= 479) {
     return (
       <>
         {data.map((item) => (
           <article key={item.id}>
-            <div className="bg-gray-100 dark:bg-gray-600 dark:text-gray-200 flex h-full flex-col items-center rounded-md ">
+            <div className="bg-white/40 dark:bg-black/30 dark:text-gray-200 flex h-full flex-col items-center rounded-md ">
               <div className="w-full h-12 "></div>
               <div className="flex items-center w-[80%] justify-between">
                 <div className="flex w-24 h-10 items-start">
@@ -59,16 +30,20 @@ const ProductList = ({ data }) => {
                     ))}
                   </Link>
                 </div>
-
-                <button className="text-red-500 text-[22px]">
-                  {favoriteState ? (
-                    <BsHeart onClick={() => handleAddToFavorite(item)} />
-                  ) : (
-                    <BsHeartFill
-                      onClick={() => handleAddToFavorite(item)}
-                    />
-                  )}
-                </button>
+                <div className="center">
+                  <button type="">
+                    <BsShare className="mx-2" />
+                  </button>
+                  <button className="text-rose-500 text-[22px]">
+                    {favoriteItems.findIndex(
+                      (favItem) => favItem.id === item.id
+                    ) > -1 || null ? (
+                      <BsHeartFill onClick={() => addToFavorite(item)} />
+                    ) : (
+                      <BsHeart onClick={() => addToFavorite(item)} />
+                    )}
+                  </button>
+                </div>
               </div>
               <Link
                 className="flex justify-center items-center "
@@ -82,18 +57,23 @@ const ProductList = ({ data }) => {
               <div className="center flex-col">
                 <h4 className="text-xl md:text-2xl text-center">{item.name}</h4>
                 <div className="center">
-                <p
-                  className={
-                    item.discount !== 0
-                      ? "line-through text-red-700 center text-xl"
-                      : "text-3xl mt-3 center"
-                  }
-                >{`$${item.price}`} </p>
-                 {item.discount !== 0 && <span className="text-xs center w-6 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">%{item.discount}</span>}
+                  <p
+                    className={
+                      item.discount !== 0
+                        ? "line-through text-red-700 center text-xl"
+                        : "text-3xl mt-3 center"
+                    }
+                  >
+                    {`$${item.price}`}{" "}
+                  </p>
+                  {item.discount !== 0 && (
+                    <span className="text-xs center w-6 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
+                      %{item.discount}
+                    </span>
+                  )}
                 </div>
                 {item.discount ? (
                   <div className="mx-auto center">
-                    
                     <p className="text-2xl text-green-600 dark:text-green-500 ">
                       {`$ ${item.price - (item.price * item.discount) / 100}`}
                     </p>
@@ -110,7 +90,7 @@ const ProductList = ({ data }) => {
                   className="btn-primary"
                   onClick={() => navigate(`/product/${item.id}`)}
                 >
-                  Check Product
+                  More Details
                 </button>
               </div>
             </div>
@@ -176,16 +156,16 @@ const ProductList = ({ data }) => {
                   </div>
                 </div>
                 <div className="flex items-end h-full w-[40%]">
-                <button className=" mx-2 text-red-500 text-2xl">
-                  {favoriteState ? (
-                    <BsHeart onClick={() => handleAddToFavorite(item.id)} />
-                  ) : (
-                    <BsHeartFill
-                      onClick={() => handleAddToFavorite(item)}
-                    />
-                  )}
-                </button>
-               
+                  <button className=" mx-2 text-rose-500 text-2xl">
+                    {favoriteItems.findIndex(
+                      (favItem) => favItem.id === item.id
+                    ) > -1 || null ? (
+                      <BsHeartFill onClick={() => addToFavorite(item)} />
+                    ) : (
+                      <BsHeart onClick={() => addToFavorite(item)} />
+                    )}
+                  </button>
+
                   <div className="center  ">
                     <BsStarFill className="text-yellow-400 mr-2 text-2xl" />
                     {item.rate}
@@ -198,63 +178,6 @@ const ProductList = ({ data }) => {
       </>
     );
   }
-
-  // return (
-  //   <>
-  //     {dataForMap.map((item) => (
-  //       <article key={item.id}>
-  //         <div className="bg-white flex h-full flex-col items-center rounded-md ">
-  //           <div className="w-full h-12 "></div>
-  //           <div className="flex items-center w-[80%] justify-between">
-  //             <div className="flex w-24 h-10 items-start">
-  //               <Link to={`/product/${item.id}`}>
-  //                 {item.colors.map((c, index) => (
-  //                   <span
-  //                     key={index}
-  //                     style={{ backgroundColor: c }}
-  //                     className="w-3 h-3 flex my-1 border-[0.2px] border-black rounded-full"
-  //                   ></span>
-  //                 ))}
-  //               </Link>
-  //             </div>
-
-  //             <button className="text-red-500 text-[22px]">
-  //               <BsHeartFill />
-  //             </button>
-  //           </div>
-  //           <Link className="flex justify-center items-center" to={`/product/${item.id}`}>
-  //             <img src={item.image} className="w-[70%] pt-4 hover:scale-105 transition-transform duration-300 "></img>
-  //           </Link>
-  //           <div className="center flex-col ">
-  //             <h4>{item.name}</h4>
-  //             <p className={item.discount !== 0 ? "line-through text-red-600":"text-lg mt-3"}>{`$${item.price}`}</p>
-  //             {item.discount ? (
-  //               <div className="mx-auto center">
-  //                 <BsTagFill />
-  //                 <p className="text-[20px] text-green-700 ">
-  //                   {`$ ${item.price - (item.price * item.discount) / 100}`}
-  //                 </p>
-  //               </div>
-  //             ) : null}
-  //           </div>
-  //           <div className="flex w-full h-[15%] items-center justify-around pb-4">
-  //             <div className="flex justify-between items-center  ">
-  //               <BsStarFill className="text-yellow-400 mr-2"/>
-  //               {item.rate}
-  //             </div>
-
-  //             <button
-  //               className="btn-primary"
-  //               onClick={() => navigate(`/product/${item.id}`)}
-  //             >
-  //               Check Product
-  //             </button>
-  //           </div>
-  //         </div>
-  //       </article>
-  //     ))}
-  //   </>
-  // );
 };
 
-export default ProductList;
+export default Products;

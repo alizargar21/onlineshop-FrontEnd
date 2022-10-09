@@ -1,24 +1,40 @@
 import { useState } from "react";
 
 
-const SearchSort = ({handleSearch}) => {
+const SearchSort = ({originalValue , setRenderValue}) => {
   
-  
+const [value , setValue] = useState("")
+const [error , setError] = useState("")
 
+const handleSearch = (e) => {
+  let searchValue = e.target.value;
+  console.log(e.target.value);
+  setValue(searchValue)
+  if (searchValue !== "") {
+    const filteredProducts = originalValue.filter((p) => {
 
+     return p.name.toLowerCase().includes(searchValue.toLowerCase()) 
+      // return p.name.toLowerCase().includes(searchValue.toLowerCase());
+    });
+    setRenderValue(filteredProducts) 
+  } else {
 
+    setRenderValue(originalValue);
+  }
+};
   return (
-    <section className=" 2xl:sticky 2xl:top-24 md:static text-[12px] md:w-[90%] md:h-[150px] w-[230px] h-[450px] md:mx-auto  m-5 rounded-lg p-5 bg-gray-300 dark:bg-gray-700">
+    <section className=" 2xl:sticky 2xl:top-24 md:static text-[12px] md:w-[90%] md:h-[150px] w-[230px] h-[450px] md:mx-auto  m-5 rounded-lg p-5 bg-gray-300 dark:bg-black/30">
       <div className="w-[80%] mx-auto ">
       <input
           onChange={(e)=>handleSearch(e)}
           type="text"
-          
+          value={value}
           name=""
           placeholder="Search"
-          id="search"
+     
           className="w-full py-1 px-3 rounded-lg bg-gray-100  dark:bg-gray-600 dark:text-gray-200 ring-2 ring-gray-400 outline-none"
         />
+        {/* <span>{ error}</span> */}
       </div>
       <div className="w-[80%] mx-auto">
         <select className="w-full py-1 px-3 rounded-lg mt-8 md:mt-2 bg-gray-100 placeholder-gray-800 dark:bg-gray-600 dark:text-gray-200">
