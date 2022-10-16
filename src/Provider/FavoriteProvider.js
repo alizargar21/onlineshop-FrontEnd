@@ -42,7 +42,7 @@ export const useFavoriteActions = () => {
   const setFavoriteItems = useContext(FavoriteContextDispatcher);
   const addToFavorite = (item) => {
     const cloneFavoriteItems = [...favoriteItems];
-    const index = favoriteItems.findIndex((favItem) => favItem.id === item.id);
+    const index = favoriteItems.findIndex((favItem) => favItem._id === item._id);
     if (index < 0) {
       setFavoriteItems([...cloneFavoriteItems, item]);
     }

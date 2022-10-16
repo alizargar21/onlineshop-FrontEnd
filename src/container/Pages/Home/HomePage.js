@@ -2,12 +2,19 @@ import Layout from "../../Layout/Layout";
 import BannerComponent from "../../../components/Banner/Banner";
 import Landing from "../../../components/Landing/Landing";
 import OfferBox from "../../../components/OfferBox/OfferBox";
-const HomePage = () => {
+import Possibilities from "../../../components/Possibilities/Possibilities";
+
+
+const HomePage = ({products}) => {
+  
+
   return (
     <Layout>
-      
-     <Landing/>
-     <OfferBox />
+      <Landing />
+      <Possibilities />
+   
+   <OfferBox  products={products} /> 
+
       {/* <BannerComponent/> */}
       {/* <BannerComponent/> */}
     </Layout>

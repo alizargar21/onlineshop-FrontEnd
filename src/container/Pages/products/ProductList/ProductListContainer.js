@@ -1,43 +1,52 @@
-import Products from "../../../../components/Products/Products";
-import SearchSort from "../../../../components/Search and sort/Search&Sort";
 import Layout from "../../../Layout/Layout";
-import data from "../../../../data/db.json";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ListContainer from "../../../../components/UI/ListContainer/ListContainer";
+import useFetch from "../../../../hooks/useFetch";
+import BackArrowComponent from "../../../../common/BackArrow/BackArrow";
 
-let {
-  products: { laptop, mobile, cases },
-} = data;
-
-const ProductListContainer = () => {
+const ProductListContainer = ({ products }) => {
+  const { data, error, loading } = useFetch("/products");
   const location = useLocation();
   const [originalValue, setOriginalValue] = useState(null);
-
   const [renderValue, setRenderValue] = useState(null);
-  const allProducts = [...laptop, ...mobile, ...cases];
-  const getProduct = async () => {
-    switch (location.pathname) {
-      case "/laptops":
-        return setOriginalValue(laptop), setRenderValue(laptop);
-      case "/mobiles":
-        return setOriginalValue(mobile), setRenderValue(mobile);
-      case "/cases":
-        return setOriginalValue(cases), setRenderValue(cases);
-      default:
-        return setOriginalValue(allProducts);
+
+  const getProduct = () => {
+    if (data !== null) {
+      const laptops = data.filter((item) => item.category === "laptops");
+      const mobiles = data.filter((item) => item.category === "mobiles");
+      const cases = data.filter((item) => item.category === "cases");
+      switch (location.pathname) {
+        case "/laptops":
+          console.log(laptops);
+          console.log(mobiles);
+          console.log(cases);
+
+          return setOriginalValue(laptops), setRenderValue(laptops);
+        case "/mobiles":
+          return setOriginalValue(mobiles), setRenderValue(mobiles);
+        case "/cases":
+          return setOriginalValue(cases), setRenderValue(cases);
+        default:
+          return setOriginalValue(laptops);
+      }
     }
   };
   useEffect(() => {
+    console.log("render ProductList");
     getProduct();
-  }, []);
-
-
+  }, [data]);
 
   return (
     <Layout>
-      <ListContainer  originalValue={originalValue} renderValue={renderValue} setRenderValue={setRenderValue}>
-      </ListContainer>
+      
+      <ListContainer
+        error={error}
+        loading={loading}
+        originalValue={originalValue}
+        renderValue={renderValue}
+        setRenderValue={setRenderValue}
+      ></ListContainer>
     </Layout>
   );
 };

@@ -5,22 +5,26 @@ import {
   useFavorite,
   useFavoriteActions,
 } from "../../Provider/FavoriteProvider";
+import { useEffect } from "react";
 const Products = ({ data }) => {
+  
   const navigate = useNavigate();
   const favoriteItems = useFavorite();
   const { addToFavorite } = useFavoriteActions();
   const screen = useWindowDimensions();
-
-  if (screen.width >= 479) {
+  useEffect(()=>{
+    console.log(favoriteItems)
+  },[])
+  if (screen.width >= 479 && data !== null) {
     return (
       <>
         {data.map((item) => (
-          <article key={item.id}>
+          <article key={item._id}>
             <div className="bg-white/40 dark:bg-black/30 dark:text-gray-200 flex h-full flex-col items-center rounded-md ">
               <div className="w-full h-12 "></div>
               <div className="flex items-center w-[80%] justify-between">
                 <div className="flex w-24 h-10 items-start">
-                  <Link to={`/product/${item.id}`}>
+                  <Link to={`/products/${item._id}`}>
                     {item.colors.map((c, index) => (
                       <span
                         key={index}
@@ -36,7 +40,7 @@ const Products = ({ data }) => {
                   </button>
                   <button className="text-rose-500 text-[22px]">
                     {favoriteItems.findIndex(
-                      (favItem) => favItem.id === item.id
+                      (favItem) => favItem._id === item._id
                     ) > -1 || null ? (
                       <BsHeartFill onClick={() => addToFavorite(item)} />
                     ) : (
@@ -47,7 +51,7 @@ const Products = ({ data }) => {
               </div>
               <Link
                 className="flex justify-center items-center "
-                to={`/product/${item.id}`}
+                to={`/products/${item._id}`}
               >
                 <img
                   src={item.image}
@@ -88,7 +92,7 @@ const Products = ({ data }) => {
 
                 <button
                   className="btn-primary"
-                  onClick={() => navigate(`/product/${item.id}`)}
+                  onClick={() => navigate(`/products/${item._id}`)}
                 >
                   More Details
                 </button>
@@ -98,7 +102,7 @@ const Products = ({ data }) => {
         ))}
       </>
     );
-  } else {
+  } else if ( data !== null){
     return (
       <>
         {data.map((item) => (
@@ -108,7 +112,7 @@ const Products = ({ data }) => {
           >
             <Link
               className=" flex-col w-[70%] center my-1"
-              to={`/product/${item.id}`}
+              to={`/products/${item._id}`}
             >
               <div>
                 {item.discount !== 0 && (

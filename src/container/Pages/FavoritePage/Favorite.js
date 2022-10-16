@@ -9,13 +9,14 @@ const Favorite = () => {
     const [renderValue , setRenderValue] = useState(null)
     const [originalValue , setOriginalValue] = useState(null)
     const getData = () => {
+        console.log(favoriteItems)
         setRenderValue(favoriteItems)
         setOriginalValue(favoriteItems)
     }
     useEffect(()=> {
         getData()   
       
-    }, [])
+    }, [favoriteItems])
 
     return ( <Layout>
         <ListContainer originalValue={originalValue} renderValue={renderValue} setRenderValue={setRenderValue}>

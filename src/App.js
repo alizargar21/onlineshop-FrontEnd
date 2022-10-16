@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes, Router } from "react-router-dom";
+import { Route, Routes, Router ,useParams } from "react-router-dom";
 import AboutUs from "./container/Pages/Aboutus/AboutUs";
 import { ToastContainer, Slide, Zoom, Flip } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,6 @@ import NotFoundPage from "./container/Pages/NotFoundPage";
 import Blogs from "./container/Pages/Blogs/Blogs";
 import SignUp from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-
 import CartProvider from "./Provider/CartProvider";
 import AuthProvider from "./Provider/AuthProvider";
 import CheckOut from "./container/Pages/CheckOutPage/CheckOut";
@@ -17,12 +16,26 @@ import ProfilePage from "./container/Pages/Profile/Profile";
 import SingleProduct from "./components/SingleProduct/SingleProduct";
 import Categories from "./container/Pages/Categories/Categories";
 import ProductListContainer from "./container/Pages/products/ProductList/ProductListContainer";
-
 import ThemeProvider from "./Provider/ThemeProvider";
 import FavoriteProvider from "./Provider/FavoriteProvider";
 import Favorite from "./container/Pages/FavoritePage/Favorite";
+import http from "./services/httpServices";
+import { useState , useEffect } from "react";
 
 function App() {
+  
+  const Fetching = async()=> {
+    const data =await http.get("/products")
+    const allProducts =data.data
+    setProducts(allProducts)
+    
+  
+  }
+  const [products , setProducts] = useState([])
+  // const [data , setData] = useState([])
+  useEffect(() => {
+    Fetching()
+  }, [setProducts]);
   return (
     <>
       <ThemeProvider>
@@ -37,7 +50,7 @@ function App() {
               theme={"colored" }
             />
             <Routes>
-              <Route path="/" element={<HomePage />} />
+              <Route path="/" element={<HomePage products={products}/>} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
@@ -50,7 +63,7 @@ function App() {
               <Route path="/mobiles" element={<ProductListContainer />} />
               <Route path="/cases" element={<ProductListContainer />} />
               <Route path="/myFavorite" element={<Favorite />} />
-              <Route path="/product/:id" element={<SingleProduct />} />
+              <Route path={`/products/:id`} element={<SingleProduct products={products}/>} />
             </Routes>
             
           </CartProvider>

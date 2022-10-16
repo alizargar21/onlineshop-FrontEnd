@@ -1,33 +1,27 @@
 import { useParams } from "react-router-dom";
-import data from "../../data/db.json";
 import { useEffect, useRef, useState } from "react";
-import LayoutTwo from "../../container/Layout/LayoutTwo";
+import Layout from "../../container/Layout/Layout";
 import { useCart, useCartActions } from "../../Provider/CartProvider";
 import { BsHeartFill, BsStarFill, BsHeart, BsShare } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { useFavorite , useFavoriteActions } from "../../Provider/FavoriteProvider";
+import http from "../../../src/services/httpServices"
 
-const { products } = data;
+
 const SingleProduct = () => {
   const [chooseColor, setChooseColor] = useState(false);
   const params = useParams();
-
+  const [selectedProduct , setSelectedProduct] = useState(null)
   const dispatch = useCartActions();
-  const cart = useCart();
-  const allProducts = [
-    ...products.laptop,
-    ...products.mobile,
-    ...products.cases,
-  ];
   const favoriteItems = useFavorite()
   const { addToFavorite} = useFavoriteActions()
-
-  const selectedProduct = allProducts.find(
-    (item) => item.id.toString() === params.id
-  );
-
   useEffect(() => {
-    console.log(cart);
+   const fetchProduct =async()=> {
+    const productId = params.id
+    const res = await http.get(`/products/${productId}`)
+    setSelectedProduct(res.data)
+}
+   fetchProduct()
   }, []);
   const handleAddToCart = () => {
     toast.success("Added To Cart");
@@ -41,8 +35,9 @@ const SingleProduct = () => {
     console.log(selectedProduct.selectedColor);
   };
   return (
-    <LayoutTwo>
-      <section className="w-[90%] h-auto mx-auto flex justify-between  my-12  md:flex-col">
+    <Layout>
+  
+      {selectedProduct && <section className="w-[90%] h-auto mx-auto flex justify-between  my-12  md:flex-col">
         <aside className="flex flex-col w-[40%] text-gray-800 dark:text-gray-200  bg-white/60 dark:bg-black/30 items-center h-[80%]  rounded-md my-2 p-4 md:w-[90%] md:h-[70%] sm:min-h-[500px] mx-auto">
           <h2 className="text-xl mt-2 sm:text-lg ">{selectedProduct.name}</h2>
           <div className="w-full h-full center">
@@ -105,7 +100,7 @@ const SingleProduct = () => {
                 {selectedProduct.rate}
                 <button type="button" className="text-red-500  ml-4 text-xl ">
     
-                  {favoriteItems.findIndex(favItem => favItem.id === selectedProduct.id) > -1 || null? (
+                  {favoriteItems.findIndex(favItem => favItem._id === selectedProduct._id) > -1 || null? (
                       <BsHeartFill  onClick={() => addToFavorite(selectedProduct)} />
                       ) : (
                         <BsHeart onClick={() => addToFavorite(selectedProduct)} />
@@ -120,7 +115,7 @@ const SingleProduct = () => {
               <button
                 className="btn-primary w-full md:w-[70%] sm:w-full"
                 disabled={selectedProduct.selectedColor === undefined}
-                onClick={() => handleAddToCart(data)}
+                onClick={() => handleAddToCart()}
               >
                 
                 {chooseColor ? "Add To Cart" : "Select Color"}
@@ -149,8 +144,8 @@ const SingleProduct = () => {
             <p>{selectedProduct.introduction}</p>
           </article>
         </article>
-      </section>
-    </LayoutTwo>
+      </section>}
+    </Layout>
   );
 };
 

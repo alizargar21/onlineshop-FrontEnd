@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import LayoutTwo from "../../Layout/LayoutTwo";
+import Layout from "../../Layout/Layout";
 
 
 const Categories = () => {
   return (
-    <LayoutTwo>
+    <Layout>
       <div className="w-full  h-full pb-5">
         <h1 className=" dark:text-gray-100 lg:text-3xl text-4xl text-gray-800 text-center font-thin pt-5">
        Categories
@@ -18,7 +18,7 @@ const Categories = () => {
             <img
               src="images/categories/category laptops 3.jpg"
               className="  rounded-md  cursor-pointer duration-150  object-cover"
-              alt=""
+              alt="laptops"
             />
           </div>
           </Link>
@@ -56,7 +56,7 @@ const Categories = () => {
           </div>
         </section>
       </div>
-    </LayoutTwo>
+    </Layout>
   );
 };
 

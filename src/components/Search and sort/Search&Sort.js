@@ -32,7 +32,7 @@ const handleSearch = (e) => {
           name=""
           placeholder="Search"
      
-          className="w-full py-1 px-3 rounded-lg bg-gray-100  dark:bg-gray-600 dark:text-gray-200 ring-2 ring-gray-400 outline-none"
+          className="w-full py-1 px-3 rounded-lg bg-white/30  dark:bg-white/10 dark:text-gray-200 ring-2 ring-gray-400 outline-none"
         />
         {/* <span>{ error}</span> */}
       </div>

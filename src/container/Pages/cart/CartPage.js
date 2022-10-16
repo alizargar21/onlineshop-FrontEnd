@@ -1,6 +1,6 @@
 import { BsTrash, BsHeartFill, BsHeart } from "react-icons/bs";
 import { useCartActions, useCart } from "../../../Provider/CartProvider";
-import LayoutTwo from "../../Layout/LayoutTwo";
+import Layout from "../../Layout/Layout";
 import { useEffect, useRef } from "react";
 import { useAuth } from "../../../Provider/AuthProvider";
 import { Link } from "react-router-dom";
@@ -11,6 +11,7 @@ import {
 } from "react-icons/ai";
 import CartSummery from "../../../components/CartSummery/CartSummery";
 import { toast } from "react-toastify";
+import BackArrowComponent from "../../../common/BackArrow/BackArrow";
 const CartPage = () => {
   const dispatch = useCartActions();
   const { cart, total } = useCart();
@@ -27,7 +28,8 @@ const CartPage = () => {
     dispatch({ type: "DECREMENT_AT_CART", payload: item });
   };
   return (
-    <LayoutTwo>
+    <Layout>
+      
       <div className="w-[90%] min-h-screen bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 flex justify-around mx-auto  md:flex-col">
         {cart.length === 0 ? (
           <Link
@@ -112,7 +114,7 @@ const CartPage = () => {
           <CartSummery total={total} cart={cart} auth={auth} />
         )}
       </div>
-    </LayoutTwo>
+    </Layout>
   );
 };
 

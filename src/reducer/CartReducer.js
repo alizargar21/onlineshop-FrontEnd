@@ -7,10 +7,10 @@ const CartReducer = (state, action) => {
     case "ADD_TO_CART": {
       const updatedCart = [...state.cart];
       const updatedItemIndex = state.cart.findIndex(
-        (item) => item.id === aP.id && item.selectedColor === aP.selectedColor
+        (item) => item._id === aP._id && item.selectedColor === aP.selectedColor
       );
       if (updatedItemIndex < 0 ) {
-          updatedCart.push({ ...action.payload, quantity: 1 , selectedColor: aP.selectedColor , createdAt : aP.id + Date.now()});
+          updatedCart.push({ ...action.payload, quantity: 1 , selectedColor: aP.selectedColor , createdAt : aP._id + Date.now()});
         } else {
           const updatedItem = { ...state.cart[updatedItemIndex] };
           updatedItem.quantity++
@@ -24,7 +24,7 @@ const CartReducer = (state, action) => {
  
       const updatedCart = [...state.cart];
       const updatedItemIndex = state.cart.findIndex(
-        (item) => item.id === aP.id && item.selectedColor === aP.selectedColor
+        (item) => item._id === aP._id && item.selectedColor === aP.selectedColor
       );
       const updatedItem = {...state.cart[updatedItemIndex]};
       if(updatedItem.quantity === 1 && updatedItem.selectedColor === aP.selectedColor){

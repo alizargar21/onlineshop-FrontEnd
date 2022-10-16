@@ -4,7 +4,7 @@ axios.defaults.baseURL = 'http://localhost:5000/api'
 
 
 const http = {
-    get:axios.get,
+   get:axios.get,
     put:axios.put,
     delete:axios.delete,
     post:axios.post
