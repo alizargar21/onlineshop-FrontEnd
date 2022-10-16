@@ -1,4 +1,4 @@
-import Products from "../../../components/Products/Products";
+
 import ListContainer from "../../../components/UI/ListContainer/ListContainer";
 import Layout from "../../Layout/Layout";
 import { useFavorite , useFavoriteActions } from "../../../Provider/FavoriteProvider"; 

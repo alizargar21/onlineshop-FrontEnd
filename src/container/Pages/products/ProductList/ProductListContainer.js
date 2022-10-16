@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ListContainer from "../../../../components/UI/ListContainer/ListContainer";
 import useFetch from "../../../../hooks/useFetch";
-import BackArrowComponent from "../../../../common/BackArrow/BackArrow";
 
 const ProductListContainer = ({ products }) => {
   const { data, error, loading } = useFetch("/products");
