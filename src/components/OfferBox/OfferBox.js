@@ -26,7 +26,7 @@ const OfferBox = ({ products, loading }) => {
   const items = offerData.map((item) => (
     <div className="center top-4 " key={item._id}>
       <Link to={`/products/${item._id}`}>
-        <div className="center w-[160px] mx-3 h-[170px] border rounded-lg bg-gray-200  relative">
+        <div className="center w-[160px] mx-3 h-[170px]  rounded-lg bg-gray-200 dark:bg-white/70 relative">
           <img
             src={item.image}
             alt=""

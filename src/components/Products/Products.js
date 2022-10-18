@@ -23,16 +23,17 @@ const Products = ({ data }) => {
             <div className="bg-white/40 dark:bg-black/30 dark:text-gray-200 flex h-full flex-col items-center rounded-md ">
               <div className="w-full h-12 "></div>
               <div className="flex items-center w-[80%] justify-between">
-                <div className="flex w-24 h-10 items-start">
+                <div className="flex w-24 h-10 items-start relative">
                   <Link to={`/products/${item._id}`}>
                     {item.colors.map((c, index) => (
                       <span
                         key={index}
-                        style={{ backgroundColor: c }}
+                        style={{ backgroundColor: Object.values(c) }}
                         className="w-3 h-3 flex my-1 border-[0.2px] border-black rounded-full"
                       ></span>
                     ))}
                   </Link>
+                  
                 </div>
                 <div className="center">
                   <button type="">
@@ -50,9 +51,12 @@ const Products = ({ data }) => {
                 </div>
               </div>
               <Link
-                className="flex justify-center items-center "
+                className="flex justify-center relative items-center "
                 to={`/products/${item._id}`}
               >
+                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs">
+                    {item.brand}
+                  </div>
                 <img
                   src={item.image}
                   className="w-[70%] pt-4 hover:scale-105 transition-transform duration-300 "
@@ -107,7 +111,7 @@ const Products = ({ data }) => {
       <>
         {data.map((item) => (
           <article
-            key={item.id}
+            key={item._id}
             className="w-full min-h-[190px] bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 flex flex-row-reverse justify-between items-center px-2 mx-auto rounded-lg relative"
           >
             <Link
@@ -130,7 +134,7 @@ const Products = ({ data }) => {
                   {item.colors.map((c, index) => (
                     <span
                       key={index}
-                      style={{ backgroundColor: c }}
+                      style={{ backgroundColor: Object.values(c) }}
                       className="w-3 h-3 flex m-1 border-[0.2px] border-black rounded-full "
                     ></span>
                   ))}
@@ -162,7 +166,7 @@ const Products = ({ data }) => {
                 <div className="flex items-end h-full w-[40%]">
                   <button className=" mx-2 text-rose-500 text-2xl">
                     {favoriteItems.findIndex(
-                      (favItem) => favItem.id === item.id
+                      (favItem) => favItem._id === item._id
                     ) > -1 || null ? (
                       <BsHeartFill onClick={() => addToFavorite(item)} />
                     ) : (

@@ -46,7 +46,7 @@ const CartPage = () => {
             </h2>
             {cart.map((item, index) => (
               <div
-                className="w-full min-h-[170px] md:min-w-[400px] md:mx-auto sm:min-w-[250px] sm:min-h-[] bg-gray-100 dark:bg-slate-600 rounded-lg flex justify-around items-center my-3 p-2"
+                className="w-full min-h-[170px] md:min-w-[400px] md:mx-auto sm:min-w-[250px] sm:min-h-[] bg-gray-100 dark:bg-black/40 rounded-lg flex justify-around items-center my-3 p-2"
                 key={index}
               >
                 <article className="flex w-full justify-between items-center sm:flex-col sm:min-h-auto  sm:justify-around">

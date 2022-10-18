@@ -1,12 +1,13 @@
 import { useCart } from "../../Provider/CartProvider";
-import { GrClose } from "react-icons/gr";
+import { AiOutlineClose } from "react-icons/ai";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { BsPersonCircle , BsCart3} from "react-icons/bs";
+import { BsPersonCircle, BsCart3 } from "react-icons/bs";
 import { useAuth } from "../../Provider/AuthProvider";
 import { GiHamburgerMenu } from "react-icons/gi";
-import {FiSun , FiMoon} from "react-icons/fi"
+import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme, useThemeActions } from "../../Provider/ThemeProvider";
+import { BiLogOut, BiLogIn } from "react-icons/bi";
 
 export const navItems = [
   { to: "/", name: "Home" },
@@ -19,11 +20,11 @@ export const navItems = [
 
 const Navigation = () => {
   const [nav, setNav] = useState(false);
-  const theme = useTheme()
-  const setTheme = useThemeActions()
+  const theme = useTheme();
+  const setTheme = useThemeActions();
   const handleThemeSwitch = () => {
     setTheme(theme === "dark" ? "light" : "dark");
-    localStorage.setItem("Theme" , theme)
+    localStorage.setItem("Theme", theme);
   };
   const { cart } = useCart();
   const auth = useAuth();
@@ -75,23 +76,25 @@ const Navigation = () => {
                 : "w-[200px] h-screen fixed left-[-100%] top-0   duration-300"
             }
           >
-            <div onClick={() => setNav(!nav)} className="flex flex-col relative">
-              <GrClose
+            <div
+              onClick={() => setNav(!nav)}
+              className="flex flex-col relative"
+            >
+              <AiOutlineClose
                 size={20}
                 className=" text-gray-200 z-30  hidden md:flex absolute right-4 top-5 cursor-pointer "
               />
-                    
             </div>
             <div className="relative">
-            <button
+              <button
                 type="button"
                 className=" text-2xl dark:text-gray-200 text-gray-800 absolute top-12 right-3.5"
                 onClick={handleThemeSwitch}
               >
-                {theme === "dark" ? <FiSun />  : <FiMoon />}
+                {theme === "dark" ? <FiSun /> : <FiMoon />}
               </button>
             </div>
-            {/* <h2 className="text-lg font-bold text-gray-800 dark:text-gray-300 p-3">Online Shop</h2> */}
+
             <ul className="w-40 mx-auto flex flex-col items-start text-gray-800 dark:text-gray-200 mt-3">
               {navItems.map((item, index) => (
                 <li
@@ -109,20 +112,27 @@ const Navigation = () => {
                       <span className="w-[20px] h-[20px]  text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1 -right-5">
                         {cart.length}
                       </span>
-                    ) }
+                    )}
                   </NavLink>
                 </li>
               ))}
               <NavLink
                 className="mx-[10px] my-[20px] text-lg list-none sm:flex "
-                to={auth ? "/profile" : "/signup"}
+                to={auth ? "/profile" : "/login"}
               >
                 <li className="text-gray-800 dark:text-gray-300 hover:text-rose-600">
-                  {auth ? "Login" : "Signup"}
+                  {auth ? (
+                    <div className="center">
+                      Logout <BiLogOut className="center ml-2 text-xl" />
+                    </div>
+                  ) : (
+                    <div className="center hover:text-green-600 duration-300">
+                      <BiLogIn className="text-xl"/> <span>Login</span>
+                    </div>
+                  )}
                 </li>
               </NavLink>
-              <li >
-            </li>
+              <li></li>
             </ul>
           </div>
           <div
@@ -135,26 +145,32 @@ const Navigation = () => {
           ></div>
         </div>
       </ul>
-      <div className="w-[10%]">
-        <ul className=" w-[100px] h-full flex justify-around items-center">
+      <div className="sm:w-[40%] lg:mr-2 md:w-[20%] w-[15%]">
+        <ul className=" w-[150px] h-full flex justify-around items-center">
           <NavLink to={auth ? "/profile" : "/signup"}>
-            <li >
+            <li>
               {auth ? (
-                <BsPersonCircle  className="text-[30px] dark:text-gray-200  text-gray-800"/>
+                <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800" />
               ) : (
-                <p className=" dark:text-gray-200  text-gray-800">Signup</p>
+                <p className="hover:text-green-600 dark:hover:text-green-600 duration-300 dark:text-gray-200  text-gray-800 center">
+                  <BiLogIn className="text-[22px]" />
+                  <span className="center">
+              
+                    Signup | Login
+                  </span>
+                </p>
               )}
             </li>
           </NavLink>
-            <li >
-              <button
-                type="button"
-                className=" text-xl dark:text-gray-200 text-gray-800 md:hidden"
-                onClick={handleThemeSwitch}
-              >
-                {theme === "dark" || null? <FiSun /> : <FiMoon />}
-              </button>
-            </li>
+          <li>
+            <button
+              type="button"
+              className=" text-xl dark:text-gray-200 text-gray-800 md:hidden"
+              onClick={handleThemeSwitch}
+            >
+              {theme === "dark" || null ? <FiSun /> : <FiMoon />}
+            </button>
+          </li>
         </ul>
       </div>
     </nav>
@@ -162,4 +178,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-

@@ -22,6 +22,7 @@ import Favorite from "./container/Pages/FavoritePage/Favorite";
 import http from "./services/httpServices";
 import { useState , useEffect } from "react";
 
+
 function App() {
   
   const Fetching = async()=> {
@@ -39,6 +40,7 @@ function App() {
   return (
     <>
       <ThemeProvider>
+        
         <FavoriteProvider>
         <AuthProvider>
           <CartProvider>
@@ -69,6 +71,7 @@ function App() {
           </CartProvider>
         </AuthProvider>
         </FavoriteProvider>
+      
       </ThemeProvider>
     </>
   );

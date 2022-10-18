@@ -12,9 +12,10 @@ const handleSearch = (e) => {
   setValue(searchValue)
   if (searchValue !== "") {
     const filteredProducts = originalValue.filter((p) => {
+      console.log(Object.values(p.brand + p.name).join(""))
+      return Object.values(p.brand+p.name).join("").toLowerCase().includes(searchValue)
+    //  return p.name.toLowerCase().includes(searchValue.toLowerCase()) 
 
-     return p.name.toLowerCase().includes(searchValue.toLowerCase()) 
-      // return p.name.toLowerCase().includes(searchValue.toLowerCase());
     });
     setRenderValue(filteredProducts) 
   } else {

@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import LayoutTwo from "../../container/Layout/LayoutTwo";
+import Layout from "../../container/Layout/Layout";
 import signupUser from "../../services/signUpService.js";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
 import { useQuery } from "../../hooks/useQuery.js";
@@ -82,7 +82,7 @@ const SignUp = () => {
     enableReinitialize: true,
   });
   return (
-    <LayoutTwo>
+    <Layout>
       <section className=" center flex-col ">
         <form
           className="w-[30%] my-10 md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  "
@@ -119,15 +119,15 @@ const SignUp = () => {
             >
               SIGN UP
             </button>
-            <div className="w-full center text-[14px] my-2">
+            <div className="w-full center text-[14px] my-3">
               <Link to="/login">
-                <p>Already have an account?</p>
+                <p className="dark:text-gray-300 text-blue-500 text-[18px]">Already have an account ?</p>
               </Link>
             </div>
           </div>
         </form>
       </section>
-    </LayoutTwo>
+    </Layout>
   );
 };
 

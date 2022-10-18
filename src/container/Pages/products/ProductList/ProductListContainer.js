@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import ListContainer from "../../../../components/UI/ListContainer/ListContainer";
 import useFetch from "../../../../hooks/useFetch";
 
-const ProductListContainer = ({ products }) => {
+const ProductListContainer = () => {
   const { data, error, loading } = useFetch("/products");
   const location = useLocation();
   const [originalValue, setOriginalValue] = useState(null);
@@ -33,6 +33,7 @@ const ProductListContainer = ({ products }) => {
   };
   useEffect(() => {
     console.log("render ProductList");
+    console.log(data)
     getProduct();
   }, [data]);
 

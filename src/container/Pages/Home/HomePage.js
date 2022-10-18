@@ -5,8 +5,10 @@ import OfferBox from "../../../components/OfferBox/OfferBox";
 import Possibilities from "../../../components/Possibilities/Possibilities";
 
 
+
 const HomePage = ({products}) => {
-  
+
+    
 
   return (
     <Layout>

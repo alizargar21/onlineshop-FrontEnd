@@ -11,7 +11,7 @@ const CartSummery = ({ cart, total, auth }) => {
     <div className=" min-w-[30%] flex flex-col items-center  my-7 md:w-[300px] md:mx-auto sm:w-[230px]">
       <h2>Cart Summery</h2>
 
-      <aside className="w-full 2xl:sticky top-24 md:static bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg flex flex-col justify-between my-2 p-3 min-h-[250px]">
+      <aside className="w-full 2xl:sticky top-24 md:static bg-gray-100 dark:bg-black/40 text-gray-800 dark:text-gray-200 rounded-lg flex flex-col justify-between my-2 p-3 min-h-[250px]">
         <div className="flex flex-col w-full">
           <div className="flex flex-col items-around ">
             <div className="flex justify-between items-center text-md">

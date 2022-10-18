@@ -1,9 +1,17 @@
-import { useAuth } from "../../../Provider/AuthProvider";
+import { useAuth , useAuthActions } from "../../../Provider/AuthProvider";
 import Layout from "../../Layout/Layout";
 
+import { useNavigate } from "react-router-dom";
+import { useCartActions } from "../../../Provider/CartProvider";
 const ProfilePage = () => {
+ const navigate =  useNavigate()
+ const setAuth = useAuthActions()
+  const logoutHandle = ()=> {
+    setAuth(null)
+    navigate("/")
+  }
   const auth = useAuth();
-  console.log(auth);
+  
   return (
     <Layout>
       <div className="w-full flex justify-around my-10">
@@ -22,7 +30,7 @@ const ProfilePage = () => {
               <p>TEL: </p>
               <p>{auth.phoneNumber}</p>
             </div>
-            <button className="btn-primary">Edit Profile</button>
+            <button className="btn-primary" onClick={()=>logoutHandle()}>Edit Profile</button>
           </div>
         </section>
       </div>

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdWavingHand } from "react-icons/md";
-import LayoutTwo from "../../container/Layout/LayoutTwo";
+import Layout from "../../container/Layout/Layout";
 import { loginUser } from "../../services/loginService.js";
 import { useEffect, useState } from "react";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
@@ -64,7 +64,7 @@ const Login = () => {
     enableReinitialize: false,
   });
   return (
-    <LayoutTwo>
+    <Layout>
       <section className="center w-full my-10">
         <form
           onSubmit={formik.handleSubmit}
@@ -83,7 +83,7 @@ const Login = () => {
             
           
           <div className="flex flex-col mx-2   items-center">
-            <div className="w-[80%] text-xs bg-gray-300 p-2 rounded-lg mt-2">
+            <div className="w-[80%] text-xs bg-gray-300 dark:text-gray-800 p-2 rounded-lg mt-2">
               <span>
                 Besides registering, you can also test the template with test
                 account information(email: test@info.com - Password: 123456)
@@ -104,14 +104,16 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="my-8 text-blue-600">
+          <div className="my-8 text-blue-600 dark:text-gray-300">
             <Link to={`/signup?redirect=${redirect}`}>
-              <p>Not Sign Up yet ?</p>
+              <p >Not Sign Up yet ? <span className="text-xs decoration-stone-400 decoration-dotted ">
+              Click here
+                </span> </p>
             </Link>
           </div>
         </form>
       </section>
-    </LayoutTwo>
+    </Layout>
   );
 };
 export default Login;

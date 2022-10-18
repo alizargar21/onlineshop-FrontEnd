@@ -61,7 +61,7 @@ const SingleProduct = () => {
                   <p className="line-through opacity-80 ">
                     $ {selectedProduct.price}
                   </p>
-                  <span className="text-xs center w-5 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
+                  <span className="text-xs center w-7 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
                     %{selectedProduct.discount}
                   </span>
                 </>
@@ -90,7 +90,7 @@ const SingleProduct = () => {
                     type="radio"
                     name="color"
                     className="chooseColor  checked:w-7 checked:h-7 duration-300 m-1"
-                    style={{ backgroundColor: item }}
+                    style={{ backgroundColor: Object.values(item) }}
                     value={item}
                   />
                 </div>
