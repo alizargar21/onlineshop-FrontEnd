@@ -2,9 +2,9 @@ import { useState } from "react";
 
 
 const SearchSort = ({originalValue , setRenderValue}) => {
-  
 const [value , setValue] = useState("")
-const [error , setError] = useState("")
+
+
 
 const handleSearch = (e) => {
   let searchValue = e.target.value;
@@ -24,7 +24,7 @@ const handleSearch = (e) => {
   }
 };
   return (
-    <section className=" 2xl:sticky 2xl:top-24 md:static text-[12px] md:w-[90%] md:h-[150px] w-[230px] h-[450px] md:mx-auto  m-5 rounded-lg p-5 bg-gray-300 dark:bg-black/30">
+    <section className=" 2xl:sticky 2xl:top-[90px] md:static text-[12px] md:w-[90%] md:h-[150px] w-[230px] h-[450px] md:mx-auto  m-5 rounded-lg p-5 bg-gray-300 dark:bg-black/30">
       <div className="w-[80%] mx-auto ">
       <input
           onChange={(e)=>handleSearch(e)}

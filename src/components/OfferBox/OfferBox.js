@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import Carousel from "../UI/Carousel/Carousel";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
 import Spinner from "../../common/Spinner/Spinner";
 
 
@@ -51,7 +50,8 @@ const OfferBox = ({ products, loading }) => {
   return (
     <section>
       <div className="bg-black/30 backdrop:blur-md w-[90%] h-[230px] mx-auto my-5 rounded-lg center sm:w-full sm:rounded-none">
-        <div className="relative w-[20%] md:w-[40%] h-[180px]  center mx-2 sm:w-[35%]">
+
+        <div className="relative w-[20%] md:w-[40%] h-[180px]  center flex-col mx-2 sm:w-[35%]">
           <h2 className="absolute top-[20%] font-bold text-rose-600 text-2xl left-[20%]">
             Special Offers
           </h2>
@@ -60,10 +60,14 @@ const OfferBox = ({ products, loading }) => {
             alt=""
             className="w-full rounded-lg"
           />
+          <Link to="/offers"> <button className="btn-primary"> See All</button></Link> 
         </div>
         <div className="w-full mx-2 bg-rose-500 h-[90%] rounded-lg  overflow-hidden center sm:w-[60%]">
           {loading && <Spinner />}
+       
+          
           <Carousel responsive={responsive} items={items} />
+       
         </div>
       </div>
     </section>

@@ -21,7 +21,7 @@ import FavoriteProvider from "./Provider/FavoriteProvider";
 import Favorite from "./container/Pages/FavoritePage/Favorite";
 import http from "./services/httpServices";
 import { useState , useEffect } from "react";
-
+import AllOfferProducts from "./container/Pages/OfferPage/OfferPage"
 
 function App() {
   
@@ -61,6 +61,7 @@ function App() {
               <Route path="*" element={<NotFoundPage />} />
               <Route path="/blogs" element={<Blogs />} />
               <Route path="/categories" element={<Categories />} />
+              <Route path="/offers" element={<AllOfferProducts products={products}/>} />
               <Route path="/laptops" element={<ProductListContainer />} />
               <Route path="/mobiles" element={<ProductListContainer />} />
               <Route path="/cases" element={<ProductListContainer />} />

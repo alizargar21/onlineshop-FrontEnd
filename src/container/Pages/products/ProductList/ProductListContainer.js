@@ -27,7 +27,7 @@ const ProductListContainer = () => {
         case "/cases":
           return setOriginalValue(cases), setRenderValue(cases);
         default:
-          return setOriginalValue(laptops);
+          return setOriginalValue(data);
       }
     }
   };
