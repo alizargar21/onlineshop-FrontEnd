@@ -15,12 +15,11 @@ const ProductListContainer = () => {
       const laptops = data.filter((item) => item.category === "laptops");
       const mobiles = data.filter((item) => item.category === "mobiles");
       const cases = data.filter((item) => item.category === "cases");
+      
       switch (location.pathname) {
         case "/laptops":
-          console.log(laptops);
-          console.log(mobiles);
-          console.log(cases);
-
+          
+          
           return setOriginalValue(laptops), setRenderValue(laptops);
         case "/mobiles":
           return setOriginalValue(mobiles), setRenderValue(mobiles);

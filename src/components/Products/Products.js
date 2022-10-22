@@ -81,7 +81,7 @@ const Products = ({ data }) => {
                   )}
                 </div>
                 {item.discount ? (
-                  <div className="mx-auto center">
+                  <div className="mx-auto center font-Roboto">
                     <p className="text-2xl text-green-600 dark:text-green-500 ">
                       {`$ ${item.price - (item.price * item.discount) / 100}`}
                     </p>
