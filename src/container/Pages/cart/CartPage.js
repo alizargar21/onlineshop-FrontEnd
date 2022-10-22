@@ -74,10 +74,10 @@ const CartPage = () => {
                         ))}
                         <p className="flex justify-start items-center ml-3 md:ml-1">
                           Color :
-                          <span
+                          <p
                             className="w-5 h-5 border border-black mx-2 center rounded-full"
-                            style={{ backgroundColor: item.selectedColor }}
-                          ></span>
+                            style={{ backgroundColor: Object.values(item.selectedColor) }}
+                          ></p>
                         </p>
                       </div>
                     </div>

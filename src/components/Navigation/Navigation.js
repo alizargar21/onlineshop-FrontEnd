@@ -30,7 +30,7 @@ const Navigation = () => {
   const auth = useAuth();
   return (
     <nav className="flex justify-between items-center w-full h-[60px] ">
-      <ul className="flex justify-center items-center text-gray-800 dark:text-white">
+      <ul className="flex justify-center items-center text-gray-800 dark:text-white text-sm">
         <div className="md:hidden   ">
           <a href="/">
             <img
@@ -82,7 +82,7 @@ const Navigation = () => {
             >
               <AiOutlineClose
                 size={20}
-                className=" text-gray-200 z-30  hidden md:flex absolute right-4 top-5 cursor-pointer "
+                className="text-gray-800 dark:text-gray-200 z-30  hidden md:flex absolute right-4 top-5 cursor-pointer "
               />
             </div>
             <div className="relative">
@@ -117,7 +117,7 @@ const Navigation = () => {
                 </li>
               ))}
               <NavLink
-                className="mx-[10px] my-[20px] text-lg list-none sm:flex "
+                className="mx-[10px] my-[20px] text-sm list-none sm:flex "
                 to={auth ? "/profile" : "/login"}
               >
                 <li className="text-gray-800 dark:text-gray-300 hover:text-rose-600">
@@ -126,7 +126,7 @@ const Navigation = () => {
                       Logout <BiLogOut className="center ml-2 text-xl" />
                     </div>
                   ) : (
-                    <div className="center hover:text-green-600 duration-300">
+                    <div className="center w-full  hover:text-green-600 duration-300">
                       <BiLogIn className="text-xl"/> <span>Login</span>
                     </div>
                   )}
@@ -146,11 +146,11 @@ const Navigation = () => {
         </div>
       </ul>
       <div className="sm:w-[40%] lg:mr-2 md:w-[20%] w-[15%]">
-        <ul className=" w-[150px] h-full flex justify-around items-center">
+        <ul className=" w-[150px] h-full flex justify-around items-center text-sm">
           <NavLink to={auth ? "/profile" : "/signup"}>
             <li>
               {auth ? (
-                <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800" />
+                <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5" />
               ) : (
                 <p className="hover:text-green-600 dark:hover:text-green-600 duration-300 dark:text-gray-200  text-gray-800 center">
                   <BiLogIn className="text-[22px]" />

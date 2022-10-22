@@ -29,7 +29,7 @@ const Products = ({ data }) => {
                       <span
                         key={index}
                         style={{ backgroundColor: Object.values(c) }}
-                        className="w-3 h-3 flex my-1 border-[0.2px] border-black rounded-full"
+                        className="w-3 h-3 flex my-1 border-[0.2px] dark:border-white border-black rounded-full"
                       ></span>
                     ))}
                   </Link>
@@ -63,16 +63,16 @@ const Products = ({ data }) => {
                 ></img>
               </Link>
               <div className="center flex-col">
-                <h4 className="text-xl md:text-2xl text-center">{item.name}</h4>
-                <div className="center">
+                <h4 className="text-xl md:text-2xl text-center ">{item.name}</h4>
+                <div className="center font-Roboto">
                   <p
                     className={
                       item.discount !== 0
-                        ? "line-through text-red-700 center text-xl"
+                        ? "line-through text-red-700 center text-xl "
                         : "text-3xl mt-3 center"
                     }
                   >
-                    {`$${item.price}`}{" "}
+                    {`$${item.price}`}
                   </p>
                   {item.discount !== 0 && (
                     <span className="text-xs center w-6 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
@@ -81,7 +81,7 @@ const Products = ({ data }) => {
                   )}
                 </div>
                 {item.discount ? (
-                  <div className="mx-auto center">
+                  <div className="mx-auto center font-Roboto">
                     <p className="text-2xl text-green-600 dark:text-green-500 ">
                       {`$ ${item.price - (item.price * item.discount) / 100}`}
                     </p>

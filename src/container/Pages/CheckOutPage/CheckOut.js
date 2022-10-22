@@ -1,11 +1,13 @@
-import LayoutTwo from "../../Layout/LayoutTwo";
+import Layout from "../../Layout/Layout";
 
 const CheckOut = () => {
 
-    return ( <LayoutTwo>
-        <h3>Checkout Page</h3> ;
+    return ( <Layout>
+        <section>
+            
+        </section>
         
-        </LayoutTwo>)
+        </Layout>)
 }
  
 export default CheckOut;

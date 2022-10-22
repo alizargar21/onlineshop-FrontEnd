@@ -3,7 +3,11 @@ module.exports = {
   darkMode: 'class',
   content: ["./src/**/*.{js,jsx}"],
   theme: {
-
+    fontFamily:{
+      "Oswald" : ['Oswald' , "Arial"] ,
+      "Ubuntu": ["Ubuntu"],
+      "Roboto": ["Roboto"]
+    },
     screens: {
       "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }

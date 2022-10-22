@@ -38,7 +38,7 @@ const SingleProduct = () => {
     <Layout>
   
       {selectedProduct && <section className="w-[90%] h-auto mx-auto flex justify-between  my-12  md:flex-col">
-        <aside className="flex flex-col w-[40%] text-gray-800 dark:text-gray-200  bg-white/60 dark:bg-black/30 items-center h-[80%]  rounded-md my-2 p-4 md:w-[90%] md:h-[70%] sm:min-h-[500px] mx-auto">
+        <aside className="flex flex-col 2xl:sticky top-20 md:static w-[40%] text-gray-800 dark:text-gray-200  bg-white/60 dark:bg-black/30 items-center h-[80%]  rounded-md my-2 p-4 md:w-[90%] md:h-[70%] sm:min-h-[500px] mx-auto">
           <h2 className="text-xl mt-2 sm:text-lg ">{selectedProduct.name}</h2>
           <div className="w-full h-full center">
             <img
@@ -49,16 +49,16 @@ const SingleProduct = () => {
           <div
             className={
               selectedProduct.discount !== 0
-                ? "font-bold text-3xl xl:text-3xl flex justify-evenly w-full items-center"
-                : "font-bold text-3xl xl:text-3xl w-full center"
+                ? " text-3xl xl:text-3xl flex justify-evenly w-full items-center font-Roboto"
+                : "font-bold text-3xl xl:text-3xl w-full center font-Roboto"
             }
           >
-            <div className="center">
+            <div className="center ">
               {selectedProduct.discount === 0 ? (
-                <p>$ {selectedProduct.price}</p>
+                <p className="mt-2">$ {selectedProduct.price}</p>
               ) : (
                 <>
-                  <p className="line-through opacity-80 ">
+                  <p className="line-through opacity-80">
                     $ {selectedProduct.price}
                   </p>
                   <span className="text-xs center w-7 h-5 bg-red-600 text-white rounded-full rounded-tr-none mx-2">
@@ -89,7 +89,7 @@ const SingleProduct = () => {
                   <input
                     type="radio"
                     name="color"
-                    className="chooseColor  checked:w-7 checked:h-7 duration-300 m-1"
+                    className="chooseColor dark:border dark:border-white checked:w-7 checked:h-7 duration-300 m-1 cursor-pointer"
                     style={{ backgroundColor: Object.values(item) }}
                     value={item}
                   />

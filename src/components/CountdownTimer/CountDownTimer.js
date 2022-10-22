@@ -5,8 +5,8 @@ const DateTimeDisplay = ({ value, type, isDanger }) => {
     <div
       className={
         isDanger
-          ? "center flex-col text-[18px] text-red-600 p-1 m-1 dark:bg-black/40 bg-white/30  rounded-md"
-          : "center flex-col text-[18px] p-1 bg-white/30  m-1 rounded-md text-gray-800 dark:bg-black/40 dark:text-gray-200"
+          ? "center flex-col w-[45px] sm:w-auto sm:text-[10px] text-[14px] text-red-600 p-1 m-1 dark:bg-black/40 bg-white/30  rounded-md"
+          : "center flex-col w-[45px] sm:w-auto sm:text-[10px] text-[14px] p-1 bg-white/50  m-1 rounded-md text-gray-800 dark:bg-black/40 dark:text-gray-200"
       }
     >
       <p>{value}</p>
