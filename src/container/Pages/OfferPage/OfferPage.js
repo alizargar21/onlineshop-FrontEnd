@@ -1,7 +1,14 @@
 import Layout from "../../Layout/Layout";
 import ListContainer from "../../../components/UI/ListContainer/ListContainer";
 import { useEffect , useState} from "react";
-const AllOfferProducts = ({products}) => {
+import { useDispatch, useSelector } from "react-redux";
+import { getAsyncProducts } from "../../../features/ProductsSlice/ProductsSlice";
+const AllOfferProducts = () => {
+  const {products ,loading , error} = useSelector(state => state.products)
+  const dispatch = useDispatch()
+  useEffect(()=>{
+   dispatch(getAsyncProducts())
+ }, [])
   const [renderValue , setRenderValue] = useState(null)
   const [originalValue , setOriginalValue] = useState(null)
 const  getData = ()=> {
@@ -15,7 +22,6 @@ const  getData = ()=> {
   return (
     <Layout>
       <ListContainer
-        
         originalValue={originalValue}
         renderValue={renderValue}
         setRenderValue={setRenderValue}

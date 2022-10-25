@@ -21,7 +21,8 @@ import Favorite from "./container/Pages/FavoritePage/Favorite";
 import http from "./services/httpServices";
 import { useState, useEffect } from "react";
 import AllOfferProducts from "./container/Pages/OfferPage/OfferPage";
-
+import { Provider } from "react-redux";
+import store from "./features/store"
 function App() {
   const Fetching = async () => {
     const data = await http.get("/products");
@@ -35,9 +36,10 @@ function App() {
   }, [setProducts]);
   return (
     <>
+    <Provider store={store}>
       <ThemeProvider>
         <FavoriteProvider>
-          <AuthProvider>
+          <AuthProvider> 
             <CartProvider>
               <ToastContainer
                 closeOnClick
@@ -47,7 +49,7 @@ function App() {
                 theme={"colored"}
               />
               <Routes>
-                <Route path="/" element={<HomePage products={products} />} />
+                <Route path="/" element={<HomePage />} />
                 <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/login" element={<Login />} />
@@ -73,6 +75,7 @@ function App() {
           </AuthProvider>
         </FavoriteProvider>
       </ThemeProvider>
+      </Provider>
     </>
   );
 }

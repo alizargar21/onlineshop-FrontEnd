@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import AliceCarousel from "react-alice-carousel";
 import { GrNext, GrPrevious } from "react-icons/gr";
+
+import "react-alice-carousel/lib/alice-carousel.css";
+
 const Carousel = ({ responsive, items }) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -11,6 +14,7 @@ const Carousel = ({ responsive, items }) => {
       setActiveIndex(0);
     }
   }, []);
+
   return (
     <div className="w-full center">
       <div className="w-[90%] sm:w-[82%] center">
@@ -33,14 +37,13 @@ const Carousel = ({ responsive, items }) => {
           infinite
           touchTracking={false}
         />
-      <button
-        onClick={slideNext}
-        // className="w-[30px] h-[25px] rounded-full center  bg-gray-300 dark:bg-white/70"
-      >
-        <GrNext />
-      </button>
+        <button
+          onClick={slideNext}
+          // className="w-[30px] h-[25px] rounded-full center  bg-gray-300 dark:bg-white/70"
+        >
+          <GrNext />
+        </button>
       </div>
-
     </div>
   );
 };

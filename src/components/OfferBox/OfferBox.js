@@ -1,13 +1,17 @@
 import { useEffect, useState, useRef, Suspense } from "react";
 import Carousel from "../UI/Carousel/Carousel";
-import { Link } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import Spinner from "../../common/Spinner/Spinner";
+import { useDispatch, useSelector } from "react-redux";
 
 
 const OfferBox = ({ products, loading }) => {
   const [offerData, setOfferData] = useState([]);
+
+  const navigate = useNavigate()
   const createOfferData = (products) => {
-    const dataSorted = products.sort((a, b) => {
+    const data = [...products]
+    const dataSorted = data.sort((a, b) => {
       if (a.discount > b.discount) {
         return -1;
       } else if (a.discount < b.discount) {
@@ -60,7 +64,7 @@ const OfferBox = ({ products, loading }) => {
             alt=""
             className="w-full rounded-lg"
           />
-          <Link to="/offers"> <button className="btn-primary"> See All</button></Link> 
+           <button className="btn-primary" onClick={()=>navigate("/offers")}> See All</button>
         </div>
         <div className="w-full mx-2 bg-rose-500 h-[90%] rounded-lg  overflow-hidden center sm:w-[60%]">
           {loading && <Spinner />}

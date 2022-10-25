@@ -4,18 +4,18 @@ import ClipLoader from "react-spinners/ClipLoader";
 const override = {
   display: "block",
   margin: "0 auto",
-  borderColor: "black",
+  borderColor: "#9f1239",
 };
 
 function Spinner({loading}) {
 //   let [loading, setLoading] = useState(true);
-//   let [color, setColor] = useState("#202002");
+  let [color, setColor] = useState("#e11d48");
 
   return (
     <div className="sweet-loading">
 
       <ClipLoader
-        color="blue"
+        color="#9f1239"
         loading={loading}
         cssOverride={override}
         size={40}

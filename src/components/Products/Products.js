@@ -13,7 +13,7 @@ const Products = ({ data }) => {
   const { addToFavorite } = useFavoriteActions();
   const screen = useWindowDimensions();
   useEffect(()=>{
-    console.log(favoriteItems)
+  
   },[])
   if (screen.width >= 479 && data !== null) {
     return (
