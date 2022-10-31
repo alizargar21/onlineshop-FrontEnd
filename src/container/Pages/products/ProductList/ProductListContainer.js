@@ -5,54 +5,40 @@ import ListContainer from "../../../../components/UI/ListContainer/ListContainer
 import { useDispatch, useSelector } from "react-redux";
 import {
   getAsyncProducts,
-  getProductsByCategories,
+  getAsyncProductsByCategories,
 } from "../../../../features/ProductsSlice/ProductsSlice";
 
 const ProductListContainer = () => {
-  const {products , loading}= useSelector(state => state.products)
+  const { products, loading, error } = useSelector((state) => state.products);
   const location = useLocation();
-  const [originalValue, setOriginalValue] = useState(null);
-  const [renderValue, setRenderValue] = useState(null);
-
-  const getProduct = () => {
-      if (products !== null) {
-          const laptops = products.filter((item) => item.category === "laptops");
-          const mobiles = products.filter((item) => item.category === "mobiles");
-          const cases = products.filter((item) => item.category === "cases");
-      
-          switch (location.pathname) {
-              case "/laptops":
-        
-                return setOriginalValue(laptops), setRenderValue(laptops);
-              case "/mobiles":
-                return setOriginalValue(mobiles), setRenderValue(mobiles);
-              case "/cases":
-                return setOriginalValue(cases), setRenderValue(cases);
-              default:
-                return setOriginalValue(products);
-            }
-          }
-        };
+  const dispatch = useDispatch();
   useEffect(() => {
-  
-  
-    getProduct();
-      }, []);
+    if(location.pathname === "/products"){
+        console.log("worked");
+    }
+    dispatch(
+      getAsyncProductsByCategories(
+        location.pathname.slice(10, location.pathname.length)
+      )
+    );
 
+   
+    console.log(location.pathname.slice(10, location.pathname.length));
+
+  }, [location.pathname]);
 
   return (
-    <Layout>
+    <>
       {loading ? (
         <p>loading</p>
       ) : (
         <ListContainer
           loading={loading}
-          originalValue={originalValue}
-          renderValue={renderValue}
-          setRenderValue={setRenderValue}
+          renderValue={products}
+    
         ></ListContainer>
       )}
-    </Layout>
+    </>
   );
 };
 

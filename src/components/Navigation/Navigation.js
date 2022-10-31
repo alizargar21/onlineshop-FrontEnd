@@ -11,7 +11,7 @@ import { BiLogOut, BiLogIn } from "react-icons/bi";
 
 export const navItems = [
   { to: "/", name: "Home" },
-  { to: "/categories", name: "Categories" },
+  { to: "/products", name: "Products" },
   { to: "/cart", name: "Cart" },
   { to: "/myFavorite", name: "Favorite List" },
   { to: "/blogs", name: "Blogs" },

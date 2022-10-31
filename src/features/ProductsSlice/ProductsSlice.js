@@ -1,6 +1,13 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { MdSwitchAccount } from "react-icons/md";
 import http from "../../services/httpServices";
 
+import {
+  sortByInexpensive,
+  sortByExpensive,
+  sortByPopularity,
+  searchBy
+} from "../../utils/sortByPrice";
 export const getAsyncProducts = createAsyncThunk(
   "products/getAsyncProducts",
   async (_, { rejectWithValue }) => {
@@ -13,9 +20,28 @@ export const getAsyncProducts = createAsyncThunk(
     }
   }
 );
+export const getAsyncProductsByCategories = createAsyncThunk(
+  "products/getAsyncProductsByCategory",
+  async (payload, { rejectWithValue }) => {
+    try {
+      const { data } = await http.get("/products");
+if(payload === "all"){
+  return data
+} else {
+  const filteredByCategory = data.filter(
+    (item) => item.category === payload
+  );
+  return filteredByCategory;
+}
+    } catch (error) {
+      return rejectWithValue([], error);
+    }
+  }
+);
 
 const initialState = {
   products: [],
+  filteredProducts : [],
   error: null,
   loading: false,
 };
@@ -24,16 +50,50 @@ const ProductsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
+
     sortBy: (state, action) => {
-      if (action.payload.value === "") {
-        return state;
+      switch (action.payload) {
+        case "all": {
+          
+        return {...state , products: [...state.products]}
+          break;
+        }
+        case "expensive":
+          if(state.filteredProducts.length === 0){
+          state =   {...state , products: state.products.sort(sortByExpensive)}
+          } else {
+            state = {...state , filteredProducts: state.filteredProducts.sort(sortByExpensive)}
+          }
+          break;
+        case "inexpensive":
+          if(state.filteredProducts.length === 0){
+            state.products = state.products.sort(sortByInexpensive);
+          } else {
+            state.products = state.filteredProducts.sort(sortByInexpensive)
+          }
+          break;
+        case "popularity":
+          if(state.filteredProducts.length === 0){
+            state.products = state.products.sort(sortByPopularity);
+          } else {
+            state.products = state.filteredProducts.sort(sortByPopularity)
+          }
+          default : return state
       }
-      if (action.payload.value === "inexpensive") {
-        const sortedProducts = state.products.sort((a, b) => b.price - a.price);
-        return { ...state , products: sortedProducts };
-      } else {
-        const sortedProducts = state.products.sort((a, b) => a.price - b.price);
-        return {...state ,  products: sortedProducts };
+    },
+    search : (state , action)=> {
+      console.log(action.payload)
+      if(action.payload === ""){
+        return {
+          ...state ,  filteredProducts : []
+        }
+      }else {
+            const filteredProducts = state.products.filter((item)=>{
+                return   Object.values(item.name + item.brand).join("").toLowerCase().includes(action.payload.toLowerCase())
+                })  
+            return {
+          ...state , filteredProducts: filteredProducts  ,error : filteredProducts.length === 0 ? "NO MATCH" : null
+        }
       }
     }
   },
@@ -42,6 +102,7 @@ const ProductsSlice = createSlice({
       return {
         ...state,
         products: action.payload,
+        filteredProducts : [],
         loading: false,
         error: null,
       };
@@ -52,8 +113,23 @@ const ProductsSlice = createSlice({
     [getAsyncProducts.rejected]: (state, action) => {
       return { ...state, products: [], loading: false, error: action.payload };
     },
+    [getAsyncProductsByCategories.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        products: action.payload,
+        filteredProducts : [],
+        loading: false,
+        error: null,
+      };
+    },
+    [getAsyncProductsByCategories.rejected]: (state, action) => {
+      return { ...state, products: [], loading: false, error: action.error };
+    },
+    [getAsyncProductsByCategories.pending]: (state, action) => {
+      return { ...state, products: [], loading: true, error: null };
+    },
   },
 });
 
-export const { sortBy } = ProductsSlice.actions;
+export const { search, sortBy, show, selectCategory } = ProductsSlice.actions;
 export default ProductsSlice.reducer;
