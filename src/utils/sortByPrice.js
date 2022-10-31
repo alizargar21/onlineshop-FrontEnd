@@ -7,6 +7,3 @@ export const sortByInexpensive = (a , b) =>{
 export const sortByPopularity = (a,b) => {
   return b.rate - a.rate
 }
-export const searchBy = ( value)=>{
-  return (item)=>{Object.values(item.name).toLowerCase().includes(value)}
-}

@@ -1,6 +1,6 @@
 import Layout from "../../Layout/Layout";
 
-import SortBar from "../../../components/Search and sort/Sortoptions";
+import SortBar from "../../../components/Search and sort/SortBar";
 import { useDispatch, useSelector } from "react-redux";
 import ListContainer from "../../../components/UI/ListContainer/ListContainer";
 import { useEffect, useState } from "react";
