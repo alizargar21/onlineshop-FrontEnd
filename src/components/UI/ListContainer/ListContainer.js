@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import Spinner from "../../../common/Spinner/Spinner";
 import Products from "../../Products/Products";
-import SearchSort from "../../Search and sort/Search&Sort";
+
 
 const ListContainer = ({ renderValue, loading }) => {
   useEffect(() => {
