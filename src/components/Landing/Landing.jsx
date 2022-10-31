@@ -1,51 +1,29 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay, A11y } from "swiper";
-
-import "swiper/css";
-
-import "swiper/css/pagination";
-import { useWindowDimensions } from "../../hooks/useWinowDimensions";
-
 const Landing = () => {
- const screen = useWindowDimensions()
-  const items = [
-    
-    <div   >
-        <img src={screen.width >=1024  ? "/images/banners tiny/1.jpg" : "/images/banners tiny/banner lg/1.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-    <div   >
-      <img src={screen.width >=1024  ? "/images/banners tiny/2.jpg" : "/images/banners tiny/banner lg/2.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-    <div   >
-      <img src={screen.width >=1024  ? "/images/banners tiny/3.jpg" : "/images/banners tiny/banner lg/3.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-    <div   >
-      <img src={screen.width >=1024  ? "/images/banners tiny/4.jpg" : "/images/banners tiny/banner lg/4.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-    <div   >
-      <img src={screen.width >=1024  ? "/images/banners tiny/5.jpg" : "/images/banners tiny/banner lg/5.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-    <div   >
-      <img src={screen.width >=1024  ? "/images/banners tiny/6.jpg" : "/images/banners tiny/banner lg/6.png"} className="w-full h-[400px] sm:h-[250px]" alt="" />
-    </div>,
-  ];
-
   return (
-    <Swiper
-      pagination={{
-        dynamicBullets: true,
-        clickable: true,
-      }}
-      loop={true}
-      autoplay={{
-        delay: 2500,
-        disableOnInteraction: false,
-      }}
-      modules={[Pagination, Autoplay]}
-      className="mySwiper"
-    >
-      {items.map((item , index) => <SwiperSlide key={index}>{item}</SwiperSlide>)}
-    </Swiper>
+    <div className="z-20 relative">
+      <div className="absolute top-[20%] left-[10%] ">
+        <h1 className="text-white text-6xl md:text-3xl lg:text-5xl">
+          The <span className="text-red-500">Best</span>
+        </h1>
+        <h1 className="text-red-500 text-7xl md:text-3xl lg:text-5xl">
+          Divices <span className="text-white ">For You</span>
+        </h1>
+      </div>
+      <div >
+        <h3 className="text-white absolute py-2 top-[50%] left-[23%] text-6xl 2xl:left-[20%] lg:left-[22%]  lg:text-5xl md:text-4xl sm:text-3xl">
+          UP TO 
+          <br />
+          <span className="px-5 text-8xl text-red-500 lg:text-6xl md:text-4xl sm:text-3xl">
+             50% OFF
+          </span>
+        </h3>
+      </div>
+      <img
+        src="/images/banners tiny/main-banner-org.jpg"
+        alt="landing"
+        className="w-full h-auto object-cover"
+      />
+    </div>
   );
 };
 
