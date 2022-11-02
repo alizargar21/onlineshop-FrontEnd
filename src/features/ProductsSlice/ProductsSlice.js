@@ -1,25 +1,32 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { MdSwitchAccount } from "react-icons/md";
+
 import http from "../../services/httpServices";
 
 import {
   sortByInexpensive,
   sortByExpensive,
   sortByPopularity,
-  searchBy
 } from "../../utils/sortByPrice";
 export const getAsyncProducts = createAsyncThunk(
   "products/getAsyncProducts",
   async (_, { rejectWithValue }) => {
     try {
       const response = await http.get("/products");
-
       return response.data;
     } catch (error) {
       return rejectWithValue([], error);
     }
   }
 );
+export const getAsyncOffersProducts = createAsyncThunk("products/getAsyncOffersProducts" , async(_ , {rejectWithValue})=>{
+  try {
+    const {data} = await http.get("/products")
+    const offersProducts = data.filter(item => item.discount > 0)
+    return offersProducts
+  } catch (error) {
+    return rejectWithValue([],error)
+  }
+})
 export const getAsyncProductsByCategories = createAsyncThunk(
   "products/getAsyncProductsByCategory",
   async (payload, { rejectWithValue }) => {
@@ -128,8 +135,23 @@ const ProductsSlice = createSlice({
     [getAsyncProductsByCategories.pending]: (state, action) => {
       return { ...state, products: [], loading: true, error: null };
     },
+    [getAsyncOffersProducts.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        products: action.payload,
+        filteredProducts : [],
+        loading: false,
+        error: null,
+      };
+    },
+    [getAsyncOffersProducts.rejected]: (state, action) => {
+      return { ...state, products: [], loading: false, error: action.error };
+    },
+    [getAsyncOffersProducts.pending]: (state, action) => {
+      return { ...state, products: [], loading: true, error: null };
+    },
   },
 });
 
-export const { search, sortBy, show, selectCategory } = ProductsSlice.actions;
+export const { search, sortBy } = ProductsSlice.actions;
 export default ProductsSlice.reducer;

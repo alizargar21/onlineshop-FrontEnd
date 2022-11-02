@@ -9,6 +9,8 @@ import Layout from "../../container/Layout/Layout";
 import signupUser from "../../services/signUpService.js";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
 import { useQuery } from "../../hooks/useQuery.js";
+import { useDispatch } from "react-redux";
+import { asyncSigninUser } from "../../features/AuthSlice/AuthSlice.js";
 const initialValues = {
   name: "",
   email: "",
@@ -35,12 +37,14 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
+const dispatch= useDispatch()
+
   const auth = useAuth();
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
 
   const [error, setError] = useState(null);
-  const setAuth = useAuthActions();
+
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {
@@ -60,16 +64,17 @@ const SignUp = () => {
     };
 
     try {
-      const { data } = await signupUser(userData);
-      console.log(data);
+      dispatch(asyncSigninUser(userData))
+      // const { data } = await signupUser(userData);
+      // console.log(data);
       toast.success("Sign Up Successful");
-      setAuth(data);
+      // setAuth(data);
       navigate(redirect === "/" ? "/" : `/${redirect}`);
       toast.info("You now login");
     } catch (error) {
-      console.log(error.response.data.message);
-      setError(error.response.data.message);
-      toast.error(error.response.data.message);
+      // console.log(error.response.data.message);
+      // setError(error.response.data.message);
+      toast.error(error);
     }
   };
 

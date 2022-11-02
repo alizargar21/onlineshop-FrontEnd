@@ -15,6 +15,7 @@ import SearchBar from "../../common/SearchBar";
 const SortBar = ({ categoryValue, error }) => {
   const [searchValue, setSearchValue] = useState("");
   const dispatch = useDispatch();
+  const location = useLocation()
   useEffect(() => {
     setSearchValue("");
   }, [categoryValue]);
@@ -28,7 +29,7 @@ const SortBar = ({ categoryValue, error }) => {
   const searchHandler = (e) => {
     const value = e.target.value;
     setSearchValue(value);
-    if (value === "") {
+    if (value === "" && location.pathname === "/products") {
       dispatch(getAsyncProductsByCategories(categoryValue));
     } else {
       dispatch(search(value));

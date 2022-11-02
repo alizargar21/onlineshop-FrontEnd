@@ -13,15 +13,7 @@ const ListContainer = ({ renderValue, loading }) => {
         {loading && <Spinner />}
         {renderValue && <Products data={renderValue}></Products>}
       </div>
-      {/* {renderValue && (
-        <SearchSort
-          searchValue={searchValue}
-          setSearchValue={setSearchValue}
-          renderValue={renderValue}
-          originalValue={originalValue}
-          setRenderValue={setRenderValue}
-        />
-      )} */}
+   
     </div>
   );
 };

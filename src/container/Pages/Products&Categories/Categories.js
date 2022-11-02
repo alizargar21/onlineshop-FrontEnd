@@ -37,7 +37,7 @@ const ProductsAndCategories = () => {
       <CategoriesComponent changeHandler={changeHandler}  />
       <section className="my-10">
         <SortBar setRenderValue={setRenderValue} error={error} categoryValue={categoryValue}/>
-        {/* <p>{error}</p> */}
+        
         {!loading && (
           <ListContainer
             renderValue={

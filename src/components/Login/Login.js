@@ -10,6 +10,8 @@ import { loginUser } from "../../services/loginService.js";
 import { useEffect, useState } from "react";
 import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
 import { useQuery } from "../../hooks/useQuery.js";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncLoginUser } from "../../features/AuthSlice/AuthSlice.js";
 
 const initialValues = {
   email: "",
@@ -23,19 +25,18 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const {isLogin} = useSelector(state =>state.auth)
+  const dispatch = useDispatch()
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
-  const [error, setError] = useState(null);
-  const auth = useAuth();
-  const setAuth = useAuthActions();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth) {
+    if (isLogin) {
       navigate(redirect);
     }
     console.log(redirect);
-  }, [auth, redirect]);
+  }, [isLogin, redirect]);
   const onSubmit = async (values) => {
     const { email, password } = values;
     const userData = {
@@ -44,15 +45,12 @@ const Login = () => {
     };
 
     try {
-      const { data } = await loginUser(userData);
-      console.log(data);
+    dispatch(asyncLoginUser(userData))
       toast.success("You Now Logged In", { theme: "dark" });
-      setAuth(data);
+      
       navigate(redirect === "/" ? "/" : `/${redirect}`);
     } catch (error) {
-      toast.error(error.response.data.message, { theme: "dark" });
-      setError(error.response.data.message);
-      setAuth(null);
+      toast.error(error.response.data.message, { theme: "colored" });    
     }
   };
 
