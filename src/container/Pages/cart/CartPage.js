@@ -11,7 +11,7 @@ import {
 } from "react-icons/ai";
 import CartSummery from "../../../components/CartSummery/CartSummery";
 import { toast } from "react-toastify";
-import BackArrowComponent from "../../../common/BackArrow/BackArrow";
+
 const CartPage = () => {
   const dispatch = useCartActions();
   const { cart, total } = useCart();
@@ -33,7 +33,7 @@ const CartPage = () => {
       <div className="w-[90%] min-h-screen bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 flex justify-around mx-auto  md:flex-col">
         {cart.length === 0 ? (
           <Link
-            to={`/categories`}
+            to={`/products`}
             className="flex justify-start items-center flex-col my-5"
           >
             <h2 className="text-2xl">Cart Is Empty</h2>

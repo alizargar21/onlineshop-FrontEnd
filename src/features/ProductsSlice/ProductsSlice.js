@@ -92,7 +92,7 @@ const ProductsSlice = createSlice({
                 return   Object.values(item.name + item.brand).join("").toLowerCase().includes(action.payload.toLowerCase())
                 })  
             return {
-          ...state , filteredProducts: filteredProducts  ,error : filteredProducts.length === 0 ? "NO MATCH" : null
+          ...state , filteredProducts: filteredProducts  ,error : filteredProducts.length === 0 ? "NO MATCH RESULT ..." : null
         }
       }
     }

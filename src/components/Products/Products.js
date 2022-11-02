@@ -54,7 +54,7 @@ const Products = ({ data }) => {
                 className="flex justify-center relative items-center "
                 to={`/products/${item._id}`}
               >
-                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs">
+                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs md:text-2xl">
                     {item.brand}
                   </div>
                 <img
@@ -145,7 +145,9 @@ const Products = ({ data }) => {
               <h3 className="text-xl font-sans font-semibold ml-1">
                 {item.name}
               </h3>
-
+              <div className="absolute left-2 top-1 text-gray-200  text-xs ">
+                    {item.brand}
+                  </div>
               <div className="flex  items-center w-[80%] justify-between">
                 <div>
                   <div>
