@@ -1,9 +1,8 @@
-import { useCart } from "../../Provider/CartProvider";
 import { AiOutlineClose } from "react-icons/ai";
-import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import { BsPersonCircle, BsCart3 } from "react-icons/bs";
-import { useAuth } from "../../Provider/AuthProvider";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { BsPersonCircle } from "react-icons/bs";
+
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme, useThemeActions } from "../../Provider/ThemeProvider";
@@ -21,16 +20,15 @@ export const navItems = [
 ];
 
 const Navigation = () => {
-  const { isLogin , user} = useSelector((state) => state.auth);
-  const navigate = useNavigate()
-  const query = useQuery()
-  const redirect = query.get("redirect") || "/"
-  const logoutHandler = ()=>{
-    dispatch(logout())
-    navigate(redirect)
-    setNav(false)
-
-  }
+  const { isLogin, user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate(redirect);
+    setNav(false);
+  };
   const dispatch = useDispatch();
   const [nav, setNav] = useState(false);
   const theme = useTheme();
@@ -39,10 +37,10 @@ const Navigation = () => {
     setTheme(theme === "dark" ? "light" : "dark");
     localStorage.setItem("Theme", theme);
   };
- 
-  console.log(isLogin);
-  const { cart } = useCart();
-  
+
+  const { cart } = useSelector((state) => state.cart);
+  console.log(cart);
+
   return (
     <nav className="flex justify-between items-center w-full h-[60px] ">
       <ul className="flex justify-center items-center text-gray-800 dark:text-white text-sm">
@@ -139,16 +137,18 @@ const Navigation = () => {
                       className="center cursor-pointer"
                       onClick={() => logoutHandler()}
                     >
-                      
                       <BiLogOut className="center ml-2 text-xl" />
                       Logout
                     </button>
                   </div>
                 ) : (
                   <NavLink to={"/login"}>
-                  <div className="center w-full  hover:text-green-600 duration-300">
-                   <button className="cursor-pointer center"> <BiLogIn className="text-xl" /> <span>Login</span></button>
-                  </div>
+                    <div className="center w-full  hover:text-green-600 duration-300">
+                      <button className="cursor-pointer center">
+                        {" "}
+                        <BiLogIn className="text-xl" /> <span>Login</span>
+                      </button>
+                    </div>
                   </NavLink>
                 )}
               </li>
@@ -197,7 +197,7 @@ const Navigation = () => {
           <li>
             <button
               type="button"
-              className=" text-xl dark:text-gray-200 text-gray-800 md:hidden"
+              className=" text-xl dark:text-gray-200 text-gray-800 md:hidden dark:hover:text-yellow-500 duration-200 hover:text-yellow-500"
               onClick={handleThemeSwitch}
             >
               {theme === "dark" || null ? <FiSun /> : <FiMoon />}

@@ -1,7 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-
 import http from "../../services/httpServices";
-
 import {
   sortByInexpensive,
   sortByExpensive,
@@ -13,6 +11,19 @@ export const getAsyncProducts = createAsyncThunk(
     try {
       const response = await http.get("/products");
       return response.data;
+    } catch (error) {
+      return rejectWithValue([], error);
+    }
+  }
+);
+export const getAsyncProductById = createAsyncThunk(
+  "products/getAsyncProductById",
+  async (payload, { rejectWithValue }) => {
+    console.log(payload)
+    try {
+      const {data} = await http.get(`/products/${payload}`);
+      console.log(data)
+      return data;
     } catch (error) {
       return rejectWithValue([], error);
     }
@@ -49,6 +60,7 @@ if(payload === "all"){
 const initialState = {
   products: [],
   filteredProducts : [],
+  product: {},
   error: null,
   loading: false,
 };
@@ -61,9 +73,7 @@ const ProductsSlice = createSlice({
     sortBy: (state, action) => {
       switch (action.payload) {
         case "all": {
-          
         return {...state , products: [...state.products]}
-          break;
         }
         case "expensive":
           if(state.filteredProducts.length === 0){
@@ -149,6 +159,21 @@ const ProductsSlice = createSlice({
     },
     [getAsyncOffersProducts.pending]: (state, action) => {
       return { ...state, products: [], loading: true, error: null };
+    },
+    [getAsyncProductById.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        product: action.payload,
+        filteredProducts : [],
+        loading: false,
+        error: null,
+      };
+    },
+    [getAsyncProductById.rejected]: (state, action) => {
+      return { ...state, product: {}, loading: false, error: action.error };
+    },
+    [getAsyncProductById.pending]: (state, action) => {
+      return { ...state, product: {}, loading: true, error: null };
     },
   },
 });

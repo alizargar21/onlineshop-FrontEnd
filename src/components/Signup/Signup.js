@@ -6,10 +6,8 @@ import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Layout from "../../container/Layout/Layout";
-import signupUser from "../../services/signUpService.js";
-import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
 import { useQuery } from "../../hooks/useQuery.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncSigninUser } from "../../features/AuthSlice/AuthSlice.js";
 const initialValues = {
   name: "",
@@ -37,9 +35,10 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
+  const {auth} = useSelector(state => state.auth)
 const dispatch= useDispatch()
 
-  const auth = useAuth();
+ 
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
 

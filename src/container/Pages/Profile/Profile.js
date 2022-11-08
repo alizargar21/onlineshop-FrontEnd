@@ -1,8 +1,6 @@
-import { useAuth , useAuthActions } from "../../../Provider/AuthProvider";
-import Layout from "../../Layout/Layout";
 
+import Layout from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-import { useCartActions } from "../../../Provider/CartProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../features/AuthSlice/AuthSlice";
 const ProfilePage = () => {

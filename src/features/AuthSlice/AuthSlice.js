@@ -42,6 +42,9 @@ const AuthSlice = createSlice({
         localStorage.removeItem(LOCAL_STORAGE_AUTH_KEY)
         return {...state , user : {} , isLogin : false}
     },
+    alreadyUser: (state , action) =>{
+        return {...state , user : action.payload , isLogin : true}
+    }
   },
   extraReducers : {
     [asyncSigninUser.fulfilled] : (state , action)=> {
@@ -64,5 +67,5 @@ const AuthSlice = createSlice({
     },
   }
 });
-export const { logout } = AuthSlice.actions;
+export const { logout , alreadyUser} = AuthSlice.actions;
 export default AuthSlice.reducer;

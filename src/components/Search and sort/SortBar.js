@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import { useTransition } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
 import { BsSortUp } from "react-icons/bs";
-import Select from "react-select";
-import SelectBrand from "../../common/SelectComponent/SelectBrand";
+
 import {
   getAsyncProductsByCategories,
   search,

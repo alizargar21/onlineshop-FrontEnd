@@ -1,8 +1,6 @@
-import { BsTrash, BsHeartFill, BsHeart } from "react-icons/bs";
-import { useCartActions, useCart } from "../../../Provider/CartProvider";
+import { BsTrash } from "react-icons/bs";
 import Layout from "../../Layout/Layout";
-import { useEffect, useRef } from "react";
-import { useAuth } from "../../../Provider/AuthProvider";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   AiFillPlusCircle,
@@ -11,25 +9,24 @@ import {
 } from "react-icons/ai";
 import CartSummery from "../../../components/CartSummery/CartSummery";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart , decrementAtCart} from "../../../features/CartSlice/CartSlice";
 
 const CartPage = () => {
-  const dispatch = useCartActions();
-  const { cart, total } = useCart();
-  const auth = useAuth();
-
+  const { cart, total } = useSelector((state) => state.cart);
+  const { auth } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
   useEffect(() => {
     cart.length === 0 && toast.info("Cart Is Empty");
-    console.log(cart);
   }, [cart]);
   const incrementHandler = (item) => {
-    dispatch({ type: "ADD_TO_CART", payload: item });
+    dispatch(addToCart(item));
   };
   const decrementHandler = (item) => {
-    dispatch({ type: "DECREMENT_AT_CART", payload: item });
+    dispatch(decrementAtCart(item));
   };
   return (
     <Layout>
-      
       <div className="w-[90%] min-h-screen bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 flex justify-around mx-auto  md:flex-col">
         {cart.length === 0 ? (
           <Link
@@ -50,19 +47,19 @@ const CartPage = () => {
                 key={index}
               >
                 <article className="flex w-full justify-between items-center sm:flex-col sm:min-h-auto  sm:justify-around">
-                  <Link to={`/product/${item.id}`} className="center">
+                  <Link to={`/products/${item._id}`} className="center">
                     <div className="w-[100px] xl:w-[110px] h-[80%] mr-5 center md:ml-3 md:w-[150px] sm:w-[80%] ">
                       <img src={item.image} alt="" />
                     </div>
                   </Link>
                   <div className="w-[50%] center flex-col mx-3 sm:w-full">
-                    <h3 className="text-[18px] font-thin text-center">
+                    <h3 className="text-[18px] font-thin text-center ">
                       {item.name}
                     </h3>
                     <div className="w-full flex justify-around items-center">
                       <div>
                         {item.supports.map((s, index) => (
-                          <p
+                          <div
                             className="text-sm center justify-start md:text-xs"
                             key={index}
                           >
@@ -70,15 +67,18 @@ const CartPage = () => {
                               <AiFillCheckCircle className="text-green-500 " />
                             </span>
                             <p className="ml-1">{s}</p>
-                          </p>
+                          </div>
                         ))}
-                        <p className="flex justify-start items-center ml-3 md:ml-1">
-                          Color :
-                          <p
+                        <div className="flex justify-center items-center ml-3 md:ml-1 mt-2">
+                      
+                          <span className="text-gray-500 font-Oswald font-thin dark:text-gray-200 ">{Object.keys(item.selectedColor)}</span>
+                          <span
                             className="w-5 h-5 border border-black mx-2 center rounded-full"
-                            style={{ backgroundColor: Object.values(item.selectedColor) }}
-                          ></p>
-                        </p>
+                            style={{
+                              backgroundColor: Object.values(item.selectedColor),
+                            }}
+                          ></span>
+                        </div>
                       </div>
                     </div>
                   </div>
