@@ -81,14 +81,14 @@ const ProductsSlice = createSlice({
           } else {
             state = {...state , filteredProducts: state.filteredProducts.sort(sortByExpensive)}
           }
-          break;
+
         case "inexpensive":
           if(state.filteredProducts.length === 0){
             state.products = state.products.sort(sortByInexpensive);
           } else {
             state.products = state.filteredProducts.sort(sortByInexpensive)
           }
-          break;
+          
         case "popularity":
           if(state.filteredProducts.length === 0){
             state.products = state.products.sort(sortByPopularity);

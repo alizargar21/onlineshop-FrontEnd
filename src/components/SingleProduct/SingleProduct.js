@@ -1,20 +1,16 @@
-import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import Layout from "../../container/Layout/Layout";
-
 import { BsHeartFill, BsStarFill, BsHeart, BsShare } from "react-icons/bs";
 import { toast } from "react-toastify";
 import { addToFavoriteList } from "../../features/FavoriteSlice/FavoriteSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/CartSlice/CartSlice";
-import Spinner from "../../common/Spinner/Spinner";
 const SingleProduct = ({ selectedProduct }) => {
   const [chooseColor, setChooseColor] = useState(false);
   const [cartItem , setCartItem ] = useState({})
   const { favoriteList } = useSelector((state) => state.favorite);
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(selectedProduct);
+    console.log(selectedProduct.selectedColor);
   }, []);
   const handleAddToCart = () => {
     console.log("worked")
@@ -72,7 +68,7 @@ const SingleProduct = ({ selectedProduct }) => {
             </div>
             <div className="flex  w-full  sm:flex flex-col">
               <div className="w-full h-[90px] center">
-                <p> Colors :</p>
+                <p> Colors </p>
                 {selectedProduct &&
                   selectedProduct.colors.map((item, index) => (
                     <div
@@ -117,8 +113,8 @@ const SingleProduct = ({ selectedProduct }) => {
               <div className=" center  sm:mx-auto w-full  ">
                 <button
                   className="btn-primary w-full md:w-[70%] sm:w-full"
-                  // disabled={selectedProduct.selectedColor === undefined}
-                  onClick={ handleAddToCart}
+                  disabled={chooseColor === false}
+                  onClick={handleAddToCart}
                 >
                   {chooseColor ? "Add To Cart" : "Select Color"}
                 </button>

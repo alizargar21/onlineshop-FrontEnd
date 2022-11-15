@@ -22,7 +22,7 @@ store.subscribe(()=>{
 })
 export  const getFavoriteDataFromLocalStorage = ()=> {
   try {
-   const persistFavoriteList = localStorage.getItem(LOCAL_STORAGE_FAVORITE_KEY)
+   const persistFavoriteList = localStorage.getItem(LOCAL_STORAGE_FAVORITE_KEY) || null
    if(persistFavoriteList){
     return JSON.parse(persistFavoriteList)
    }
@@ -32,8 +32,9 @@ export  const getFavoriteDataFromLocalStorage = ()=> {
 }
 export  const getAuthenticationDataFromLocalStorage = ()=> {
   try {
-   const persistAuthentication = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY)
-   if(persistAuthentication){
+   const persistAuthentication = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY) 
+   console.log(persistAuthentication)
+   if(persistAuthentication !== undefined){
     return JSON.parse(persistAuthentication)
    }
   } catch (error) {

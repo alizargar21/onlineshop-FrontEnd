@@ -86,7 +86,7 @@ const dispatch= useDispatch()
     enableReinitialize: true,
   });
   return (
-    <Layout>
+
       <section className=" center flex-col ">
         <form
           className="w-[30%] my-10 md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  "
@@ -115,7 +115,7 @@ const dispatch= useDispatch()
             <button
               className={
                 !formik.isValid
-                  ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-2"
+                  ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-5"
                   : "w-full bg-green-500 text-white rounded-md  text-sm py-1 my-2    "
               }
               disabled={!formik.isValid}
@@ -123,15 +123,15 @@ const dispatch= useDispatch()
             >
               SIGN UP
             </button>
-            <div className="w-full center text-[14px] my-3">
+            {/* <div className="w-full center text-[14px] my-3">
               <Link to="/login">
                 <p className="dark:text-gray-300 text-blue-500 text-[18px] lg:text-[12px]">Already have an account ?</p>
               </Link>
-            </div>
+            </div> */}
           </div>
         </form>
       </section>
-    </Layout>
+   
   );
 };
 

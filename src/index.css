@@ -119,5 +119,25 @@
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.step-item {
+  @apply relative center flex-col w-36 md:w-20 
+}
 
+.step-item:not(:first-child):before {
+  @apply content-[""] bg-rose-600 absolute w-full h-[3px] right-2/4  top-1/4 
+}
 
+.step { 
+  @apply w-8 h-8 md:w-5 md:h-5 center z-10 relative bg-rose-600 rounded-full text-gray-100 text-lg md:text-sm 
+}
+.active .step{
+  @apply bg-green-500  
+}
+
+.completed .step {
+  @apply bg-green-500 shadow-green-500/50 shadow-md
+}
+
+.completed:not(:first-child):before , .active:not(:first-child):before {
+  @apply bg-green-500 
+}

@@ -14,7 +14,7 @@ import { addToCart , decrementAtCart} from "../../../features/CartSlice/CartSlic
 
 const CartPage = () => {
   const { cart, total } = useSelector((state) => state.cart);
-  const { auth } = useSelector(state => state.auth)
+  const { auth , isLogin } = useSelector(state => state.auth)
   const dispatch = useDispatch();
   useEffect(() => {
     cart.length === 0 && toast.info("Cart Is Empty");
@@ -73,7 +73,7 @@ const CartPage = () => {
                       
                           <span className="text-gray-500 font-Oswald font-thin dark:text-gray-200 ">{Object.keys(item.selectedColor)}</span>
                           <span
-                            className="w-5 h-5 border border-black mx-2 center rounded-full"
+                            className="w-5 h-5 border border-black mx-2 dark:border-gray-200 center rounded-full"
                             style={{
                               backgroundColor: Object.values(item.selectedColor),
                             }}
@@ -111,7 +111,7 @@ const CartPage = () => {
         )}
 
         {cart.length !== 0 && (
-          <CartSummery total={total} cart={cart} auth={auth} />
+          <CartSummery total={total} cart={cart} auth={auth} isLogin={isLogin}/>
         )}
       </div>
     </Layout>

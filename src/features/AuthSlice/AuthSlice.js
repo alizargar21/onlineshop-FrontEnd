@@ -40,10 +40,10 @@ const AuthSlice = createSlice({
   reducers: {
     logout: (state, action) => {
         localStorage.removeItem(LOCAL_STORAGE_AUTH_KEY)
-        return {...state , user : {} , isLogin : false}
+        return {...state , user : null , isLogin : false}
     },
     alreadyUser: (state , action) =>{
-        return {...state , user : action.payload , isLogin : true}
+            return {...state , user : action.payload , isLogin: true}
     }
   },
   extraReducers : {

@@ -23,10 +23,14 @@ import { getFavoriteDataFromLocalStorage } from "./features/store";
 import { setInitialValue } from "./features/FavoriteSlice/FavoriteSlice";
 import { alreadyUser } from "./features/AuthSlice/AuthSlice";
 import ProductDetails from "./container/Pages/ProductDetails/ProductDetailsPage";
+import Authentication from "./container/Pages/Auth/Authentication";
 const favData = getFavoriteDataFromLocalStorage();
 const authData = getAuthenticationDataFromLocalStorage();
-if (favData || authData) {
+console.log(authData);
+if (favData) {
   store.dispatch(setInitialValue(favData));
+}
+if (authData !== null) {
   store.dispatch(alreadyUser(authData));
 }
 function App() {
@@ -44,8 +48,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/profile" element={<ProfilePage />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
+         
+            <Route path="/authentication/*" element={<Authentication />} >
+              <Route path="login" element={<Login />}/>
+              <Route path="signup" element={<SignUp />}/>
+            </Route>
             <Route path="/cart" element={<CartPage />} />
             <Route path="/checkout" element={<CheckOut />} />
             <Route path="*" element={<NotFoundPage />} />

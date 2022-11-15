@@ -182,7 +182,7 @@ const Navigation = () => {
       </ul>
       <div className="sm:w-[40%] lg:mr-2 md:w-[20%] w-[15%]">
         <ul className=" w-[150px] h-full flex justify-around items-center text-sm">
-          <NavLink to={isLogin ? "/profile" : "/signup"}>
+          <NavLink to={isLogin ? "/profile" : "/authentication/login"}>
             <li>
               {isLogin ? (
                 <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5" />

@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-const CartSummery = ({ cart, total, auth }) => {
-  const originalPrice = cart.length
-    ? cart.reduce((acc, cur) => acc + cur.quantity * cur.price, 0)
-    : 0;
-
-  const totalCartItems = cart.length
-    ? cart.reduce((acc, cur) => acc + cur.quantity, 0)
-    : 0;
+import { calculateTotalItem, calculateTotalAmountPayable , calculateTotalDiscount , calculateTotalOriginalPrice} from "../../utils/Calculate";
+const CartSummery = ({ cart, total, isLogin }) => {
+  const totalCartItems = calculateTotalItem(cart)
+  const totalAmountPayable = calculateTotalAmountPayable(cart)
+  const totalPrice = calculateTotalOriginalPrice(cart)
+  const totalDiscount = calculateTotalDiscount(cart)
   return (
     <div className=" min-w-[30%] flex flex-col items-center  my-7 md:w-[300px] md:mx-auto sm:w-[230px]">
       <h2>Cart Summery</h2>
@@ -19,29 +17,29 @@ const CartSummery = ({ cart, total, auth }) => {
                 Item
                 {cart.length !== 0 && ` x ${totalCartItems}`}
               </p>
-              <p>{`$ ${originalPrice}`}</p>
+              <p>$ {totalPrice.toFixed(0)}</p>
             </div>
             <div className="flex justify-between text-green-600 items-center my-3">
               <p>Total discount</p>
-              <p>$ {originalPrice - total}</p>
+              <p>$ {totalDiscount.toFixed(1)}</p>
             </div>
             <div className="flex justify-between items-center border-t my-10">
               <p>amount payable</p>
-              <p className="text-2xl">{`$ ${total}`}</p>
+              <p className="text-2xl">{`$ ${totalAmountPayable.toFixed(1)}`}</p>
             </div>
           </div>
         </div>
-          <div className="">
-            {cart.length ? (
-              <Link to={auth ? "/checkout" : "/login?redirect=checkout"}>
-                <button className="btn-primary w-full">Go To CheckOut</button>
-              </Link>
-            ) : (
-              <Link to="/categories">
-                <button className="btn-primary w-full">Go To Shopping</button>
-              </Link>
-            )}
-          </div>
+        <div className="">
+          {cart.length ? (
+            <Link to={isLogin ? "/checkout" : "/login?redirect=checkout"}>
+              <button className="btn-primary w-full">Go To CheckOut</button>
+            </Link>
+          ) : (
+            <Link to="/categories">
+              <button className="btn-primary w-full">Go To Shopping</button>
+            </Link>
+          )}
+        </div>
       </aside>
     </div>
   );

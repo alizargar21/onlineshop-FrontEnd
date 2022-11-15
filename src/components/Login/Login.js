@@ -46,7 +46,8 @@ const Login = () => {
     dispatch(asyncLoginUser(userData))
       toast.success("You Now Logged In", { theme: "dark" });
       
-      navigate(redirect === "/" ? "/" : `/${redirect}`);
+      // navigate(redirect === "/" ? "/" : `/${redirect}`);
+      navigate(`/${redirect}`);
     } catch (error) {
       toast.error(error.response.data.message, { theme: "colored" });    
     }
@@ -60,7 +61,7 @@ const Login = () => {
     enableReinitialize: false,
   });
   return (
-    <Layout>
+
       <section className="center w-full my-10">
         <form
           onSubmit={formik.handleSubmit}
@@ -86,7 +87,7 @@ const Login = () => {
               </span>
             </div>
           </div>
-          <div className="w-[80%] flex flex-col justify-center items-start mt-5">
+          <div className="w-[80%] flex flex-col justify-center items-start my-5">
             <Input formik={formik} name="email" label="Email" type="email" />
 
             <Input formik={formik} name="password" label="Password" />
@@ -100,16 +101,16 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="my-8 text-blue-600 dark:text-gray-300">
+          {/* <div className="my-8 text-blue-600 dark:text-gray-300">
             <Link to={`/signup?redirect=${redirect}`}>
               <p >Not Sign Up yet ? <span className="text-xs decoration-stone-400 decoration-dotted ">
               Click here
                 </span> </p>
             </Link>
-          </div>
+          </div> */}
         </form>
       </section>
-    </Layout>
+
   );
 };
 export default Login;
