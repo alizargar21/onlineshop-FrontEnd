@@ -5,7 +5,7 @@ import Select from "react-select";
 
 const ShippingInfo = ({ time, days, cart, shippingInfoHandler }) => {
   const [date, setDate] = useState(0);
-  const [timeShipping, setTimeShipping] = useState({});
+  const [timeShipping, setTimeShipping] = useState(0);
   const setDateHandler = (selectOption) => {
     setDate(selectOption);
   };
