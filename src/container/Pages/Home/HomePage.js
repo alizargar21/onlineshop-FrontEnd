@@ -29,7 +29,7 @@ const HomePage = () => {
       {loading ? <Spinner /> : <OfferBox products={products} loading={loading}/>}
       <Possibilities />
    
-   <OfferBox  products={products} /> 
+  
 
       {/* <BannerComponent/> */}
       {/* <BannerComponent/> */}
