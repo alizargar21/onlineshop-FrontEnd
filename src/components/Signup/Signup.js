@@ -6,9 +6,9 @@ import * as Yup from "yup";
 import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Layout from "../../container/Layout/Layout";
-import signupUser from "../../services/signUpService.js";
-import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
 import { useQuery } from "../../hooks/useQuery.js";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncSigninUser } from "../../features/AuthSlice/AuthSlice.js";
 const initialValues = {
   name: "",
   email: "",
@@ -35,12 +35,15 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
-  const auth = useAuth();
+  const {auth} = useSelector(state => state.auth)
+const dispatch= useDispatch()
+
+ 
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
 
   const [error, setError] = useState(null);
-  const setAuth = useAuthActions();
+
   const navigate = useNavigate();
   useEffect(() => {
     if (auth) {
@@ -60,16 +63,17 @@ const SignUp = () => {
     };
 
     try {
-      const { data } = await signupUser(userData);
-      console.log(data);
+      dispatch(asyncSigninUser(userData))
+      // const { data } = await signupUser(userData);
+      // console.log(data);
       toast.success("Sign Up Successful");
-      setAuth(data);
+      // setAuth(data);
       navigate(redirect === "/" ? "/" : `/${redirect}`);
       toast.info("You now login");
     } catch (error) {
-      console.log(error.response.data.message);
-      setError(error.response.data.message);
-      toast.error(error.response.data.message);
+      // console.log(error.response.data.message);
+      // setError(error.response.data.message);
+      toast.error(error);
     }
   };
 
@@ -82,7 +86,7 @@ const SignUp = () => {
     enableReinitialize: true,
   });
   return (
-    <Layout>
+
       <section className=" center flex-col ">
         <form
           className="w-[30%] my-10 md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  "
@@ -111,7 +115,7 @@ const SignUp = () => {
             <button
               className={
                 !formik.isValid
-                  ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-2"
+                  ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-5"
                   : "w-full bg-green-500 text-white rounded-md  text-sm py-1 my-2    "
               }
               disabled={!formik.isValid}
@@ -119,15 +123,15 @@ const SignUp = () => {
             >
               SIGN UP
             </button>
-            <div className="w-full center text-[14px] my-3">
+            {/* <div className="w-full center text-[14px] my-3">
               <Link to="/login">
                 <p className="dark:text-gray-300 text-blue-500 text-[18px] lg:text-[12px]">Already have an account ?</p>
               </Link>
-            </div>
+            </div> */}
           </div>
         </form>
       </section>
-    </Layout>
+   
   );
 };
 

@@ -6,10 +6,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdWavingHand } from "react-icons/md";
 import Layout from "../../container/Layout/Layout";
-import { loginUser } from "../../services/loginService.js";
-import { useEffect, useState } from "react";
-import { useAuth, useAuthActions } from "../../Provider/AuthProvider.js";
+import { useEffect } from "react";
 import { useQuery } from "../../hooks/useQuery.js";
+import { useDispatch, useSelector } from "react-redux";
+import { asyncLoginUser } from "../../features/AuthSlice/AuthSlice.js";
 
 const initialValues = {
   email: "",
@@ -23,19 +23,18 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
+  const {isLogin} = useSelector(state =>state.auth)
+  const dispatch = useDispatch()
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
-  const [error, setError] = useState(null);
-  const auth = useAuth();
-  const setAuth = useAuthActions();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (auth) {
+    if (isLogin) {
       navigate(redirect);
     }
     console.log(redirect);
-  }, [auth, redirect]);
+  }, [isLogin, redirect]);
   const onSubmit = async (values) => {
     const { email, password } = values;
     const userData = {
@@ -44,15 +43,13 @@ const Login = () => {
     };
 
     try {
-      const { data } = await loginUser(userData);
-      console.log(data);
+    dispatch(asyncLoginUser(userData))
       toast.success("You Now Logged In", { theme: "dark" });
-      setAuth(data);
-      navigate(redirect === "/" ? "/" : `/${redirect}`);
+      
+      // navigate(redirect === "/" ? "/" : `/${redirect}`);
+      navigate(`/${redirect}`);
     } catch (error) {
-      toast.error(error.response.data.message, { theme: "dark" });
-      setError(error.response.data.message);
-      setAuth(null);
+      toast.error(error.response.data.message, { theme: "colored" });    
     }
   };
 
@@ -64,7 +61,7 @@ const Login = () => {
     enableReinitialize: false,
   });
   return (
-    <Layout>
+
       <section className="center w-full my-10">
         <form
           onSubmit={formik.handleSubmit}
@@ -90,7 +87,7 @@ const Login = () => {
               </span>
             </div>
           </div>
-          <div className="w-[80%] flex flex-col justify-center items-start mt-5">
+          <div className="w-[80%] flex flex-col justify-center items-start my-5">
             <Input formik={formik} name="email" label="Email" type="email" />
 
             <Input formik={formik} name="password" label="Password" />
@@ -104,16 +101,16 @@ const Login = () => {
             </button>
           </div>
 
-          <div className="my-8 text-blue-600 dark:text-gray-300">
+          {/* <div className="my-8 text-blue-600 dark:text-gray-300">
             <Link to={`/signup?redirect=${redirect}`}>
               <p >Not Sign Up yet ? <span className="text-xs decoration-stone-400 decoration-dotted ">
               Click here
                 </span> </p>
             </Link>
-          </div>
+          </div> */}
         </form>
       </section>
-    </Layout>
+
   );
 };
 export default Login;

@@ -6,6 +6,7 @@ import ListContainer from "../../../components/UI/ListContainer/ListContainer";
 import { useEffect, useState } from "react";
 import CategoriesComponent from "../../../components/CategoriesComponent/CategoriesComponent";
 import {
+  getAsyncProductById,
   getAsyncProducts,
   getAsyncProductsByCategories,
 } from "../../../features/ProductsSlice/ProductsSlice";
@@ -20,24 +21,20 @@ const ProductsAndCategories = () => {
     } else {
       dispatch(getAsyncProductsByCategories(e.target.value));
     }
- 
   };
-  const [renderValue, setRenderValue] = useState([]);
   const { products, loading, error, filteredProducts } = useSelector(
     (state) => state.products
   );
 
   useEffect(() => {
     dispatch(getAsyncProducts());
-
+    
   }, []);
-
   return (
     <Layout>
       <CategoriesComponent changeHandler={changeHandler}  />
       <section className="my-10">
-        <SortBar setRenderValue={setRenderValue} error={error} categoryValue={categoryValue}/>
-        {/* <p>{error}</p> */}
+        <SortBar error={error} categoryValue={categoryValue}/>
         {!loading && (
           <ListContainer
             renderValue={

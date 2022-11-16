@@ -1,16 +1,16 @@
-import { useAuth , useAuthActions } from "../../../Provider/AuthProvider";
-import Layout from "../../Layout/Layout";
 
+import Layout from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-import { useCartActions } from "../../../Provider/CartProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../../features/AuthSlice/AuthSlice";
 const ProfilePage = () => {
  const navigate =  useNavigate()
- const setAuth = useAuthActions()
+ const dispatch = useDispatch() 
+ const {isLogin  , user} = useSelector(state => state.auth)
   const logoutHandle = ()=> {
-    setAuth(null)
+    dispatch(logout())
     navigate("/")
   }
-  const auth = useAuth();
   
   return (
     <Layout>
@@ -20,17 +20,17 @@ const ProfilePage = () => {
           <div className=" p-5 flex flex-col justify-between items-center border text-gray-800 dark:text-gray-300">
             <div className="flex justify-between w-full">
               <p>user name : </p>
-              <p>{auth.name}</p>
+              <p>{user.name}</p>
             </div>
             <div className="flex justify-between w-full">
               <p>MyEmail : </p>
-              <p>{auth.email}</p>
+              <p>{user.email}</p>
             </div>
             <div className="flex justify-between w-full">
               <p>TEL: </p>
-              <p>{auth.phoneNumber}</p>
+              <p>{user.phoneNumber}</p>
             </div>
-            <button className="btn-primary" onClick={()=>logoutHandle()}>Edit Profile</button>
+            <button className="btn-primary" onClick={()=>logoutHandle()}>Logout</button>
           </div>
         </section>
       </div>

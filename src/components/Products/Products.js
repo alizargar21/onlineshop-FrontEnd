@@ -1,16 +1,13 @@
 import { BsStarFill, BsHeartFill, BsHeart, BsShare } from "react-icons/bs";
 import { useWindowDimensions } from "../../hooks/useWinowDimensions";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  useFavorite,
-  useFavoriteActions,
-} from "../../Provider/FavoriteProvider";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavoriteList } from "../../features/FavoriteSlice/FavoriteSlice";
 const Products = ({ data }) => {
-  
+  const {favoriteList} = useSelector(state => state.favorite)
+  const dispatch = useDispatch()
   const navigate = useNavigate();
-  const favoriteItems = useFavorite();
-  const { addToFavorite } = useFavoriteActions();
   const screen = useWindowDimensions();
   useEffect(()=>{
   
@@ -40,12 +37,12 @@ const Products = ({ data }) => {
                     <BsShare className="mx-2" />
                   </button>
                   <button className="text-rose-500 text-[22px]">
-                    {favoriteItems.findIndex(
+                    {favoriteList.findIndex(
                       (favItem) => favItem._id === item._id
                     ) > -1 || null ? (
-                      <BsHeartFill onClick={() => addToFavorite(item)} />
+                      <BsHeartFill onClick={() => dispatch(addToFavoriteList(item))} />
                     ) : (
-                      <BsHeart onClick={() => addToFavorite(item)} />
+                      <BsHeart onClick={() => dispatch(addToFavoriteList(item))} />
                     )}
                   </button>
                 </div>
@@ -54,7 +51,7 @@ const Products = ({ data }) => {
                 className="flex justify-center relative items-center "
                 to={`/products/${item._id}`}
               >
-                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs">
+                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs md:text-2xl">
                     {item.brand}
                   </div>
                 <img
@@ -145,7 +142,9 @@ const Products = ({ data }) => {
               <h3 className="text-xl font-sans font-semibold ml-1">
                 {item.name}
               </h3>
-
+              <div className="absolute left-2 top-1 text-gray-200  text-xs ">
+                    {item.brand}
+                  </div>
               <div className="flex  items-center w-[80%] justify-between">
                 <div>
                   <div>
@@ -165,12 +164,12 @@ const Products = ({ data }) => {
                 </div>
                 <div className="flex items-end h-full w-[40%]">
                   <button className=" mx-2 text-rose-500 text-2xl">
-                    {favoriteItems.findIndex(
+                    {favoriteList.findIndex(
                       (favItem) => favItem._id === item._id
                     ) > -1 || null ? (
-                      <BsHeartFill onClick={() => addToFavorite(item)} />
+                      <BsHeartFill onClick={() => dispatch(addToFavoriteList(item))} />
                     ) : (
-                      <BsHeart onClick={() => addToFavorite(item)} />
+                      <BsHeart onClick={() => dispatch(addToFavoriteList(item))} />
                     )}
                   </button>
 
