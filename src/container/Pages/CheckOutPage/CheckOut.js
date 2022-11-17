@@ -39,10 +39,12 @@ const CheckOut = () => {
   const checkAuthentication = () => {
     steps[0].isAuth = isLogin;
     steps[0].userInfo = user;
+    setCurrentStep(2);
   };
   const cartCheckHandler = () => {
     setCurrentStep(3);
     steps[1].isCartChecked = true;
+    steps[1].cartInfo = cart;
     console.log(steps);
   };
   const shippingInfoHandler = (e) => {
@@ -54,7 +56,6 @@ const CheckOut = () => {
   useEffect(() => {
     if (isLogin) {
       checkAuthentication();
-      setCurrentStep(2);
     }
     if (steps[1].isCartChecked) {
       setCurrentStep(3);
@@ -72,7 +73,7 @@ const CheckOut = () => {
           setComplete={setComplete}
           setCurrentStep={setCurrentStep}
         />
-        {!isLogin && <Login />}
+        {!isLogin && <Login checkAuthentication={checkAuthentication}/>}
         {isLogin && currentStep === 2 && cart.length === 0 ? (
           <div className="flex flex-col items-center w-[30%] h-10 mx-auto my-8 text-xl italic text-gray-600 md:text-[12px] min-h-[400px] dark:text-gray-300">
             <Link to={"/products"}>

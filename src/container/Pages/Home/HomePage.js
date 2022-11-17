@@ -8,14 +8,10 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAsyncProducts } from "../../../features/ProductsSlice/ProductsSlice";
 import Spinner from "../../../common/Spinner/Spinner";
-import store from "../../../features/store";
-import { hydrate } from "react-dom";
-const LOCAL_STORAGE_FAVORITE_KEY = "Favorite_List";
 
 const HomePage = () => {
  const {products ,loading , error} = useSelector(state => state.products)
  const dispatch = useDispatch()
-
  
  useEffect(()=>{
   dispatch(getAsyncProducts())
@@ -28,11 +24,6 @@ const HomePage = () => {
       <Background />
       {loading ? <Spinner /> : <OfferBox products={products} loading={loading}/>}
       <Possibilities />
-   
-  
-
-      {/* <BannerComponent/> */}
-      {/* <BannerComponent/> */}
     </Layout>
   );
 };

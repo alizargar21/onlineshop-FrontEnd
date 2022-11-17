@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { MdWavingHand } from "react-icons/md";
-import Layout from "../../container/Layout/Layout";
 import { useEffect } from "react";
 import { useQuery } from "../../hooks/useQuery.js";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,7 +21,7 @@ const validationSchema = Yup.object({
   password: Yup.string().required("Password is Required"),
 });
 
-const Login = () => {
+const Login = ({checkAuthentication}) => {
   const {isLogin} = useSelector(state =>state.auth)
   const dispatch = useDispatch()
   const query = useQuery();
@@ -31,9 +30,10 @@ const Login = () => {
 
   useEffect(() => {
     if (isLogin) {
+      checkAuthentication()
       navigate(redirect);
     }
-    console.log(redirect);
+
   }, [isLogin, redirect]);
   const onSubmit = async (values) => {
     const { email, password } = values;

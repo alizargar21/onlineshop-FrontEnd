@@ -53,9 +53,9 @@ const OfferBox = ({ products, loading }) => {
 
   return (
     <section>
-      <div className="bg-black/30 backdrop:blur-md w-[90%] h-[230px] mx-auto my-5 rounded-lg center sm:w-full sm:rounded-none">
-        <div className="relative w-[20%] md:w-[40%] h-[180px]  center mx-2 sm:w-[35%]">
-          <h2 className="absolute top-[20%] font-bold text-rose-600 text-2xl left-[20%]">
+      <div className="bg-black/30 backdrop:blur-md w-[95%] h-[230px] mx-auto my-5 rounded-lg center sm:w-full sm:rounded-none">
+        <div className="relative w-[20%] md:w-[40%] h-[180px]  center mx-2 sm:w-[35%] flex-col ">
+          <h2 className="absolute top-[20%] font-bold text-rose-600 text-2xl left-auto text-center">
             Special Offers
           </h2>
           <img
@@ -63,9 +63,9 @@ const OfferBox = ({ products, loading }) => {
             alt=""
             className="w-full rounded-lg"
           />
-           <button className="btn-primary" onClick={()=>navigate("/offers")}> See All</button>
+           <button className="btn-primary absolute bottom-2" onClick={()=>navigate("/offers")}> See All</button>
         </div>
-        <div className="w-full mx-2 bg-rose-500 h-[90%] rounded-lg  overflow-hidden center sm:w-[60%]">
+        <div className="w-[80%] mx-2 bg-rose-500 h-[90%] rounded-lg  overflow-hidden center sm:w-[60%]">
           {loading && <Spinner />}
           <Carousel responsive={responsive} items={items} />
         </div>

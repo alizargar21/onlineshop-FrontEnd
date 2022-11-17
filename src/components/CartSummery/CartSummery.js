@@ -31,7 +31,7 @@ const CartSummery = ({ cart, total, isLogin }) => {
         </div>
         <div className="">
           {cart.length ? (
-            <Link to={isLogin ? "/checkout" : "/login?redirect=checkout"}>
+            <Link to={"/checkout"}>
               <button className="btn-primary w-full">Go To CheckOut</button>
             </Link>
           ) : (
