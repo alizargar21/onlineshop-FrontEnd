@@ -21,7 +21,7 @@ const validationSchema = Yup.object({
   password: Yup.string().required("Password is Required"),
 });
 
-const Login = ({checkAuthentication}) => {
+const Login = () => {
   const {isLogin} = useSelector(state =>state.auth)
   const dispatch = useDispatch()
   const query = useQuery();
@@ -30,7 +30,6 @@ const Login = ({checkAuthentication}) => {
 
   useEffect(() => {
     if (isLogin) {
-      checkAuthentication()
       navigate(redirect);
     }
 

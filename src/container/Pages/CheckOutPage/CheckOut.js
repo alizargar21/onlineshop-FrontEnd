@@ -62,7 +62,7 @@ const CheckOut = () => {
     }
     console.log(steps);
     console.log(currentStep);
-  }, []);
+  }, [isLogin]);
   return (
     <Layout>
       <section className="min-h-[300px]">

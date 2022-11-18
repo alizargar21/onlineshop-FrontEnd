@@ -1,24 +1,23 @@
 import { AiOutlineClose } from "react-icons/ai";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { BsPersonCircle } from "react-icons/bs";
-
+import { BsPersonCircle, BsCartCheck } from "react-icons/bs";
+import { logout } from "../../features/AuthSlice/AuthSlice";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { useTheme, useThemeActions } from "../../Provider/ThemeProvider";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../features/AuthSlice/AuthSlice";
 import { useQuery } from "../../hooks/useQuery";
+import PopOver from "../Popover/PopOver";
 export const navItems = [
   { to: "/", name: "Home" },
   { to: "/products", name: "Products" },
-  { to: "/cart", name: "Cart" },
   { to: "/myFavorite", name: "Favorite List" },
   { to: "/blogs", name: "Blogs" },
   { to: "", name: "" },
 ];
-
+const popupProfileStyles = "lg:w-[30%]  sm:w-[60%] md:w-[50%] xl:w-[25%] absolute top-12 2xl:right-28 lg:right-4 dark:bg-gray-800 rounded-lg p-4  bg-gray-300 sm:text-[12px] font-bold font-Roboto"
 const Navigation = () => {
   const { isLogin, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
@@ -55,8 +54,8 @@ const Navigation = () => {
         </div>
         <div onClick={() => setNav(!nav)}>
           <GiHamburgerMenu
-            size={30}
-            className="dark:text-white text-gray-800 hidden sm:flex md:flex z-30"
+
+            className="dark:text-white text-gray-800 hidden sm:flex md:flex z-30 md:text-lg"
           />
         </div>
         {navItems.map((item, index) => (
@@ -71,11 +70,6 @@ const Navigation = () => {
               }
             >
               {item.name}
-              {item.name === "Cart" && cart.length !== 0 && (
-                <span className="w-[20px] h-[20px]  text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1 -right-5">
-                  {cart.length}
-                </span>
-              )}
             </NavLink>
           </li>
         ))}
@@ -121,11 +115,6 @@ const Navigation = () => {
                     }
                   >
                     {item.name}
-                    {item.name === "Cart" && cart.length !== 0 && (
-                      <span className="w-[20px] h-[20px]  text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1 -right-5">
-                        {cart.length}
-                      </span>
-                    )}
                   </NavLink>
                 </li>
               ))}
@@ -145,7 +134,6 @@ const Navigation = () => {
                   <NavLink to={"/login"}>
                     <div className="center w-full  hover:text-green-600 duration-300">
                       <button className="cursor-pointer center">
-                        {" "}
                         <BiLogIn className="text-xl" /> <span>Login</span>
                       </button>
                     </div>
@@ -180,24 +168,80 @@ const Navigation = () => {
           ></div>
         </div>
       </ul>
-      <div className="sm:w-[40%] lg:mr-2 md:w-[20%] w-[15%]">
-        <ul className=" w-[150px] h-full flex justify-around items-center text-sm">
-          <NavLink to={isLogin ? "/profile" : "/authentication/login"}>
+      <div className="sm:w-[20%] lg:mr-12 mr-12 md:w-[20%] w-[20%] ">
+        <ul className=" w-[200px] md:w-[150px]  h-full flex justify-between items-center text-sm ">
+          <NavLink
+            to={"/cart"}
+            className={({ isActive }) =>
+              isActive ? "text-rose-600  " : "text-current"
+            }
+          >
+            <li className="relative">
+        <PopOver
+        title={<>
+              <BsCartCheck className="text-[24px]  sm:text-[18px] dark:text-gray-300 relative" />
+              <span className="w-[20px] h-[20px] sm:text-[12px] sm:w-[15px] sm:h-[15px] sm:-right-1 text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1/4 -right-4">
+                {cart.length}
+              </span>
+        </>} 
+        stylesPopup={popupProfileStyles}
+        content={<></>}
+        />
+            </li>
+          </NavLink>
+          <NavLink to={!isLogin && "/authentication/login"}>
             <li>
               {isLogin ? (
-                <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5" />
+                <PopOver
+                  title={
+                    <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5" />
+                  }
+                  stylesPopup={popupProfileStyles}
+                  content={
+                    <div className="">
+                      <section className="w-[100%] h-full">
+                        <h4 className="text-center text-xl sm:text-sm text-gray-800 dark:text-gray-300 ">
+                          Information Profile
+                        </h4>
+                        <div className=" px-5 py-3 flex flex-col bg-gray-100 dark:bg-slate-600 justify-between items-center border rounded-lg  text-gray-800 dark:text-gray-300">
+                          <div className="flex justify-between w-full">
+                            <p>Username : </p>
+                            <p>{user.name}</p>
+                          </div>
+                          <div className="flex justify-between w-full">
+                            <p>Email : </p>
+                            <p>{user.email}</p>
+                          </div>
+                          <div className="flex justify-between w-full">
+                            <p>Tel : </p>
+                            <p>{user.phoneNumber}</p>
+                          </div>
+                          <button
+                            className="btn-primary mt-3"
+                            onClick={() => logoutHandler()}
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </section>
+                    </div>
+                  }
+                />
               ) : (
                 <p className="hover:text-green-600 dark:hover:text-green-600 duration-300 dark:text-gray-200  text-gray-800 center">
                   <BiLogIn className="text-[22px]" />
-                  <span className="center">Signup | Login</span>
+                  <span className="center sm:text-[12px] truncate">
+                    Signup | Login
+                  </span>
                 </p>
               )}
             </li>
           </NavLink>
+
           <li>
             <button
               type="button"
-              className=" text-xl dark:text-gray-200 text-gray-800 md:hidden dark:hover:text-yellow-500 duration-200 hover:text-yellow-500"
+              className=" text-[25px] dark:text-gray-200 text-gray-800 md:hidden dark:hover:text-yellow-500 duration-300 hover:text-yellow-500"
               onClick={handleThemeSwitch}
             >
               {theme === "dark" || null ? <FiSun /> : <FiMoon />}
