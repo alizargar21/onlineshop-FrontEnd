@@ -17,7 +17,7 @@ useEffect(()=> {
         <div className="center font-extrabold text-3xl font-Roboto text-gray-600">
           <NavLink
             className={ ({ isActive }) =>
-              isActive ? "text-rose-600  " : "text-current"
+              isActive ? "text-blue-600  " : "text-current"
             }
             to={"login"}
           >
@@ -25,7 +25,7 @@ useEffect(()=> {
           </NavLink>
           <NavLink
             className={({ isActive }) =>
-              isActive ? "text-rose-600  " : "text-current"
+              isActive ? "text-green-600  " : "text-current"
             }
             to={"signup"}
           >

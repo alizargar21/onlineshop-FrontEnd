@@ -47,8 +47,6 @@ function App() {
           />
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-         
             <Route path="/authentication/*" element={<Authentication />} >
               <Route path="login" element={<Login />}/>
               <Route path="signup" element={<SignUp />}/>

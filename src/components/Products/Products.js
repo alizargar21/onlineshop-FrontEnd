@@ -51,7 +51,7 @@ const Products = ({ data }) => {
                 className="flex justify-center relative items-center "
                 to={`/products/${item._id}`}
               >
-                <div className="absolute left-1 text-gray-400 -rotate-90 text-xs md:text-2xl">
+                <div className="absolute left-1 dark:text-gray-400 text-gray-700 -rotate-90 text-xs md:text-2xl italic">
                     {item.brand}
                   </div>
                 <img
@@ -109,7 +109,7 @@ const Products = ({ data }) => {
         {data.map((item) => (
           <article
             key={item._id}
-            className="w-full min-h-[190px] bg-gray-100 dark:bg-gray-600 text-gray-800 dark:text-gray-200 flex flex-row-reverse justify-between items-center px-2 mx-auto rounded-lg relative"
+            className="w-full min-h-[190px] bg-gray-100 dark:bg-black/25 text-gray-800 dark:text-gray-200 flex flex-row-reverse justify-between items-center px-2 mx-auto rounded-lg relative"
           >
             <Link
               className=" flex-col w-[70%] center my-1"
@@ -132,7 +132,7 @@ const Products = ({ data }) => {
                     <span
                       key={index}
                       style={{ backgroundColor: Object.values(c) }}
-                      className="w-3 h-3 flex m-1 border-[0.2px] border-black rounded-full "
+                      className="w-3 h-3 flex m-1 border-[0.2px] border-black dark:border-white/50 rounded-full "
                     ></span>
                   ))}
                 </div>
@@ -142,7 +142,7 @@ const Products = ({ data }) => {
               <h3 className="text-xl font-sans font-semibold ml-1">
                 {item.name}
               </h3>
-              <div className="absolute left-2 top-1 text-gray-200  text-xs ">
+              <div className="absolute left-2 top-1 text-gray-700 italic dark:text-gray-200  text-xs ">
                     {item.brand}
                   </div>
               <div className="flex  items-center w-[80%] justify-between">
