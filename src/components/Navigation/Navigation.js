@@ -93,7 +93,7 @@ const Navigation = () => {
             <div className="relative">
               <button
                 type="button"
-                className=" text-2xl dark:text-gray-200 text-gray-800 absolute top-12 right-3.5 hover:text-yellow-400 duration-300"
+                className=" text-2xl dark:text-gray-200 text-gray-800 absolute top-12 right-3.5 hover:text-yellow-400 dark:hover:text-yellow-400 duration-300"
                 onClick={handleThemeSwitch}
               >
                 {theme === "dark" ? <FiSun /> : <FiMoon />}
@@ -151,7 +151,7 @@ const Navigation = () => {
         </div>
       </ul>
       <div className="sm:w-[20%] lg:mr-12 mr-12 md:w-[20%] w-[20%] ">
-        <ul className=" w-[200px] md:w-[150px]  h-full flex justify-between items-center text-sm ">
+        <ul className=" w-[200px] md:w-[150px]  h-full flex justify-between items-center text-sm md:justify-around ">
           <NavLink
             to={"/cart"}
             className={({ isActive }) =>
@@ -163,7 +163,7 @@ const Navigation = () => {
                 headerTitle={"Cart"}
                 title={
                   <>
-                    <BsCartCheck className="text-[24px]  sm:text-[18px] dark:text-gray-300 relative" />
+                    <BsCartCheck className="text-[24px]  sm:text-[18px] dark:text-gray-300 relative " />
                     {cart.length !== 0 && (
                       <span className="w-[20px] h-[20px] sm:text-[12px] sm:w-[15px] sm:h-[15px] sm:-right-1 text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1/4 -right-4">
                         {cart.length}

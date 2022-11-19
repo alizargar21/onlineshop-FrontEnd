@@ -48,7 +48,7 @@ const CartPage = () => {
               >
                 <article className="flex w-full justify-between items-center sm:flex-col sm:min-h-auto  sm:justify-around">
                   <Link to={`/products/${item._id}`} className="center">
-                    <div className="w-[100px] xl:w-[110px] h-[80%] mr-5 center md:ml-3 md:w-[150px] sm:w-[80%] ">
+                    <div className="w-[100px] xl:w-[110px] h-[80%] mr-5 center md:ml-3 md:w-[150px] sm:w-[50%] ">
                       <img src={item.image} alt="" />
                     </div>
                   </Link>

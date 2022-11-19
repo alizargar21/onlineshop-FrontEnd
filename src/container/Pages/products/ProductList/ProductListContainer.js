@@ -21,10 +21,6 @@ const ProductListContainer = () => {
         location.pathname.slice(10, location.pathname.length)
       )
     );
-
-   
-    console.log(location.pathname.slice(10, location.pathname.length));
-
   }, [location.pathname]);
 
   return (

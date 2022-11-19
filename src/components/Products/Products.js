@@ -33,7 +33,7 @@ const Products = ({ data }) => {
                   
                 </div>
                 <div className="center">
-                  <button type="">
+                  <button type="button">
                     <BsShare className="mx-2" />
                   </button>
                   <button className="text-rose-500 text-[22px]">
@@ -50,8 +50,8 @@ const Products = ({ data }) => {
               <Link
                 className="flex justify-center relative items-center "
                 to={`/products/${item._id}`}
-              >
-                <div className="absolute left-1 dark:text-gray-400 text-gray-700 -rotate-90 text-xs md:text-2xl italic">
+              > 
+                <div className="absolute left-1 md:-left-2 dark:text-gray-400 text-gray-700 -rotate-90 text-xs md:text-xl italic">
                     {item.brand}
                   </div>
                 <img

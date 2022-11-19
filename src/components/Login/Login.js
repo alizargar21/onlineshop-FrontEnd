@@ -32,7 +32,6 @@ const Login = () => {
     if (isLogin) {
       navigate(redirect);
     }
-
   }, [isLogin, redirect]);
   const onSubmit = async (values) => {
     const { email, password } = values;
@@ -44,8 +43,6 @@ const Login = () => {
     try {
     dispatch(asyncLoginUser(userData))
       toast.success("You Now Logged In", { theme: "dark" });
-      
-      // navigate(redirect === "/" ? "/" : `/${redirect}`);
       navigate(`/${redirect}`);
     } catch (error) {
       toast.error(error.response.data.message, { theme: "colored" });    
@@ -53,7 +50,7 @@ const Login = () => {
   };
 
   const formik = useFormik({
-    initialValues: initialValues,
+    initialValues,
     onSubmit,
     validationSchema,
     validateOnMount: false,
@@ -79,7 +76,7 @@ const Login = () => {
             
           
           <div className="flex flex-col mx-2   items-center">
-            <div className="w-[80%] text-xs bg-gray-300 dark:text-gray-800 p-2 rounded-lg mt-2">
+            <div className="w-[80%] text-xs bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-300 p-2 italic rounded-lg mt-2">
               <span>
                 Besides registering, you can also test the template with test
                 account information(email: test@info.com - Password: 123456)
@@ -89,7 +86,7 @@ const Login = () => {
           <div className="w-[80%] flex flex-col justify-center items-start my-5">
             <Input formik={formik} name="email" label="Email" type="email" />
 
-            <Input formik={formik} name="password" label="Password" />
+            <Input formik={formik} name="password" label="Password" type="password" />
 
             <button
               className="btn-primary w-full hover:bg-blue-500 mt-4 bg-blue-600"
@@ -99,14 +96,6 @@ const Login = () => {
               Login
             </button>
           </div>
-
-          {/* <div className="my-8 text-blue-600 dark:text-gray-300">
-            <Link to={`/signup?redirect=${redirect}`}>
-              <p >Not Sign Up yet ? <span className="text-xs decoration-stone-400 decoration-dotted ">
-              Click here
-                </span> </p>
-            </Link>
-          </div> */}
         </form>
       </section>
 

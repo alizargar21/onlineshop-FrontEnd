@@ -81,7 +81,7 @@ const SignUp = () => {
         className="w-[30%] my-10 md:min-w-[50%] shadow-2xl sm:min-w-[80%] h-[80%] flex justify-start items-center flex-col  bg-white dark:bg-gray-700 dark:text-gray-200 text-gray-800 rounded-lg  "
         onSubmit={formik.handleSubmit}
       >
-        <div className="bg-green-500 center  w-full h-10 text-gray-200 rounded-tl-lg rounded-tr-lg ">
+        <div className="bg-green-500 center  w-full h-10 text-gray-200 text-xl rounded-tl-lg rounded-tr-lg ">
           Sign Up
         </div>
         <div className="w-[80%] flex flex-col items-start justify-center">
