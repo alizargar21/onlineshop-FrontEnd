@@ -34,7 +34,7 @@ export  const getAuthenticationDataFromLocalStorage = ()=> {
   try {
    const persistAuthentication = localStorage.getItem(LOCAL_STORAGE_AUTH_KEY) 
    console.log(persistAuthentication)
-   if(persistAuthentication !== undefined){
+   if(persistAuthentication !== undefined || null ){
     return JSON.parse(persistAuthentication)
    }
   } catch (error) {

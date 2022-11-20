@@ -1,7 +1,7 @@
 import { BsSearch } from "react-icons/bs";
 const SearchBar = ({ searchHandler, value }) => {
   return (
-    <div className="text-gray-800  italic center md:w-[80%]">
+    <div className="text-gray-800  italic center md:w-[80%] dark:text-gray-300">
       <label htmlFor="search">
         <BsSearch className="text-xl mx-2 dark:text-gray-200" />
       </label>

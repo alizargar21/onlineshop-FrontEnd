@@ -1,16 +1,8 @@
-import { useRef } from "react";
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import Login from "../../../components/Login/Login";
+
+import {  NavLink, Outlet } from "react-router-dom";
 import Layout from "../../Layout/Layout";
 
 const Authentication = () => {
-  const { auth, isLogin } = useSelector((state) => state.auth);
-useEffect(()=> {
-
-} , [])
-
   return (
     <Layout>
       <section className="min-h-[400px]">

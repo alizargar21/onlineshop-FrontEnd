@@ -29,7 +29,7 @@ export const asyncLoginUser = createAsyncThunk("auth/loginUser" , async(payload 
 
 
 const initialState = {
-  user: {},
+  user: null,
   error: null,
   loading: false,
   isLogin : false

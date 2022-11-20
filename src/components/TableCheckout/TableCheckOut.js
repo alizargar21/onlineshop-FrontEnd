@@ -62,47 +62,41 @@ const TableCheckout = ({ cartCheckHandler}) => {
         </tbody>
         <tfoot className="sm:text-[10px] md:text-[12px] italic">
           <tr className="dark:bg-black/20 dark:text-gray-200 bg-gray-100">
-            <td
-              colSpan={4}
-              className="   border-b-[1px]   border-r-[1px] border-gray-700 py-1 text-center"
-            ></td>
+         
             <td className="   border-b-[1px]   border-r-[1px] border-gray-700 py-1 text-center">
               Total Items
             </td>
             <td
-              colSpan={1}
+              colSpan={2}
               className="   border-b-[1px]  border-r-[1px] border-gray-700 py-1 text-center"
             >
               Total Price
             </td>
             <td
-              colSpan={1}
+              colSpan={2}
               className="   border-b-[1px]  border-r-[1px] border-gray-700 py-1 text-center"
             >
               Sum Discount
             </td>
             <td
-              colSpan={3}
+              colSpan={4}
               className="   border-b-[1px]  border-gray-700 py-1 text-center"
             >
               Total Amount Payable
             </td>
           </tr>
           <tr className="  text-center dark:bg-black/20 dark:text-gray-200">
-            <td
-              colSpan={4}
-              className="   border-b-[1px]   border-r-[1px] border-gray-700 py-1 text-center"
-            ></td>
+          
             <td className=" py-2  border-r-[1px] border-gray-700 ">
               {totalCartItems}
             </td>
-            <td colSpan={1} className="  py-2 border-r-[1px] border-gray-700 ">
+            <td colSpan={2} className="  py-2 border-r-[1px] border-gray-700 ">
               $ {totalPrice}
             </td>
-            <td colSpan={1} className=" py-2 border-r-[1px] border-gray-700 ">
+            <td colSpan={2} className=" py-2 border-r-[1px] border-gray-700 ">
               $ {totalDiscount.toFixed(1)}
             </td>
-            <td colSpan={3} className="  py-2  ">
+            <td colSpan={4} className="  py-2  ">
               $ {totalAmountPayable.toFixed(1)}
             </td>
           </tr>

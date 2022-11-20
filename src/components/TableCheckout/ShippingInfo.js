@@ -13,8 +13,7 @@ const ShippingInfo = ({ time, days, cart, shippingInfoHandler }) => {
     setTimeShipping(selectOption);
   };
   useEffect(() => {
-    console.log(date);
-    console.log(timeShipping);
+
   }, [date, timeShipping]);
   return (
     <section className="w-[80%] min-h-[300px] mb-20 dark:bg-black/25 bg-gray-50 rounded-lg mx-auto border  py-2 px-3 flex flex-col justify-center items-center mt-3">

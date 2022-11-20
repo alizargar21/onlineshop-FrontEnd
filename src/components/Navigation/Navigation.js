@@ -144,7 +144,7 @@ const Navigation = () => {
             onClick={() => setNav(!nav)}
             className={
               nav
-                ? "w-full h-screen fixed left-0 top-0  bg-black/80 duration-100"
+                ? "w-full h-screen fixed left-0 top-0  bg-black/80 duration-100 z-20"
                 : "w-full h-screen fixed left-[-100%] top-0  duration-50"
             }
           ></div>
@@ -155,7 +155,7 @@ const Navigation = () => {
           <NavLink
             to={"/cart"}
             className={({ isActive }) =>
-              isActive ? "text-rose-600  " : "text-current"
+              isActive ? "text-rose-600 dark:text-rose-600 " : "text-gray-800 dark:text-gray-300"
             }
           >
             <li className="relative">
@@ -163,9 +163,9 @@ const Navigation = () => {
                 headerTitle={"Cart"}
                 title={
                   <>
-                    <BsCartCheck className="text-[24px]  sm:text-[18px] dark:text-gray-300 relative " />
+                    <BsCartCheck className="text-[24px]  md:text-[21px] sm:text-[18px] relative " />
                     {cart.length !== 0 && (
-                      <span className="w-[20px] h-[20px] sm:text-[12px] sm:w-[15px] sm:h-[15px] sm:-right-1 text-sm flex  justify-center items-center  bg-rose-600 text-white rounded-full absolute -top-1/4 -right-4">
+                      <span className="w-[20px] h-[20px] md:w-[16px] md:h-[16px] md:-right-2 md:-top-2 sm:text-[12px] sm:w-[15px] sm:h-[15px] sm:-right-1 text-sm flex  justify-center items-center  bg-rose-600  text-white rounded-full absolute -top-1/4 -right-4 z-10">
                         {cart.length}
                       </span>
                     )}
@@ -201,13 +201,15 @@ const Navigation = () => {
               />
             </li>
           </NavLink>
-          <NavLink to={!isLogin && "/authentication/login"}>
+          <NavLink to={!isLogin && "/authentication/login"}  >
             <li>
               {isLogin ? (
                 <PopOver
                   headerTitle={"Profile Information"}
                   title={
-                    <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5" />
+                    <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5"
+                    
+                    />
                   }
                   stylesPopup={popupProfileStyles}
                   content={

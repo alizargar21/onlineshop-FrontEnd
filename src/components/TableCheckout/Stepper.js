@@ -1,7 +1,7 @@
 
+import { useEffect } from "react";
 import { BsCheck } from "react-icons/bs";
-const Stepper = ({ complete  , currentStep  , steps}) => {
-  
+const Stepper = ({ complete  , currentStep  , steps }) => {
 
 
   return (

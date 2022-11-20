@@ -8,14 +8,14 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import ShippingInfo from "../../../components/TableCheckout/ShippingInfo";
 import Payment from "../../../components/TableCheckout/Payment";
-
+const initState = [
+  { label: "Authentication", isAuth: false, userInfo: {} },
+  { label: "Check Order", isCartChecked: false, cartInfo: {} },
+  { label: "Shipping Info", isShippingChecked: false, shippingInfo: {} },
+  { label: "Payment", value: false, paymentInfo: {} },
+]
 const CheckOut = () => {
-  const [steps, setSteps] = useState([
-    { label: "Authentication", isAuth: false, userInfo: {} },
-    { label: "Check Order", isCartChecked: false, cartInfo: {} },
-    { label: "Shipping Info", isShippingChecked: false, shippingInfo: {} },
-    { label: "Payment", value: false, paymentInfo: {} },
-  ]);
+  const [steps, setSteps] = useState(initState);
 
   const days = [
     { label: "Sunday", value: 1 },
@@ -36,11 +36,7 @@ const CheckOut = () => {
   const [complete, setComplete] = useState(false);
   const { user, isLogin } = useSelector((state) => state.auth);
   const { cart } = useSelector((state) => state.cart);
-  const checkAuthentication = () => {
-    steps[0].isAuth = isLogin;
-    steps[0].userInfo = user;
-    setCurrentStep(2);
-  };
+
   const cartCheckHandler = () => {
     setCurrentStep(3);
     steps[1].isCartChecked = true;
@@ -54,9 +50,18 @@ const CheckOut = () => {
   };
 
   useEffect(() => {
-    if (isLogin) {
-      checkAuthentication();
-    }
+     if(isLogin){
+      steps[0].isAuth = isLogin;
+      steps[0].userInfo = user;
+      setCurrentStep(2);
+     }
+     if(!isLogin){
+      steps[0].isAuth = isLogin;
+      steps[0].userInfo = {};
+      steps[1].isCartChecked = false
+      steps[2].isShippingChecked = false
+      setCurrentStep(1);
+     }
     if (steps[1].isCartChecked) {
       setCurrentStep(3);
     }
@@ -73,7 +78,7 @@ const CheckOut = () => {
           setComplete={setComplete}
           setCurrentStep={setCurrentStep}
         />
-        {!isLogin && <Login checkAuthentication={checkAuthentication}/>}
+        {!isLogin  && <Login />}
         {isLogin && currentStep === 2 && cart.length === 0 ? (
           <div className="flex flex-col items-center w-[30%] h-10 mx-auto my-8 text-xl italic text-gray-600 md:text-[12px] min-h-[400px] dark:text-gray-300">
             <Link to={"/products"}>
