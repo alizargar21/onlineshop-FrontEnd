@@ -1,20 +1,19 @@
+import { Container } from "postcss";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+
 import Select from "react-select";
 
 const ShippingInfo = ({ time, days, cart, shippingInfoHandler }) => {
   const [date, setDate] = useState(0);
   const [timeShipping, setTimeShipping] = useState(0);
+
   const setDateHandler = (selectOption) => {
     setDate(selectOption);
   };
   const setTimeHandler = (selectOption) => {
     setTimeShipping(selectOption);
   };
-  useEffect(() => {
-
-  }, [date, timeShipping]);
   return (
     <section className="w-[80%] min-h-[300px] mb-20 dark:bg-black/25 bg-gray-50 rounded-lg mx-auto border  py-2 px-3 flex flex-col justify-center items-center mt-3">
       <div className="flex justify-center items-start w-[95%] flex-wrap m-2">
@@ -34,9 +33,11 @@ const ShippingInfo = ({ time, days, cart, shippingInfoHandler }) => {
         ))}
       </div>
       <div className="w-[80%]  bg-green-20mx-auto  py-2 px-3 center md:flex-col ">
+
+
         <Select
           options={days}
-          className="text-[12px] w-[150px]  my-10 mx-auto   md:my-[10px]"
+          className="text-[12px] w-[150px]  my-10 mx-auto   md:my-[10px] "
           onChange={setDateHandler}
           placeholder={"Select Date"}
         />

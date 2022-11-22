@@ -99,7 +99,7 @@ const CheckOut = () => {
               time={time}
               cart={cart}
             />
-          ) : isLogin && currentStep === 4 ? (<Payment />) : complete && <p>worked</p> }
+          ) : isLogin && currentStep === 4 ? (<Payment steps={steps}/>) : complete && <p>worked</p> }
       </section>
     </Layout>
   );

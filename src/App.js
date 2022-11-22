@@ -8,12 +8,8 @@ import NotFoundPage from "./container/Pages/NotFoundPage";
 import Blogs from "./container/Pages/Blogs/Blogs";
 import SignUp from "./components/Signup/Signup";
 import Login from "./components/Login/Login";
-
 import CheckOut from "./container/Pages/CheckOutPage/CheckOut";
-import ProfilePage from "./container/Pages/Profile/Profile";
-
 import ThemeProvider from "./Provider/ThemeProvider";
-
 import Favorite from "./container/Pages/FavoritePage/Favorite";
 import AllOfferProducts from "./container/Pages/OfferPage/OfferPage";
 import { Provider } from "react-redux";
@@ -26,7 +22,7 @@ import ProductDetails from "./container/Pages/ProductDetails/ProductDetailsPage"
 import Authentication from "./container/Pages/Auth/Authentication";
 const favData = getFavoriteDataFromLocalStorage();
 const authData = getAuthenticationDataFromLocalStorage();
-console.log(authData);
+
 if (favData) {
   store.dispatch(setInitialValue(favData));
 }

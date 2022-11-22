@@ -79,7 +79,7 @@ const Login = () => {
             <div className="w-[80%] text-xs bg-gray-200 dark:bg-gray-600 text-gray-800 dark:text-gray-300 p-2 italic rounded-lg mt-2">
               <span>
                 Besides registering, you can also test the template with test
-                account information(email: test@info.com - Password: 123456)
+                account information(email: test@info.com - Password: 12345678)
               </span>
             </div>
           </div>
