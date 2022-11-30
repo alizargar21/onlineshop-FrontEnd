@@ -3,7 +3,7 @@ import { BsTwitter, BsWhatsapp, BsInstagram } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
-    <footer className="w-full relative bottom-0 min-h-[400px] bg-slate-300 dark:bg-gray-900 text-gray-800 dark:text-gray-300 flex flex-col justify-around items-center py-5 ">
+    <footer className="w-full relative bottom-0 min-h-[400px] bg-slate-300 dark:bg-gray-900 text-primary dark:text-primary-dark/70 flex flex-col justify-around items-center py-5 ">
       <div className="grid grid-cols-3 w-full  md:grid-cols-2 justify-items-center sm:grid-cols-1">
         <div className="w-[150px] h-[150px] my-3">
           <h3 className="text-lg font-semibold sm: ">Online Shop Map</h3>

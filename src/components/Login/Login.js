@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useQuery } from "../../hooks/useQuery.js";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncLoginUser } from "../../features/AuthSlice/AuthSlice.js";
+import http from "../../services/httpServices.js";
 
 const initialValues = {
   email: "",
@@ -22,13 +23,14 @@ const validationSchema = Yup.object({
 });
 
 const Login = () => {
-  const {isLogin} = useSelector(state =>state.auth)
+  const {isLogin , error} = useSelector(state =>state.auth)
   const dispatch = useDispatch()
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(error)
     if (isLogin) {
       navigate(redirect);
     }
@@ -40,15 +42,15 @@ const Login = () => {
       password,
     };
 
+    
     try {
     dispatch(asyncLoginUser(userData))
-      toast.success("You Now Logged In", { theme: "dark" });
-      navigate(`/${redirect}`);
+    navigate(`/${redirect}`);
+
     } catch (error) {
-      toast.error(error.response.data.message, { theme: "colored" });    
+      
     }
   };
-
   const formik = useFormik({
     initialValues,
     onSubmit,
@@ -89,7 +91,7 @@ const Login = () => {
             <Input formik={formik} name="password" label="Password" type="password" />
 
             <button
-              className="btn-primary w-full hover:bg-blue-500 mt-4 bg-blue-600"
+              className="btn-primary w-full hover:bg-blue-500 mt-4 text-md bg-blue-600 font-bold font-Ubuntu"
               type="submit"
               disabled={!formik.isValid}
             >

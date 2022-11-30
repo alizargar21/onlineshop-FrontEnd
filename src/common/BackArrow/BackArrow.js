@@ -7,7 +7,7 @@ const BackArrowComponent = () => {
   return (
     <div className="relative">
       <button type="button" onClick={()=>{backHandler()}}>
-        <BiArrowBack className="text-2xl text-gray-700 dark:text-gray-200 absolute top-3 left-3" />
+        <BiArrowBack className="text-2xl text-primary dark:text-primary-dark absolute top-3 left-3" />
       </button>
     </div>
   );

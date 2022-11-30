@@ -1,6 +1,5 @@
 import axios from "axios";
-
-axios.defaults.baseURL = 'https://online-shop-sample21.herokuapp.com/api/'
+axios.defaults.baseURL = "http://localhost:5000/api/"
 
 
 const http = {

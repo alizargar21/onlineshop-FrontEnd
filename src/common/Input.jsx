@@ -3,7 +3,7 @@ const Input = ({ label, formik, name, type = "text" }) => {
   return (
     <div className="relative z-0 mt-6 w-full group">
       <input
-    autoComplete="off"
+    // autoComplete="off"
     {...formik.getFieldProps(name)}
         type={type}
         name={name}

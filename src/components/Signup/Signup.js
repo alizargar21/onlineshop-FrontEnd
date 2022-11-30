@@ -8,6 +8,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useQuery } from "../../hooks/useQuery.js";
 import { useDispatch, useSelector } from "react-redux";
 import { asyncSigninUser } from "../../features/AuthSlice/AuthSlice.js";
+
 const initialValues = {
   name: "",
   email: "",
@@ -34,20 +35,21 @@ const validationSchema = Yup.object({
 });
 
 const SignUp = () => {
-  const { auth } = useSelector((state) => state.auth);
+  const {  isLogin} = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
+  console.log(query.get("redirect"))
   const navigate = useNavigate();
   useEffect(() => {
-    if (auth) {
+    if (isLogin) {
       navigate(redirect);
     }
-    console.log(redirect);
-  }, [auth, redirect]);
+
+  }, [isLogin,redirect]);
   const onSubmit = async (values) => {
-    const { name, email, terms, password, phoneNumber, passwordConfirm } =
+    const { name, email, password, phoneNumber, passwordConfirm } =
       values;
     const userData = {
       name,
@@ -59,11 +61,11 @@ const SignUp = () => {
 
     try {
       dispatch(asyncSigninUser(userData));
-      toast.success("Sign Up Successful");
-      navigate(redirect === "/" ? "/" : `/${redirect}`);
-      toast.info("You now login");
+
+
+
     } catch (error) {
-      toast.error(error);
+      console.log(error)
     }
   };
 
@@ -109,13 +111,13 @@ const SignUp = () => {
           <button
             className={
               !formik.isValid
-                ? "w-full bg-gray-500 text-gray-300 rounded-md cursor-not-allowed text-sm py-1 my-5"
-                : "w-full bg-green-500 text-white rounded-md  text-sm py-1 my-2    "
+                ? "w-full bg-gray-500 text-gray-300 font-bold font-Ubuntu rounded-md cursor-not-allowed text-sm py-1 my-5"
+                : "w-full bg-green-500 text-white font-bold font-Ubuntu rounded-md  text-sm py-1 my-5    "
             }
             disabled={!formik.isValid}
             type="submit"
           >
-            SIGN UP
+   SIGN    UP
           </button>
         </div>
       </form>

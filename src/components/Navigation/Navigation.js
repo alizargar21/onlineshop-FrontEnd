@@ -10,6 +10,7 @@ import { BiLogOut, BiLogIn } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { useQuery } from "../../hooks/useQuery";
 import PopOver from "../Popover/PopOver";
+import {useWindowDimensions} from "../../hooks/useWinowDimensions"
 export const navItems = [
   { to: "/", name: "Home" },
   { to: "/products", name: "Products" },
@@ -18,10 +19,11 @@ export const navItems = [
   { to: "", name: "" },
 ];
 const popupCartStyles =
-"absolute top-7 -right-20 bg-gray-300 dark:bg-slate-800 rounded-lg max-h-[300px] ";
+"absolute top-7 -right-20 bg-gray-300 dark:bg-containerBG-dark rounded-lg max-h-[300px] border-black  dark:border-white border";
 const popupProfileStyles =
-"lg:w-[30%]  sm:w-[60%] md:w-[50%] xl:w-[25%] absolute top-12 2xl:right-28 lg:right-4 dark:bg-gray-800 rounded-lg p-4  bg-gray-300 sm:text-[12px] font-bold font-Roboto";
+"lg:w-[30%]  sm:w-[60%] md:w-[50%] xl:w-[25%] absolute top-12 2xl:right-28 lg:right-4 dark:bg-containerBG-dark rounded-lg p-4  bg-containerBG/90 sm:text-[12px] font-bold font-Roboto";
 const Navigation = () => {
+  const screen = useWindowDimensions()
   const { isLogin, user } = useSelector((state) => state.auth);
   const navigate = useNavigate();
   const query = useQuery();
@@ -43,7 +45,7 @@ const Navigation = () => {
   };
   return (
     <nav className="flex justify-between items-center w-full h-[60px] ">
-      <ul className="flex justify-center items-center text-gray-800 dark:text-white text-sm">
+      <ul className="flex justify-center items-center text-primary dark:text-primary-dark text-sm">
         <div className="md:hidden   ">
           <a href="/">
             <img
@@ -54,7 +56,7 @@ const Navigation = () => {
           </a>
         </div>
         <div onClick={() => setNav(!nav)}>
-          <GiHamburgerMenu className="dark:text-white text-gray-800 hidden sm:flex md:flex z-30 md:text-lg" />
+          <GiHamburgerMenu className="dark:text-primary-dark text-primary hidden sm:flex md:flex z-30 text-[22px]" />
         </div>
         {navItems.map((item, index) => (
           <li
@@ -64,7 +66,7 @@ const Navigation = () => {
             <NavLink
               to={item.to}
               className={({ isActive }) =>
-                isActive ? "text-rose-600  " : "text-current"
+                isActive ? "text-btnPrimary  " : "text-current"
               }
             >
               {item.name}
@@ -77,7 +79,7 @@ const Navigation = () => {
           <div
             className={
               nav
-                ? "w-[200px] h-screen fixed left-0 top-0 bg-gray-200 dark:bg-gray-800 z-50 duration-300"
+                ? "w-[200px] h-screen fixed left-0 top-0 bg-containerBG dark:bg-containerBG-dark z-50 duration-300"
                 : "w-[200px] h-screen fixed left-[-100%] top-0   duration-300"
             }
           >
@@ -87,29 +89,29 @@ const Navigation = () => {
             >
               <AiOutlineClose
                 size={20}
-                className="text-gray-800 dark:text-gray-200 z-30  hidden md:flex absolute right-4 top-5 cursor-pointer "
+                className="text-primary dark:text-primary-dark z-30  hidden md:flex absolute right-4 top-5 cursor-pointer "
               />
             </div>
-            <div className="relative">
+            <div className="relative ">
               <button
                 type="button"
-                className=" text-2xl dark:text-gray-200 text-gray-800 absolute top-12 right-3.5 hover:text-yellow-400 dark:hover:text-yellow-400 duration-300"
+                className=" text-2xl dark:text-primary-dark text-primary absolute top-12 right-3.5 hover:text-yellow-400 dark:hover:text-yellow-400 duration-300"
                 onClick={handleThemeSwitch}
               >
                 {theme === "dark" ? <FiSun /> : <FiMoon />}
               </button>
             </div>
 
-            <ul className="w-40 mx-auto flex flex-col items-start text-gray-800 dark:text-gray-200 mt-3">
+            <ul className="w-40 mx-auto flex flex-col items-start text-primary dark:text-primary-dark mt-3">
               {navItems.map((item, index) => (
                 <li
-                  className="mx-[10px] my-[5px] text-md list-none sm:flex hover:text-rose-600 relative"
+                  className="mx-[10px] my-[5px] text-md list-none sm:flex hover:text-btnPrimary relative"
                   key={index}
                 >
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      isActive ? "text-rose-600  " : "text-current"
+                      isActive ? "text-btnPrimary  " : "text-current"
                     }
                   >
                     {item.name}
@@ -150,12 +152,12 @@ const Navigation = () => {
           ></div>
         </div>
       </ul>
-      <div className="sm:w-[20%] lg:mr-12 mr-12 md:w-[20%] w-[20%] ">
-        <ul className=" w-[200px] md:w-[150px]  h-full flex justify-between items-center text-sm md:justify-around ">
+      <div className=" w-[20%] ">
+        <ul className=" w-auto  h-full flex justify-around items-center text-sm">
           <NavLink
             to={"/cart"}
             className={({ isActive }) =>
-              isActive ? "text-rose-600 dark:text-rose-600 " : "text-gray-800 dark:text-gray-300"
+              isActive ? "text-btnPrimary dark:text-btnPrimary " : "text-primary dark:text-primary-dark"
             }
           >
             <li className="relative">
@@ -163,7 +165,7 @@ const Navigation = () => {
                 headerTitle={"Cart"}
                 title={
                   <>
-                    <BsCartCheck className="text-[24px]  md:text-[21px] sm:text-[18px] relative " />
+                    <BsCartCheck className="text-[24px]  relative " />
                     {cart.length !== 0 && (
                       <span className="w-[20px] h-[20px] md:w-[16px] md:h-[16px] md:-right-2 md:-top-2 sm:text-[12px] sm:w-[15px] sm:h-[15px] sm:-right-1 text-sm flex  justify-center items-center  bg-rose-600  text-white rounded-full absolute -top-1/4 -right-4 z-10">
                         {cart.length}
@@ -173,7 +175,7 @@ const Navigation = () => {
                 }
                 stylesPopup={popupCartStyles}
                 content={
-                  <div className="bg-gray-200 dark:bg-slate-700 center rounded-b-lg dark:text-gray-300 text-gray-700">
+                  <div className="bg-containerBG dark:bg-containerBG-dark center rounded-b-lg dark:text-primary-dark text-primary ">
                     {cart.length === 0 ? (
                       <div className="w-[180px] h-[200px] flex justify-around    items-center flex-col ">
                         <img
@@ -189,10 +191,10 @@ const Navigation = () => {
                         </Link>
                       </div>
                     ) : (
-                      <div className="center flex-col w-[150px]      mt-3 mb-0  cursor-default  ">
+                      <div className="center flex-col w-[150px]   dark:bg-gray-700  mt-1 py-2  cursor-default rounded-lg  ">
                          < div className="center justify-around w-full pb-2">
                             <p>Total Items </p> 
-                            <span className="w-6 h-6 bg-rose-600 center rounded-lg text-gray-100">{cart.length}</span>
+                            <span className="w-6 h-6 bg-btn center rounded-lg bg-btnPrimary text-primary-dark">{cart.length}</span>
                           </div>
                       </div>
                     )}
@@ -207,7 +209,7 @@ const Navigation = () => {
                 <PopOver
                   headerTitle={"Profile Information"}
                   title={
-                    <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800 md:absolute md:top-4 md:right-8 sm:text-[28px] sm:top-2.5"
+                    <BsPersonCircle className="text-[30px] dark:text-gray-200  text-gray-800  sm:text-[28px]  sm:ml-2"
                     
                     />
                   }
@@ -241,25 +243,27 @@ const Navigation = () => {
                   }
                 />
               ) : (
-                <p className="hover:text-green-600 dark:hover:text-green-600 duration-300 dark:text-gray-200  text-gray-800 center">
-                  <BiLogIn className="text-[22px]" />
+                <p className="hover:text-green-600 dark:hover:text-green-600 duration-300 dark:text-gray-200  text-gray-800 center ml-2">
+                  {screen.width > 767 ?       <>
+                    <BiLogIn className="text-[22px]" />
                   <span className="center sm:text-[12px] truncate">
                     Signup | Login
                   </span>
+                  </>     :  <><BiLogIn className="text-[25px]"  /></>}
                 </p>
               )}
             </li>
           </NavLink>
 
-          <li>
+       {screen.width > 767 &&    <li>
             <button
               type="button"
-              className=" text-[25px] dark:text-gray-200 text-gray-800 md:hidden dark:hover:text-yellow-500 duration-300 hover:text-yellow-500"
+              className=" text-[25px] dark:text-gray-200  text-gray-800  dark:hover:text-yellow-500 duration-300 hover:text-yellow-500  ml-2"
               onClick={handleThemeSwitch}
             >
               {theme === "dark" || null ? <FiSun /> : <FiMoon />}
             </button>
-          </li>
+          </li>}
         </ul>
       </div>
     </nav>

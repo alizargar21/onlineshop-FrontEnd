@@ -1,8 +1,10 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
 module.exports = {
   darkMode: 'class',
   content: ["./src/**/*.{js,jsx}"],
   theme: {
+ 
     fontFamily:{
       "Oswald" : ['Oswald' , "Arial"] ,
       "Ubuntu": ["Ubuntu"],
@@ -26,7 +28,20 @@ module.exports = {
       
     },
     extend: {
+        colors : {
+
+      "primary" : {
+        DEFAULT : "#1f2937",
+        dark: "#d1d5db"
+      },
+      "containerBG": {
+        DEFAULT : "#e5e7eb",
+        dark : "#1f2937"
+      },
+      btnPrimary : "#be123c",
      
+
+    },
     },
   },
   plugins: [],

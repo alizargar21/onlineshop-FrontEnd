@@ -8,7 +8,7 @@ const Categories = ({changeHandler}) => {
   
   }, [])
   return (
-    <section className=" text-gray-700 mx-auto dark:text-gray-200 flex justify-center  w-[80%] sm:w-[250px]">
+    <section className=" text-primary mx-auto dark:text-primary-dark flex justify-center  w-[80%] sm:w-[250px]">
       < ul className="grid grid-cols-4 md:grid-cols-2 gap-2  ">
         <li  className="shadow-xl rounded-lg  ">
           <input

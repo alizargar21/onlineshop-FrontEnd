@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
     document.documentElement.scrollTo(0 ,0)
   },[location.pathname])
   return (
-    <div className="min-w-lg  bg-gray-200 dark:bg-gray-800 min-h-screen">
+    <div className="min-w-lg  bg-containerBG dark:bg-containerBG-dark min-h-screen">
       <Header />
       {location.pathname !== "/" && <BackArrowComponent />}
       {children}
